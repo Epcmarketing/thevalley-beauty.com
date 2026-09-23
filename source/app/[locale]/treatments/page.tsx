@@ -1,0 +1,138 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import {
+  isLocale,
+  intlLocales,
+  localeBase,
+  buildAlternates,
+} from "@/lib/i18n/config";
+import { getDictionary } from "@/lib/i18n/dictionaries";
+import { treatments, thumbnailForTreatment } from "@/lib/treatments";
+import { SITE_URL } from "@/lib/clinic";
+
+export function generateStaticParams() {
+  return intlLocales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  const dict = await getDictionary(locale);
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: `${dict.procedureUi.treatments} | ${dict.brand.nameFull}`,
+    description: dict.treatmentsSection.subtitle,
+    alternates: buildAlternates(locale, "treatments"),
+  };
+}
+
+export default async function TreatmentsIndex({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  const dict = await getDictionary(locale);
+  const ui = dict.procedureUi;
+  const base = localeBase(locale);
+  const home = base || "/";
+
+  const groups = [
+    { label: ui.surgical, items: treatments.filter((t) => t.category === "surgical") },
+    { label: ui.nonSurgical, items: treatments.filter((t) => t.category === "non-surgical") },
+  ];
+
+  return (
+    <div className="bg-ivory">
+      <header className="relative overflow-hidden bg-ink pt-36 pb-20 text-ivory lg:pt-44">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(120%_120%_at_80%_10%,#5a4a3a_0%,#3a2f27_45%,#241d18_100%)]" />
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <nav aria-label="Breadcrumb" className="text-[11px] tracking-[0.14em] uppercase text-ivory/55">
+            <ol className="flex items-center gap-2">
+              <li><Link href={home} className="hover:text-gold">{ui.home}</Link></li>
+              <li aria-hidden>/</li>
+              <li className="text-gold">{ui.treatments}</li>
+            </ol>
+          </nav>
+          <p className="mt-8 text-[11px] tracking-[0.28em] uppercase text-gold">
+            {dict.treatmentsHubPage?.eyebrow ?? dict.treatmentsSection.eyebrow}
+          </p>
+          <h1 className="mt-4 font-display text-5xl leading-tight text-ivory lg:text-6xl">
+            {dict.treatmentsHubPage?.title ?? dict.treatmentsSection.title}
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ivory/75">
+            {dict.treatmentsHubPage?.lead ?? dict.treatmentsSection.subtitle}
+          </p>
+        </div>
+      </header>
+
+      <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
+        {groups.map((group) => (
+          <section key={group.label} className="mb-16 last:mb-0">
+            <h2 className="text-[11px] tracking-[0.28em] uppercase text-gold">{group.label}</h2>
+            <div className="mt-6 grid gap-px overflow-hidden rounded-sm border border-sand bg-sand sm:grid-cols-2 lg:grid-cols-3">
+              {group.items.map((t) => {
+                const item = dict.treatmentsMenu.items[t.key as keyof typeof dict.treatmentsMenu.items];
+                const thumb = thumbnailForTreatment(t);
+                return (
+                  <Link
+                    key={t.slug}
+                    href={`${base}/treatments/${t.slug}`}
+                    className="group relative flex flex-col bg-ivory p-8 transition-colors hover:bg-cream"
+                  >
+                    {thumb && (
+                      <span
+                        aria-hidden
+                        className="pointer-events-none absolute right-6 top-6 h-14 w-14 overflow-hidden rounded-full border border-sand bg-cream shadow-[0_8px_18px_-10px_rgba(42,36,32,0.45)] sm:h-16 sm:w-16"
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={thumb}
+                          alt=""
+                          width={128}
+                          height={128}
+                          loading="lazy"
+                          decoding="async"
+                          className="h-full w-full object-cover"
+                        />
+                      </span>
+                    )}
+                    <h3 className="pr-20 font-display text-2xl leading-tight text-ink group-hover:text-gold-deep">
+                      {item.name}
+                    </h3>
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-taupe">{item.desc}</p>
+                    <span className="mt-6 text-gold opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+                      →
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        ))}
+      </div>
+
+      {dict.treatmentsHubPage?.sections && (
+        <section className="border-t border-sand bg-cream py-20 lg:py-24">
+          <div className="mx-auto max-w-3xl px-6 lg:px-10">
+            {dict.treatmentsHubPage.sections.map((s, i) => (
+              <div key={i} className="mt-12 first:mt-0">
+                <h2 className="font-display text-[1.7rem] leading-snug text-ink lg:text-[2rem]">
+                  {s.heading}
+                </h2>
+                <p className="mt-5 text-[1.05rem] leading-[1.9] text-ink-soft">{s.body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+  );
+}

@@ -1,0 +1,271 @@
+// Language-neutral magazine post registry. Display text comes per-locale from
+// dict.magazine.posts[key].
+
+export type Post = { slug: string; key: string; cover: string };
+
+export const posts: Post[] = [
+  {
+    slug: "pico-laser-aftercare-sun-protection-kuala-lumpur",
+    key: "picoLaserAftercare",
+    cover: "/images/magazine/pico-laser-aftercare-sun-protection-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "hifu-candidacy-guide-kuala-lumpur",
+    key: "hifuCandidacyGuide",
+    cover: "/images/magazine/hifu-candidacy-guide-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "sleep-position-after-cosmetic-surgery-kuala-lumpur",
+    key: "sleepPositionRecovery",
+    cover: "/images/magazine/sleep-position-after-cosmetic-surgery-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "laser-settings-and-skin-tone-kuala-lumpur",
+    key: "skinToneLaserSettings",
+    cover: "/images/magazine/laser-settings-and-skin-tone-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "numbness-after-cosmetic-surgery-kuala-lumpur",
+    key: "numbnessRecovery",
+    cover: "/images/magazine/numbness-after-cosmetic-surgery-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "exercise-after-cosmetic-surgery-kuala-lumpur",
+    key: "exerciseTimeline",
+    cover: "/images/magazine/exercise-after-cosmetic-surgery-kuala-lumpur-cover.webp",
+  },
+    {
+    slug: "post-surgery-nutrition-what-actually-helps-healing-kuala-lumpur",
+    key: "postOpNutrition",
+    cover: "/images/magazine/post-surgery-nutrition-what-actually-helps-healing-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "titanium-ultrasound-lifting-what-it-actually-tightens-kuala-lumpur",
+    key: "titaniumUltrasoundGuide",
+    cover: "/images/magazine/titanium-ultrasound-lifting-what-it-actually-tightens-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "post-surgery-caregiver-guide-kuala-lumpur",
+    key: "caregiverGuide",
+    cover: "/images/magazine/post-surgery-caregiver-guide-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "liposuction-compression-garment-guide-kuala-lumpur",
+    key: "compressionGarments",
+    cover: "/images/magazine/liposuction-compression-garment-guide-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "medications-to-stop-before-cosmetic-surgery-kuala-lumpur",
+    key: "preOpMedications",
+    cover: "/images/magazine/medications-to-stop-before-cosmetic-surgery-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "sri-hartamas-cosmetic-clinics-first-visit-guide",
+    key: "sriHartamasFirstVisit",
+    cover: "/images/magazine/sri-hartamas-cosmetic-clinics-first-visit-guide-cover.webp",
+  },
+  {
+    slug: "sculpt-pro-treatment-what-it-actually-does-kuala-lumpur",
+    key: "ondaProGuide",
+    cover: "/images/magazine/onda-pro-treatment-what-it-actually-does-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "post-surgery-warning-signs-kuala-lumpur",
+    key: "postOpWarningSigns",
+    cover: "/images/magazine/post-surgery-warning-signs-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "post-surgery-pain-management-what-is-normal-kuala-lumpur",
+    key: "painManagement",
+    cover: "/images/magazine/post-surgery-pain-management-what-is-normal-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "rhinoplasty-splint-removal-kuala-lumpur",
+    key: "splintRemoval",
+    cover: "/images/magazine/rhinoplasty-splint-removal-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "post-surgery-swelling-timeline-what-is-normal-kuala-lumpur",
+    key: "swellingTimeline",
+    cover: "/images/magazine/post-surgery-swelling-timeline-what-is-normal-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "breast-implant-removal-explant-consultation-kuala-lumpur",
+    key: "implantRemoval",
+    cover: "/images/magazine/breast-implant-removal-explant-consultation-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "under-eye-bag-removal-lower-eyelid-surgery-kuala-lumpur",
+    key: "underEyeBags",
+    cover: "/images/magazine/under-eye-bag-removal-lower-eyelid-surgery-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "chin-implant-what-to-expect-and-what-can-go-wrong",
+    key: "chinImplantTruth",
+    cover: "/images/magazine/chin-implant-what-to-expect-and-what-can-go-wrong-cover.webp",
+  },
+  {
+    slug: "second-opinion-before-cosmetic-surgery-kuala-lumpur",
+    key: "secondOpinion",
+    cover: "/images/magazine/second-opinion-before-cosmetic-surgery-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "combining-cosmetic-procedures-same-session-kuala-lumpur",
+    key: "combiningProcedures",
+    cover: "/images/magazine/combining-cosmetic-procedures-same-session-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "what-body-sculpting-devices-can-and-cannot-do",
+    key: "bodySculptTruth",
+    cover: "/images/magazine/what-body-sculpting-devices-can-and-cannot-do-cover.webp",
+  },
+  {
+    slug: "reading-your-surgical-consent-form-kuala-lumpur",
+    key: "consentForm",
+    cover: "/images/magazine/reading-your-surgical-consent-form-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "when-a-clinic-says-not-yet-kuala-lumpur",
+    key: "candidacyNotYet",
+    cover: "/images/magazine/when-a-clinic-says-not-yet-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "how-surgical-scars-settle-kuala-lumpur",
+    key: "scarMaturation",
+    cover: "/images/magazine/how-surgical-scars-settle-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "revision-after-cosmetic-surgery-kuala-lumpur",
+    key: "revisionReality",
+    cover: "/images/magazine/revision-after-cosmetic-surgery-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "anaesthesia-and-clinic-safety-kuala-lumpur",
+    key: "anaesthesiaSafety",
+    cover: "/images/magazine/anaesthesia-and-clinic-safety-kuala-lumpur-cover.webp",
+  },
+  {
+    slug: "choosing-a-cosmetic-clinic-in-kuala-lumpur",
+    key: "choosing",
+    cover: "/images/magazine/choosing.webp",
+  },
+  {
+    slug: "surgical-or-non-surgical-treatments",
+    key: "surgicalVsNonsurgical",
+    cover: "/images/magazine/surgical-vs-nonsurgical.webp",
+  },
+  {
+    slug: "recovery-after-cosmetic-surgery",
+    key: "recovery",
+    cover: "/images/magazine/recovery.webp",
+  },
+  {
+    slug: "bridal-skincare-pre-wedding-guide",
+    key: "bridalSkincare",
+    cover: "/images/magazine/bridal-skincare.webp",
+  },
+  {
+    slug: "best-mont-kiara-facelift-clinics-near-1mk",
+    key: "montKiaraFacelift",
+    cover: "/images/magazine/mont-kiara-facelift.webp",
+  },
+  {
+    slug: "cosmetic-consultation-checklist-kuala-lumpur",
+    key: "consultationChecklist",
+    cover: "/images/magazine/consultation-checklist.webp",
+  },
+  {
+    slug: "cosmetic-surgery-downtime-recovery-planning-kl",
+    key: "downtimePlanning",
+    cover: "/images/magazine/downtime-planning.webp",
+  },
+  {
+    slug: "cosmetic-surgery-cost-factors-kuala-lumpur",
+    key: "costFactors",
+    cover: "/images/magazine/cost-factors.webp",
+  },
+  {
+    slug: "how-to-read-before-and-after-photos-cosmetic-clinic",
+    key: "beforeAfterPhotos",
+    cover: "/images/magazine/before-after-photos.webp",
+  },
+  {
+    slug: "how-to-verify-cosmetic-surgeon-credentials-malaysia",
+    key: "verifyCredentials",
+    cover: "/images/magazine/verify-credentials.webp",
+  },
+  {
+    slug: "double-eyelid-surgery-vs-eyelid-lift-ptosis",
+    key: "eyelidTruth",
+    cover: "/images/magazine/eyelid-truth.webp",
+  },
+  {
+    slug: "chin-profile-balance-before-you-change-your-nose",
+    key: "chinProfile",
+    cover: "/images/magazine/chin-profile.webp",
+  },
+  {
+    slug: "what-iv-drips-can-and-cannot-do-for-skin",
+    key: "dripTruth",
+    cover: "/images/magazine/iv-drip-truth.webp",
+  },
+  {
+    slug: "breast-implants-what-to-know-before-you-book",
+    key: "breastImplantTruth",
+    cover: "/images/magazine/breast-implant-truth.webp",
+  },
+  {
+    slug: "what-a-facelift-does-and-does-not-fix",
+    key: "faceliftTruth",
+    cover: "/images/magazine/facelift-truth.webp",
+  },
+  {
+    slug: "what-rhinoplasty-can-realistically-change",
+    key: "rhinoTruth",
+    cover: "/images/magazine/rhinoplasty-truth.webp",
+  },
+  {
+    slug: "what-led-light-therapy-does-for-skin",
+    key: "ledLightTruth",
+    cover: "/images/magazine/led-light-truth.webp",
+  },
+  {
+    slug: "laser-hair-removal-sessions-what-permanent-means",
+    key: "hairRemovalTruth",
+    cover: "/images/magazine/hair-removal-truth.webp",
+  },
+  {
+    slug: "what-liposuction-can-and-cannot-do",
+    key: "lipoTruth",
+    cover: "/images/magazine/lipo-truth.webp",
+  },
+  {
+    slug: "what-pico-laser-does-for-pigmentation-melasma",
+    key: "picoPigmentation",
+    cover: "/images/magazine/pico-pigmentation.webp",
+  },
+  {
+    slug: "hifu-vs-onda-vs-titanium-ultrasound-which-lift",
+    key: "liftComparison",
+    cover: "/images/magazine/lift-comparison.webp",
+  },
+  {
+    slug: "how-to-prepare-your-body-before-cosmetic-surgery",
+    key: "prepareBody",
+    cover: "/images/magazine/prepare-body.webp",
+  },
+  {
+    slug: "flying-home-after-cosmetic-surgery-kuala-lumpur",
+    key: "flyingHome",
+    cover: "/images/magazine/flying-home.webp",
+  },
+  {
+    slug: "cosmetic-surgery-recovery-tropical-climate-kuala-lumpur",
+    key: "tropicalRecovery",
+    cover: "/images/magazine/tropical-recovery.webp",
+  },
+];
+
+export function getPostBySlug(slug: string): Post | undefined {
+  return posts.find((p) => p.slug === slug);
+}

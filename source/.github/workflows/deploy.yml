@@ -1,0 +1,55 @@
+name: Deploy to Cloudflare Pages
+
+# Builds the static export and publishes it to Cloudflare Pages on every push
+# to the production branch. Also runnable on demand from the Actions tab.
+#
+# Required repository secrets (Settings → Secrets and variables → Actions):
+#   CLOUDFLARE_API_TOKEN    – token with the "Cloudflare Pages: Edit" permission
+#   CLOUDFLARE_ACCOUNT_ID   – your Cloudflare account ID
+# Required repository variable (same screen, "Variables" tab):
+#   CLOUDFLARE_PROJECT_NAME – the exact Pages project name (e.g. "aesthetic")
+#
+# NOTE: Cloudflare Pages' own dashboard Git integration already builds and
+# publishes this repo on every push to the production branch, so this workflow
+# is manual-only (a backup path). Trigger it from the Actions tab if the
+# dashboard integration is ever disconnected — after adding the secrets above.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  deployments: write
+
+concurrency:
+  group: cloudflare-pages-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static export
+        run: npm run build
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: >-
+            pages deploy out
+            --project-name=${{ vars.CLOUDFLARE_PROJECT_NAME }}
+            --branch=${{ github.ref_name }}
