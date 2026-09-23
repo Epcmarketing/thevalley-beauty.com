@@ -1,8 +1,7 @@
 "use client";
 
-// Mobile-only floating WhatsApp button. Pulses to draw attention and opens a
-// WhatsApp chat with the clinic on tap. Hidden on desktop (lg) where the
-// header already exposes "Book a Consultation".
+// Floating WhatsApp button. Pulses to draw attention and opens a WhatsApp
+// chat with the clinic on both desktop and mobile.
 const WHATSAPP_URL = "https://wasap.my/60109118518";
 
 export function FloatingCallButton({ ariaLabel }: { ariaLabel: string }) {
@@ -12,7 +11,7 @@ export function FloatingCallButton({ ariaLabel }: { ariaLabel: string }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={ariaLabel}
-      className="float-call-btn fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25d366] text-white shadow-[0_12px_28px_-8px_rgba(37,211,102,0.75)] transition-transform active:scale-95 lg:hidden"
+      className="float-call-btn fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25d366] text-white shadow-[0_12px_28px_-8px_rgba(37,211,102,0.75)] transition-transform active:scale-95"
     >
       <span className="float-call-pulse" aria-hidden />
       <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
