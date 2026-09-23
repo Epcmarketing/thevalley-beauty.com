@@ -1,0 +1,35 @@
+User-Agent: *
+Allow: /
+
+User-Agent: Googlebot
+Allow: /
+
+User-Agent: Googlebot-Image
+Allow: /
+
+User-Agent: Googlebot-News
+Allow: /
+
+User-Agent: Bingbot
+Allow: /
+
+User-Agent: Slurp
+Allow: /
+
+User-Agent: Yeti
+Allow: /
+
+User-Agent: Naverbot
+Allow: /
+
+User-Agent: Daumoa
+Allow: /
+
+User-Agent: Baiduspider
+Allow: /
+
+Host: https://thevalley-beauty.com
+Sitemap: https://thevalley-beauty.com/sitemap.xml
+Sitemap: https://thevalley-beauty.com/sitemap1.xml
+Sitemap: https://thevalley-beauty.com/rss.xml
+Sitemap: https://thevalley-beauty.com/rss1.xml
