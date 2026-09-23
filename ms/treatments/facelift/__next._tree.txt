@@ -1,0 +1,4 @@
+:HL["/thevalley-beauty.com/_next/static/chunks/0bzgpuk6lts5g.css","style"]
+:HL["/thevalley-beauty.com/_next/static/media/cormorant-s.p.063t5..yqlr8e.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/thevalley-beauty.com/_next/static/media/jost-s.p.0yilzy8g.4zbn.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"tree":{"name":"","param":null,"prefetchHints":0,"slots":{"children":{"name":"locale","param":{"type":"d","key":"ms","siblings":null},"prefetchHints":16,"slots":{"children":{"name":"treatments","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"facelift","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}}}},"staleTime":300,"buildId":"zQCz7KqP6-y2kJOWre0hd"}
