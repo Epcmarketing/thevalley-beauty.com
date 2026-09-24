@@ -1,4 +1,5 @@
 import { surgicalGallery, nonSurgicalGallery } from "./galleryData";
+import { withBasePath } from "./basePath";
 
 // Language-neutral treatment registry. Display text (name, desc, overview,
 // benefits, recovery, faq) is resolved per-locale from the dictionaries:
@@ -42,8 +43,8 @@ export function thumbnailForTreatment(t: Treatment): string | null {
   const folder = t.category;
   const item = source.find((g) => g.labelKey === t.key);
   if (!item) return null;
-  if ("file" in item && item.file) return `/images/${folder}/${item.file}`;
-  if ("afterFile" in item && item.afterFile) return `/images/${folder}/${item.afterFile}`;
+  if ("file" in item && item.file) return withBasePath(`/images/${folder}/${item.file}`);
+  if ("afterFile" in item && item.afterFile) return withBasePath(`/images/${folder}/${item.afterFile}`);
   return null;
 }
 
@@ -58,12 +59,12 @@ export function imagesForTreatment(t: Treatment): string[] {
     .flatMap((item) => {
       if ("beforeFile" in item && item.beforeFile && item.afterFile) {
         return [
-          `/images/${folder}/${item.beforeFile}`,
-          `/images/${folder}/${item.afterFile}`,
+          withBasePath(`/images/${folder}/${item.beforeFile}`),
+          withBasePath(`/images/${folder}/${item.afterFile}`),
         ];
       }
       if ("file" in item && item.file) {
-        return [`/images/${folder}/${item.file}`];
+        return [withBasePath(`/images/${folder}/${item.file}`)];
       }
       return [];
     });

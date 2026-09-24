@@ -3,6 +3,7 @@ import type { Dictionary } from "@/lib/i18n/dictionaries";
 import { localeBase, type Locale } from "@/lib/i18n/config";
 import { clinic } from "@/lib/clinic";
 import { treatments } from "@/lib/treatments";
+import { withBasePath } from "@/lib/basePath";
 
 const footerTreatments = treatments.filter((t) => t.category === "surgical");
 
@@ -56,7 +57,7 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: Locale }) {
           {/* Brand */}
           <div className="lg:col-span-4">
             <img
-              src="/images/brand/logo-light.png"
+              src={withBasePath("/images/brand/logo-light.png")}
               alt={dict.brand.nameFull}
               width={280}
               height={188}

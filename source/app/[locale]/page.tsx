@@ -13,6 +13,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { SITE_URL, clinic, medicalReviewer, contentLastReviewed } from "@/lib/clinic";
 import { treatments, thumbnailForTreatment } from "@/lib/treatments";
 import { posts } from "@/lib/magazine";
+import { withBasePath } from "@/lib/basePath";
 
 export default async function HomePage({
   params,
@@ -86,8 +87,8 @@ export default async function HomePage({
       <link
         rel="preload"
         as="image"
-        href="/images/hero/hero-1.webp"
-        imageSrcSet="/images/hero/hero-1-mobile.webp 900w, /images/hero/hero-1.webp 1800w"
+        href={withBasePath("/images/hero/hero-1.webp")}
+        imageSrcSet={`${withBasePath("/images/hero/hero-1-mobile.webp")} 900w, ${withBasePath("/images/hero/hero-1.webp")} 1800w`}
         imageSizes="(max-width: 639px) 100vw, 100vw"
         fetchPriority="high"
       />
@@ -208,7 +209,7 @@ export default async function HomePage({
           {/* Clinic interior */}
           <div className="relative">
             <img
-              src="/images/clinic/about.webp"
+              src={withBasePath("/images/clinic/about.webp")}
               alt={`${dict.brand.nameFull} clinic interior — aesthetic & cosmetic surgery in Mont Kiara · Sri Hartamas, Kuala Lumpur`}
               width={1200}
               height={1500}

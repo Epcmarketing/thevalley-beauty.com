@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { locales, localeNames, localeBase, type Locale } from "@/lib/i18n/config";
+import { withBasePath } from "@/lib/basePath";
 
 // Built as a native <details> + <a> links so it works even if client-side JS
 // fails to hydrate on the static export. Hrefs are resolved from the current
@@ -29,7 +30,7 @@ export function LanguageSwitcher({
     let target = `${localeBase(next)}${rest}`;
     if (!target.startsWith("/")) target = `/${target}`;
     if (!target.endsWith("/")) target += "/";
-    return target;
+    return withBasePath(target);
   }
 
   const tone =

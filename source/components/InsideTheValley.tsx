@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import { localeBase, type Locale } from "@/lib/i18n/config";
+import { withBasePath } from "@/lib/basePath";
 
 // Inside The Valley — 9:16 portrait video shown in a phone-style frame.
 // Initial paint loads only the poster image (≈40 KB). The MP4 (≈11 MB) is
@@ -66,7 +67,7 @@ export function InsideTheValley({
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="/videos/clinic-intro-poster.webp"
+                      src={withBasePath("/videos/clinic-intro-poster.webp")}
                       alt={content.title}
                       width={540}
                       height={960}
@@ -83,8 +84,8 @@ export function InsideTheValley({
                 ) : (
                   // eslint-disable-next-line jsx-a11y/media-has-caption
                   <video
-                    src="/videos/clinic-intro.mp4"
-                    poster="/videos/clinic-intro-poster.jpg"
+                    src={withBasePath("/videos/clinic-intro.mp4")}
+                    poster={withBasePath("/videos/clinic-intro-poster.jpg")}
                     controls
                     autoPlay
                     playsInline

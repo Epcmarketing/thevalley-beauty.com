@@ -4,22 +4,23 @@ import { useState, useRef } from "react";
 import Link from "next/link";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import { localeBase, type Locale } from "@/lib/i18n/config";
+import { withBasePath } from "@/lib/basePath";
 
 // Language-neutral slide metadata; copy comes from dict.heroSlides per locale.
 const SLIDE_META = [
   {
-    img: "/images/hero/hero-1.webp",
-    imgMobile: "/images/hero/hero-1-mobile.webp",
+    img: withBasePath("/images/hero/hero-1.webp"),
+    imgMobile: withBasePath("/images/hero/hero-1-mobile.webp"),
     align: "left" as const,
   },
   {
-    img: "/images/hero/hero-2.webp",
-    imgMobile: "/images/hero/hero-2-mobile.webp",
+    img: withBasePath("/images/hero/hero-2.webp"),
+    imgMobile: withBasePath("/images/hero/hero-2-mobile.webp"),
     align: "left" as const,
   },
   {
-    img: "/images/hero/hero-3.webp",
-    imgMobile: "/images/hero/hero-3-mobile.webp",
+    img: withBasePath("/images/hero/hero-3.webp"),
+    imgMobile: withBasePath("/images/hero/hero-3-mobile.webp"),
     align: "right" as const,
   },
 ];

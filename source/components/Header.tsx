@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import { localeBase, type Locale } from "@/lib/i18n/config";
 import { treatments } from "@/lib/treatments";
+import { withBasePath } from "@/lib/basePath";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
 const slugByKey: Record<string, string> = Object.fromEntries(
@@ -92,7 +93,7 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: Locale }) {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
         <Link href={home} className="flex items-center">
           <img
-            src="/images/brand/logo.png"
+            src={withBasePath("/images/brand/logo.png")}
             alt={dict.brand.nameFull}
             width={280}
             height={188}

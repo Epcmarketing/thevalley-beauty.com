@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { withBasePath } from "@/lib/basePath";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import {
@@ -101,7 +102,7 @@ export default async function MagazineIndex({
                 <div className="overflow-hidden rounded-sm border border-sand">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={post.cover}
+                    src={withBasePath(post.cover)}
                     alt={p.title}
                     loading="lazy"
                     className="aspect-[16/9] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"

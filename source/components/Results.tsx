@@ -8,6 +8,7 @@ import {
   type GalleryItem,
 } from "@/lib/galleryData";
 import { SectionHeading } from "./SectionHeading";
+import { withBasePath } from "@/lib/basePath";
 
 type Tab = "surgical" | "nonSurgical";
 
@@ -99,7 +100,7 @@ export function Results({ dict }: { dict: Dictionary }) {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       key={`b-${current.beforeFile}`}
-                      src={`/images/${folder}/${current.beforeFile}`}
+                      src={withBasePath(`/images/${folder}/${current.beforeFile}`)}
                       alt={`${info.name} before`}
                       width={900}
                       height={1200}
@@ -116,7 +117,7 @@ export function Results({ dict }: { dict: Dictionary }) {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       key={`a-${current.afterFile}`}
-                      src={`/images/${folder}/${current.afterFile}`}
+                      src={withBasePath(`/images/${folder}/${current.afterFile}`)}
                       alt={`${info.name} after`}
                       width={900}
                       height={1200}
@@ -132,7 +133,7 @@ export function Results({ dict }: { dict: Dictionary }) {
                     <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src={`/images/${folder}/${current.overlay}`}
+                        src={withBasePath(`/images/${folder}/${current.overlay}`)}
                         alt=""
                         className="max-w-[60%] drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)]"
                       />
@@ -144,7 +145,7 @@ export function Results({ dict }: { dict: Dictionary }) {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     key={`s-${(current as { file: string }).file}`}
-                    src={`/images/${folder}/${(current as { file: string }).file}`}
+                    src={withBasePath(`/images/${folder}/${(current as { file: string }).file}`)}
                     alt={alt}
                     width={1600}
                     height={1000}

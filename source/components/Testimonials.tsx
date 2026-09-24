@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import { reviewImages } from "@/lib/galleryData";
 import { SectionHeading } from "./SectionHeading";
+import { withBasePath } from "@/lib/basePath";
 
 const INITIAL_COUNT = 8;
 
@@ -48,7 +49,7 @@ export function Testimonials({ dict }: { dict: Dictionary }) {
 
         <div className="mt-10 columns-1 gap-5 sm:columns-2 lg:columns-3 xl:columns-4 [&>*]:mb-5">
           {visible.map((file) => {
-            const src = `/images/reviews/${file}`;
+            const src = withBasePath(`/images/reviews/${file}`);
             return (
               <button
                 key={file}

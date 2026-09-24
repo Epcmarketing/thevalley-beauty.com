@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { withBasePath } from "@/lib/basePath";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import {
@@ -147,7 +148,7 @@ export default async function PostPage({
       <div className="mx-auto mt-10 max-w-3xl px-6 lg:mt-14 lg:px-10">
         <div className="overflow-hidden rounded-sm border border-sand/80 shadow-[0_40px_90px_-50px_rgba(42,36,32,0.65)]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={post.cover} alt={p.title} className="block h-auto w-full" />
+          <img src={withBasePath(post.cover)} alt={p.title} className="block h-auto w-full" />
         </div>
       </div>
 
@@ -185,7 +186,7 @@ export default async function PostPage({
             {"image" in s && (s as { image?: string }).image ? (
               <figure className="mt-8">
                 <img
-                  src={(s as { image?: string }).image}
+                  src={withBasePath((s as { image?: string }).image ?? "")}
                   alt={(s as { imageAlt?: string }).imageAlt ?? s.heading}
                   width={900}
                   height={600}
@@ -235,7 +236,7 @@ export default async function PostPage({
                     <div className="overflow-hidden rounded-sm border border-sand">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src={m.cover}
+                        src={withBasePath(m.cover)}
                         alt={mp.title}
                         loading="lazy"
                         className="aspect-[16/9] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
