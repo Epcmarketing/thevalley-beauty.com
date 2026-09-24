@@ -1,0 +1,6 @@
+/* Keep exported content visible when hydration or the reveal observer is
+   delayed on the GitHub Pages project sub-path. */
+html.reveal-on .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
