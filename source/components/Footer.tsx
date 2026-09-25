@@ -98,10 +98,10 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: Locale }) {
               {[
                 { href: home, label: dict.nav.home },
                 { href: `${base}/about`, label: dict.nav.about },
-                { href: `${base}#gallery`, label: dict.nav.gallery },
-                { href: `${base}#reviews`, label: dict.nav.reviews },
+                { href: `${home}#gallery`, label: dict.nav.gallery },
+                { href: `${home}#reviews`, label: dict.nav.reviews },
                 { href: `${base}/magazine`, label: dict.nav.magazine },
-                { href: `${base}#faq`, label: dict.faq.title },
+                { href: `${home}#faq`, label: dict.faq.title },
                 {
                   href: `${base}/mont-kiara-aesthetic-clinic`,
                   label: dict.localAreas.montKiara.areaName,

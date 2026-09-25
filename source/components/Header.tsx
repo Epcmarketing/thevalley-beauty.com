@@ -49,8 +49,8 @@ export function Header({ dict, locale }: { dict: Dictionary; locale: Locale }) {
 
   const navLinks = [
     { href: `${base}/about`, label: dict.nav.about },
-    { href: `${base}#gallery`, label: dict.nav.gallery },
-    { href: `${base}#reviews`, label: dict.nav.reviews },
+    { href: `${home}#gallery`, label: dict.nav.gallery },
+    { href: `${home}#reviews`, label: dict.nav.reviews },
     { href: `${base}/magazine`, label: dict.nav.magazine },
     { href: `${base}/contact`, label: dict.nav.contact },
   ];
