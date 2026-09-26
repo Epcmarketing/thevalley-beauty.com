@@ -10,6 +10,7 @@ import {
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { treatments, thumbnailForTreatment } from "@/lib/treatments";
 import { SITE_URL } from "@/lib/clinic";
+import { ENGLISH_SEO_TITLES, englishTitle } from "@/lib/seoTitles";
 
 export function generateStaticParams() {
   return intlLocales.map((locale) => ({ locale }));
@@ -26,7 +27,11 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(SITE_URL),
-    title: `${dict.procedureUi.treatments} | ${dict.brand.nameFull}`,
+    title: englishTitle(
+      locale,
+      ENGLISH_SEO_TITLES.treatments,
+      `${dict.procedureUi.treatments} | ${dict.brand.nameFull}`,
+    ),
     description: dict.treatmentsSection.subtitle,
     alternates: buildAlternates(locale, "treatments"),
   };

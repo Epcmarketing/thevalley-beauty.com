@@ -14,6 +14,7 @@ import { Footer } from "@/components/Footer";
 import { StructuredData } from "@/components/StructuredData";
 import { RevealObserver } from "@/components/RevealObserver";
 import { FloatingCallButton } from "@/components/FloatingCallButton";
+import { ENGLISH_SEO_TITLES, englishTitle } from "@/lib/seoTitles";
 
 const OG_LOCALE: Record<Locale, string> = {
   en: "en_GB",
@@ -28,6 +29,7 @@ const OG_LOCALE: Record<Locale, string> = {
 // ("/zh/", ...) via localeRoot().
 export async function buildRootMetadata(locale: Locale): Promise<Metadata> {
   const dict = await getDictionary(locale);
+  const title = englishTitle(locale, ENGLISH_SEO_TITLES.home, dict.meta.title);
 
   const languages: Record<string, string> = { "x-default": localeRoot("en") };
   for (const l of locales) languages[localeHtmlLang[l]] = localeRoot(l);
@@ -36,7 +38,7 @@ export async function buildRootMetadata(locale: Locale): Promise<Metadata> {
 
   return {
     metadataBase: new URL(SITE_URL),
-    title: dict.meta.title,
+    title,
     description: dict.meta.description,
     applicationName: dict.brand.nameFull,
     alternates: {
@@ -46,7 +48,7 @@ export async function buildRootMetadata(locale: Locale): Promise<Metadata> {
     openGraph: {
       type: "website",
       siteName: dict.brand.nameFull,
-      title: dict.meta.title,
+      title,
       description: dict.meta.description,
       url: localeRoot(locale),
       locale: OG_LOCALE[locale],
@@ -55,7 +57,7 @@ export async function buildRootMetadata(locale: Locale): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: dict.meta.title,
+      title,
       description: dict.meta.description,
       images: [ogImage],
     },

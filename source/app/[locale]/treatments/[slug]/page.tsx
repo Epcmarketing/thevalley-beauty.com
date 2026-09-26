@@ -16,6 +16,7 @@ import {
   imagesForTreatment,
 } from "@/lib/treatments";
 import { SITE_URL, clinic } from "@/lib/clinic";
+import { ENGLISH_SEO_TITLES, englishTitle } from "@/lib/seoTitles";
 
 type ProcKey = keyof Awaited<ReturnType<typeof getDictionary>>["procedures"];
 
@@ -37,7 +38,11 @@ export async function generateMetadata({
   const item = dict.treatmentsMenu.items[treatment.key as keyof typeof dict.treatmentsMenu.items];
   const proc = dict.procedures[treatment.key as ProcKey];
 
-  const title = `${item.name} in Kuala Lumpur | ${dict.brand.nameFull}`;
+  const fallbackTitle = `${item.name} in Kuala Lumpur | ${dict.brand.nameFull}`;
+  const optimizedTitle = ENGLISH_SEO_TITLES.treatmentsByKey[
+    treatment.key as keyof typeof ENGLISH_SEO_TITLES.treatmentsByKey
+  ];
+  const title = englishTitle(locale, optimizedTitle, fallbackTitle);
 
   return {
     metadataBase: new URL(SITE_URL),
