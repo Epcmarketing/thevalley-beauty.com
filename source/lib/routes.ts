@@ -8,6 +8,8 @@ export const contentPaths: string[] = [
   "",
   "about",
   "contact",
+  "results",
+  "reviews",
   "treatments",
   ...treatments.map((t) => `treatments/${t.slug}`),
   "magazine",

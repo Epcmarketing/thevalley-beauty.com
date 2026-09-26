@@ -11,6 +11,7 @@ import { getDictionary } from "@/lib/i18n/dictionaries";
 import { treatments, thumbnailForTreatment } from "@/lib/treatments";
 import { SITE_URL } from "@/lib/clinic";
 import { ENGLISH_SEO_TITLES, englishTitle } from "@/lib/seoTitles";
+import { ENGLISH_SEO_DESCRIPTIONS, englishDescription } from "@/lib/seoDescriptions";
 
 export function generateStaticParams() {
   return intlLocales.map((locale) => ({ locale }));
@@ -32,7 +33,7 @@ export async function generateMetadata({
       ENGLISH_SEO_TITLES.treatments,
       `${dict.procedureUi.treatments} | ${dict.brand.nameFull}`,
     ),
-    description: dict.treatmentsSection.subtitle,
+    description: englishDescription(locale, ENGLISH_SEO_DESCRIPTIONS.treatments, dict.treatmentsSection.subtitle),
     alternates: buildAlternates(locale, "treatments"),
   };
 }

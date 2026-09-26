@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL, clinic } from "@/lib/clinic";
+import { ENGLISH_SEO_DESCRIPTIONS } from "@/lib/seoDescriptions";
 
 const slug = "bangsar-aesthetic-clinic";
 const pageUrl = `${SITE_URL}/${slug}/`;
@@ -8,14 +9,12 @@ const pageUrl = `${SITE_URL}/${slug}/`;
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "Aesthetic Clinic Near Bangsar | The Valley Beauty",
-  description:
-    "Aesthetic treatments and cosmetic surgery near Bangsar, Kuala Lumpur. Visit The Valley Beauty in Desa Sri Hartamas for liposuction, HIFU, pico laser and more.",
+  description: ENGLISH_SEO_DESCRIPTIONS.bangsar,
   alternates: { canonical: `/${slug}/` },
   openGraph: {
     type: "website",
     title: "Aesthetic Clinic Near Bangsar | The Valley Beauty",
-    description:
-      "Aesthetic treatments and cosmetic surgery for Bangsar patients at our Desa Sri Hartamas clinic in Kuala Lumpur.",
+    description: ENGLISH_SEO_DESCRIPTIONS.bangsar,
     url: `/${slug}/`,
     images: [{ url: "/images/og-cover.png", width: 1200, height: 630 }],
   },

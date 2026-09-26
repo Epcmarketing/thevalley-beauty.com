@@ -12,6 +12,7 @@ import { getDictionary } from "@/lib/i18n/dictionaries";
 import { posts } from "@/lib/magazine";
 import { SITE_URL } from "@/lib/clinic";
 import { ENGLISH_SEO_TITLES, englishTitle } from "@/lib/seoTitles";
+import { ENGLISH_SEO_DESCRIPTIONS, englishDescription } from "@/lib/seoDescriptions";
 
 const BCP47: Record<string, string> = {
   en: "en-GB",
@@ -39,7 +40,7 @@ export async function generateMetadata({
   return {
     metadataBase: new URL(SITE_URL),
     title: englishTitle(locale, ENGLISH_SEO_TITLES.magazine, `${dict.magazine.title} | ${dict.brand.nameFull}`),
-    description: dict.magazine.lead,
+    description: englishDescription(locale, ENGLISH_SEO_DESCRIPTIONS.magazine, dict.magazine.lead),
     alternates: buildAlternates(locale, "magazine"),
   };
 }

@@ -98,8 +98,8 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: Locale }) {
               {[
                 { href: home, label: dict.nav.home },
                 { href: `${base}/about`, label: dict.nav.about },
-                { href: `${home}#gallery`, label: dict.nav.gallery },
-                { href: `${home}#reviews`, label: dict.nav.reviews },
+                { href: `${base}/results`, label: dict.nav.gallery },
+                { href: `${base}/reviews`, label: dict.nav.reviews },
                 { href: `${base}/magazine`, label: dict.nav.magazine },
                 { href: `${home}#faq`, label: dict.faq.title },
                 {

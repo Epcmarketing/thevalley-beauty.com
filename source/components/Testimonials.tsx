@@ -8,9 +8,9 @@ import { withBasePath } from "@/lib/basePath";
 
 const INITIAL_COUNT = 8;
 
-export function Testimonials({ dict }: { dict: Dictionary }) {
+export function Testimonials({ dict, initialExpanded = false }: { dict: Dictionary; initialExpanded?: boolean }) {
   const [lightbox, setLightbox] = useState<string | null>(null);
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(initialExpanded);
 
   const visible = expanded ? reviewImages : reviewImages.slice(0, INITIAL_COUNT);
   const hasMore = reviewImages.length > INITIAL_COUNT;

@@ -12,6 +12,7 @@ import { SITE_URL } from "@/lib/clinic";
 import { getAreaBySlug } from "@/lib/localAreas";
 import { LocalLandingPage } from "@/components/LocalLandingPage";
 import { ENGLISH_SEO_TITLES, englishTitle } from "@/lib/seoTitles";
+import { ENGLISH_SEO_DESCRIPTIONS, englishDescription } from "@/lib/seoDescriptions";
 
 const SLUG = "sri-hartamas-cosmetic-surgery";
 
@@ -29,15 +30,16 @@ export async function generateMetadata({
   const dict = await getDictionary(locale);
   const c = dict.localAreas.sriHartamas;
   const title = englishTitle(locale, ENGLISH_SEO_TITLES.sriHartamas, c.metaTitle);
+  const description = englishDescription(locale, ENGLISH_SEO_DESCRIPTIONS.sriHartamas, c.metaDescription);
 
   return {
     title,
-    description: c.metaDescription,
+    description,
     alternates: buildAlternates(locale, SLUG),
     openGraph: {
       type: "website",
       title,
-      description: c.metaDescription,
+      description,
       url: contentUrlPath(locale, SLUG),
       images: [{ url: `${SITE_URL}/images/og-cover.png`, width: 1200, height: 630 }],
     },

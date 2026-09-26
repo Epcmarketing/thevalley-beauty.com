@@ -27,6 +27,8 @@ const contentPaths = [
   "",
   "about",
   "contact",
+  "results",
+  "reviews",
   "treatments",
   ...treatmentSlugs.map((s) => `treatments/${s}`),
   "magazine",

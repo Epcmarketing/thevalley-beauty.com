@@ -17,6 +17,7 @@ import {
 } from "@/lib/treatments";
 import { SITE_URL, clinic } from "@/lib/clinic";
 import { ENGLISH_SEO_TITLES, englishTitle } from "@/lib/seoTitles";
+import { ENGLISH_SEO_DESCRIPTIONS, englishDescription } from "@/lib/seoDescriptions";
 
 type ProcKey = keyof Awaited<ReturnType<typeof getDictionary>>["procedures"];
 
@@ -43,16 +44,20 @@ export async function generateMetadata({
     treatment.key as keyof typeof ENGLISH_SEO_TITLES.treatmentsByKey
   ];
   const title = englishTitle(locale, optimizedTitle, fallbackTitle);
+  const optimizedDescription = ENGLISH_SEO_DESCRIPTIONS.treatmentsByKey[
+    treatment.key as keyof typeof ENGLISH_SEO_DESCRIPTIONS.treatmentsByKey
+  ];
+  const description = englishDescription(locale, optimizedDescription, proc.overview);
 
   return {
     metadataBase: new URL(SITE_URL),
     title,
-    description: proc.overview,
+    description,
     alternates: buildAlternates(locale, `treatments/${slug}`),
     openGraph: {
       type: "article",
       title,
-      description: proc.overview,
+      description,
       url: contentUrlPath(locale, `treatments/${slug}`),
       images: [{ url: "/images/og-cover.png", width: 1200, height: 630 }],
     },
