@@ -33,6 +33,7 @@ const contentPaths = [
   ...postSlugs.map((s) => `magazine/${s}`),
   ...areaSlugs,
 ];
+const englishOnlyPaths = ["bangsar-aesthetic-clinic"];
 
 // The default locale (English) is served prefix-free at the site root; every
 // other locale keeps its sub-path prefix. Keep this in sync with
@@ -77,6 +78,14 @@ for (const p of contentPaths) {
       ${langLinks}
   </url>`);
   }
+}
+for (const p of englishOnlyPaths) {
+  urlSet.push(`  <url>
+    <loc>${urlFor(DEFAULT_LOCALE, p)}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>`);
 }
 
 const sitemap1 = `<?xml version="1.0" encoding="UTF-8"?>
