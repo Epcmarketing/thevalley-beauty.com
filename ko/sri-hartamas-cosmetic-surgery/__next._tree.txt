@@ -1,4 +1,4 @@
-:HL["/thevalley-beauty.com/_next/static/chunks/0.~888a8f0j1z.css","style"]
-:HL["/thevalley-beauty.com/_next/static/media/cormorant-s.p.063t5..yqlr8e.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/thevalley-beauty.com/_next/static/media/jost-s.p.0yilzy8g.4zbn.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"tree":{"name":"","param":null,"prefetchHints":0,"slots":{"children":{"name":"locale","param":{"type":"d","key":"ko","siblings":null},"prefetchHints":16,"slots":{"children":{"name":"sri-hartamas-cosmetic-surgery","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"f0aYQEru8JRAVw8FuEUtU"}
+:HL["/_next/static/chunks/0.~888a8f0j1z.css","style"]
+:HL["/_next/static/media/cormorant-s.p.063t5..yqlr8e.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/jost-s.p.0yilzy8g.4zbn.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"tree":{"name":"","param":null,"prefetchHints":0,"slots":{"children":{"name":"locale","param":{"type":"d","key":"ko","siblings":null},"prefetchHints":16,"slots":{"children":{"name":"sri-hartamas-cosmetic-surgery","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"ZeDPpzqxxnhYCVH740Tlp"}
