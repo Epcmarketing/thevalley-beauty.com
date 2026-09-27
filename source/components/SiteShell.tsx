@@ -43,6 +43,11 @@ export async function buildRootMetadata(locale: Locale): Promise<Metadata> {
     title,
     description,
     applicationName: dict.brand.nameFull,
+    icons: {
+      icon: [{ url: "/butterfly-icon.png?v=2", type: "image/png", sizes: "192x192" }],
+      apple: [{ url: "/butterfly-icon.png?v=2", sizes: "192x192" }],
+      shortcut: "/butterfly-icon.png?v=2",
+    },
     alternates: {
       canonical: localeRoot(locale),
       languages,

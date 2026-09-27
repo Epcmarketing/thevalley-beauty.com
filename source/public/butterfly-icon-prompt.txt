@@ -1,0 +1,2 @@
+Created using built-in image_gen from the user-provided Valley Beauty logo.
+Prompt: Extract ONLY the exact gold butterfly/female-profile symbol from the supplied logo. Preserve its original shape, proportions, orientation and pale gold gradient exactly; do not redesign or stylize. Remove all English and Chinese text. Center the isolated symbol at about 88% of the height of a square canvas. Pure white background. This is a website favicon asset, no extra marks, no shadow.
