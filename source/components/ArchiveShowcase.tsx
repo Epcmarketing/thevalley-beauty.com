@@ -31,11 +31,12 @@ export function ArchiveShowcase({ dict, base, mode }: { dict: Dictionary; base: 
     ["Which treatment is right for me?", "Book a consultation at our Desa Sri Hartamas, Kuala Lumpur clinic to discuss your goals, suitability, expected benefits and risks."],
   ];
   return <article className="archive-showcase">
-    <header className="archive-hero">
+    <header className="archive-hero" style={{ backgroundImage: `url("${withBasePath('/images/hero/archive-petals.png')}")` }}>
       <p className="archive-eyebrow">{reviews ? "Reviews" : "Results"}</p>
       <h1>{reviews ? "Patient Stories" : "Before & After"}</h1>
       <p className="archive-subtitle">{reviews ? "Experiences shared by our patients" : "Treatment results from our Kuala Lumpur clinic"}</p>
-      <span className="archive-side">{reviews ? "REAL PEOPLE · PERSONAL STORIES" : "INDIVIDUAL RESULTS · PERSONAL CARE"}</span>
+      <span className="archive-side archive-side-left">{reviews ? <>REAL PEOPLE<br/>REAL STORIES<br/>A BRIGHTER YOU</> : <>NATURAL<br/>RESULTS<br/>REAL<br/>CONFIDENCE</>}</span>
+      <span className="archive-side archive-side-right">{reviews ? <>CONFIDENCE<br/>LOOKS GOOD<br/>ON YOU</> : <>SAME YOU<br/>A MORE RADIANT<br/>TOMORROW</>}</span>
     </header>
     <div className="archive-content">
       {reviews ? <>
