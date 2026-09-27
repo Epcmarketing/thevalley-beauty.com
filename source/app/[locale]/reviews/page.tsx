@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { ArchiveShowcase } from "@/components/ArchiveShowcase";
 import { notFound } from "next/navigation";
 import { Testimonials } from "@/components/Testimonials";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -31,20 +31,5 @@ export default async function ReviewsPage({ params }: { params: Promise<{ locale
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const dict = await getDictionary(locale);
-  const home = localeBase(locale) || "/";
-  return (
-    <article className="bg-ivory">
-      <header className="bg-ink pt-36 pb-16 text-ivory lg:pt-44 lg:pb-20">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <nav className="text-[11px] tracking-[0.16em] uppercase text-ivory/55" aria-label="Breadcrumb">
-            <Link href={home} className="hover:text-gold">{dict.nav.home}</Link><span className="mx-2">·</span><span className="text-gold">{dict.nav.reviews}</span>
-          </nav>
-          <p className="mt-8 text-[11px] tracking-[0.28em] uppercase text-gold">{dict.testimonials.eyebrow}</p>
-          <h1 className="mt-4 font-display text-5xl leading-tight lg:text-6xl">Aesthetic Clinic Reviews in Kuala Lumpur</h1>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-ivory/75">Read real patient experiences covering consultations, treatments, results and aftercare at The Valley Beauty Medical Spa near Mont Kiara and Sri Hartamas.</p>
-        </div>
-      </header>
-      <Testimonials dict={dict} initialExpanded />
-    </article>
-  );
+  return <ArchiveShowcase dict={dict} base={localeBase(locale)} mode="reviews" />;
 }
