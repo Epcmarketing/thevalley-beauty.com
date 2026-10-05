@@ -50,7 +50,7 @@ export const localeNames: Record<Locale, string> = {
 };
 
 export const localeHtmlLang: Record<Locale, string> = {
-  en: "en-GB",
+  en: "en-MY",
   zh: "zh-Hans",
   ko: "ko",
   ja: "ja",

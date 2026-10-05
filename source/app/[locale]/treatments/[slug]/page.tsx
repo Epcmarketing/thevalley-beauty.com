@@ -157,7 +157,7 @@ export default async function TreatmentPage({
             {isEnglishHifu ? "HIFU Treatment in Kuala Lumpur" : item.name}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ivory/75">{proc.overview}</p>
-          {isEnglishHifu && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ivory/75">Visit The Valley Beauty Medical Spa in Desa Sri Hartamas, Kuala Lumpur, near Mont Kiara. Discuss your goals and a personalised treatment plan during your consultation.</p>}
+          {locale === "en" && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ivory/75">Visit The Valley Beauty Medical Spa in Desa Sri Hartamas, Kuala Lumpur, Malaysia. We welcome visitors from Mont Kiara and Bangsar at our Sri Hartamas location. Discuss your goals and a personalised treatment plan during your consultation.</p>}
           <Link
             href={`${base}/contact`}
             className="mt-9 inline-block rounded-full bg-gold px-8 py-4 text-xs tracking-[0.14em] uppercase text-white transition-colors hover:bg-gold-deep"

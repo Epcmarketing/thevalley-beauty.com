@@ -8,7 +8,7 @@ import path from "node:path";
 const SITE_URL = "https://thevalley-beauty.com";
 const DEFAULT_LOCALE = "en";
 const LOCALES = ["en", "zh", "ko", "ja", "ms"];
-const LOCALE_HTML_LANG = { en: "en-GB", zh: "zh-Hans", ko: "ko", ja: "ja", ms: "ms-MY" };
+const LOCALE_HTML_LANG = { en: "en-MY", zh: "zh-Hans", ko: "ko", ja: "ja", ms: "ms-MY" };
 
 // Read registries from lib/*.ts via regex (avoids running TS from Node).
 function readSlugs(filePath, re) {
@@ -144,7 +144,7 @@ const rss = `<?xml version="1.0" encoding="UTF-8"?>
     <title>${xmlEscape(channelTitle)}</title>
     <link>${channelLink}</link>
     <description>${xmlEscape(dict.magazine.lead)}</description>
-    <language>en-GB</language>
+    <language>en-MY</language>
     <lastBuildDate>${buildDate}</lastBuildDate>
     <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml" />
 ${items

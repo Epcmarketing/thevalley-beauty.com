@@ -18,7 +18,7 @@ import { ENGLISH_SEO_TITLES, englishTitle } from "@/lib/seoTitles";
 import { ENGLISH_SEO_DESCRIPTIONS, englishDescription } from "@/lib/seoDescriptions";
 
 const OG_LOCALE: Record<Locale, string> = {
-  en: "en_GB",
+  en: "en_MY",
   zh: "zh_CN",
   ko: "ko_KR",
   ja: "ja_JP",
