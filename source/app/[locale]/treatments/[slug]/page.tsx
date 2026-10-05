@@ -78,6 +78,12 @@ export default async function TreatmentPage({
   const item = dict.treatmentsMenu.items[treatment.key as keyof typeof dict.treatmentsMenu.items];
   const proc = dict.procedures[treatment.key as ProcKey];
   const images = imagesForTreatment(treatment);
+  const isEnglishHifu = locale === "en" && slug === "hifu-lifting";
+  const faq = isEnglishHifu ? [...proc.faq,
+    { q: "Where can I book HIFU treatment in Kuala Lumpur?", a: "The Valley Beauty Medical Spa is located at Lot 22-1, Wisma Rapid, Jalan 30/70A, Desa Sri Hartamas, Kuala Lumpur 50480. Contact our team to arrange a consultation. Visitors from Mont Kiara and Bangsar are welcome at our Sri Hartamas location." },
+    { q: "How much does HIFU treatment cost?", a: "Pricing depends on the treatment area and the plan recommended after assessment. Ask our team for an itemised quotation and what it includes before deciding to proceed." },
+    { q: "Can I see HIFU results and patient feedback before booking?", a: "You can view the treatment photos on this page and browse our Results and Reviews pages. Photos and feedback describe individual experiences; your suitability and expected outcome need a personal assessment." },
+  ] : proc.faq;
   const base = localeBase(locale);
   const home = base || "/";
   const categoryLabel = treatment.category === "surgical" ? ui.surgical : ui.nonSurgical;
@@ -112,7 +118,7 @@ export default async function TreatmentPage({
       },
       {
         "@type": "FAQPage",
-        mainEntity: proc.faq.map((f) => ({
+        mainEntity: faq.map((f) => ({
           "@type": "Question",
           name: f.q,
           acceptedAnswer: { "@type": "Answer", text: f.a },
@@ -148,9 +154,10 @@ export default async function TreatmentPage({
 
           <p className="mt-8 text-[11px] tracking-[0.28em] uppercase text-gold">{categoryLabel}</p>
           <h1 className="mt-4 max-w-3xl font-display text-5xl leading-[1.05] text-ivory text-balance lg:text-6xl">
-            {item.name}
+            {isEnglishHifu ? "HIFU Treatment in Kuala Lumpur" : item.name}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ivory/75">{proc.overview}</p>
+          {isEnglishHifu && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ivory/75">Visit The Valley Beauty Medical Spa in Desa Sri Hartamas, Kuala Lumpur, near Mont Kiara. Discuss your goals and a personalised treatment plan during your consultation.</p>}
           <Link
             href={`${base}/contact`}
             className="mt-9 inline-block rounded-full bg-gold px-8 py-4 text-xs tracking-[0.14em] uppercase text-white transition-colors hover:bg-gold-deep"
@@ -229,7 +236,7 @@ export default async function TreatmentPage({
             <section className="mt-14 border-t border-sand pt-10">
               <h2 className="font-display text-3xl text-ink">{ui.faq}</h2>
               <dl className="mt-6 space-y-6">
-                {proc.faq.map((f, i) => (
+                {faq.map((f, i) => (
                   <div key={i}>
                     <dt className="font-display text-xl text-ink">{f.q}</dt>
                     <dd className="mt-2 text-base leading-relaxed text-ink-soft">{f.a}</dd>
@@ -237,6 +244,15 @@ export default async function TreatmentPage({
                 ))}
               </dl>
             </section>
+            {isEnglishHifu && <section className="mt-14 border-t border-sand pt-10">
+              <h2 className="font-display text-3xl text-ink">Explore results and patient reviews</h2>
+              <p className="mt-5 text-lg leading-relaxed text-ink-soft">Browse treatment photos and original patient feedback before arranging your consultation. Individual results vary.</p>
+              <div className="mt-6 flex flex-wrap gap-6 text-base text-gold-deep">
+                <Link href="/results/" className="underline">View before &amp; after results →</Link>
+                <Link href="/reviews/" className="underline">Read patient reviews →</Link>
+                <a href="https://wa.me/60109118518?text=Hello%2C%20I%20would%20like%20to%20ask%20about%20HIFU%20treatment%20and%20pricing." target="_blank" rel="noopener noreferrer" className="underline">Ask about HIFU on WhatsApp →</a>
+              </div>
+            </section>}
           </div>
 
           {/* Sidebar */}
