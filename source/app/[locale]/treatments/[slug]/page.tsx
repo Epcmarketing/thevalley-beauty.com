@@ -250,6 +250,9 @@ export default async function TreatmentPage({
               <div className="mt-6 flex flex-wrap gap-6 text-base text-gold-deep">
                 <Link href="/results/" className="underline">View before &amp; after results →</Link>
                 <Link href="/reviews/" className="underline">Read patient reviews →</Link>
+                <Link href="/contact/" className="underline">Book a HIFU consultation →</Link>
+                <Link href="/magazine/hifu-candidacy-guide-kuala-lumpur/" className="underline">Read the HIFU suitability guide →</Link>
+                <Link href="/magazine/hifu-vs-onda-vs-titanium-ultrasound-which-lift/" className="underline">Compare lifting treatments →</Link>
                 <a href="https://wa.me/60109118518?text=Hello%2C%20I%20would%20like%20to%20ask%20about%20HIFU%20treatment%20and%20pricing." target="_blank" rel="noopener noreferrer" className="underline">Ask about HIFU on WhatsApp →</a>
               </div>
             </section>}

@@ -204,6 +204,17 @@ export default async function PostPage({
           </section>
         ))}
 
+        {locale === "en" && ["hifu-candidacy-guide-kuala-lumpur", "hifu-vs-onda-vs-titanium-ultrasound-which-lift"].includes(slug) && (
+          <section className="mt-14 border-t border-sand pt-10">
+            <h2 className="font-display text-3xl text-ink">Explore HIFU treatment in Kuala Lumpur</h2>
+            <p className="mt-5 text-lg leading-relaxed text-ink-soft">Read about HIFU at our Desa Sri Hartamas location, review treatment photos and patient feedback, or arrange a consultation to discuss your suitability.</p>
+            <div className="mt-6 flex flex-wrap gap-6 text-base text-gold-deep">
+              <Link href="/treatments/hifu-lifting/" className="underline">HIFU treatment and FAQs →</Link>
+              <Link href="/results/" className="underline">Before &amp; after results →</Link>
+              <Link href="/reviews/" className="underline">Patient reviews →</Link>
+            </div>
+          </section>
+        )}
         {/* ── CTA ── */}
         <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
           <Link
