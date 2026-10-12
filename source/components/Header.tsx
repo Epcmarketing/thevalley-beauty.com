@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
+import Link from "./NavigationLink";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import { localeBase, type Locale } from "@/lib/i18n/config";
 import { treatments } from "@/lib/treatments";

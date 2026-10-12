@@ -31,7 +31,7 @@ export function ArchiveShowcase({ dict, base, mode }: { dict: Dictionary; base: 
     ["Which treatment is right for me?", "Book a consultation at our Desa Sri Hartamas, Kuala Lumpur clinic to discuss your goals, suitability, expected benefits and risks."],
   ];
   return <article className="archive-showcase">
-    <header className="archive-hero" style={{ backgroundImage: `url("${withBasePath('/images/hero/archive-petals.png')}")` }}>
+    <header className="archive-hero" style={{ backgroundImage: `url("${withBasePath('/images/hero/archive-petals.webp')}")` }}>
       <p className="archive-eyebrow">{reviews ? "Reviews" : "Results"}</p>
       <h1>{reviews ? "Patient Stories" : "Before & After"}</h1>
       <p className="archive-subtitle">{reviews ? "Experiences shared by our patients" : "Treatment results from our Kuala Lumpur clinic"}</p>
