@@ -132,6 +132,12 @@ export function LocalLandingPage({
           </section>
         ))}
 
+        {locale === "en" && area.key === "sriHartamas" && <section className="mt-12">
+          <h2 className="font-display text-[1.7rem] leading-snug text-ink lg:text-[2rem]">Planning a HIFU consultation in Sri Hartamas?</h2>
+          <p className="mt-5 text-[1.075rem] leading-[1.9] text-ink-soft">Our <Link href="/treatments/hifu-lifting/" className="text-gold-deep underline">HIFU treatment guide for Kuala Lumpur</Link> explains suitability, considerations and questions to discuss before booking. You can also read the <Link href="/magazine/hifu-candidacy-guide-kuala-lumpur/" className="text-gold-deep underline">HIFU consultation guide</Link>. A consultation is needed to decide whether this treatment fits your goals.</p>
+          <a href={clinic.googleProfile} target="_blank" rel="noopener noreferrer" className="mt-5 inline-block text-gold-deep underline">Open our clinic location on Google Maps →</a>
+        </section>}
+
         {/* FAQ */}
         <section className="mt-16 border-t border-sand pt-12">
           <h2 className="font-display text-[1.7rem] leading-snug text-ink lg:text-[2rem]">

@@ -7,7 +7,7 @@ export const ENGLISH_SEO_DESCRIPTIONS = {
   contact: "Book a private aesthetic consultation in Desa Sri Hartamas, Kuala Lumpur, near Mont Kiara. Speak with our multilingual team about a personalised plan.",
   magazine: "Read practical guides to cosmetic surgery, skin treatments and recovery from our Kuala Lumpur clinic near Mont Kiara. Explore expert insights and options.",
   montKiara: "Explore aesthetic treatments and cosmetic surgery near Mont Kiara, Kuala Lumpur. Personalised multilingual care in Sri Hartamas. Book a consultation.",
-  sriHartamas: "Explore cosmetic surgery and aesthetic treatments in Desa Sri Hartamas, Kuala Lumpur. Personalised multilingual care. Book a private consultation.",
+  sriHartamas: "Explore HIFU, skin treatments and cosmetic surgery at The Valley Beauty in Desa Sri Hartamas, Kuala Lumpur. Find our clinic and book a private consultation.",
   bangsar: "Explore aesthetic treatments and cosmetic surgery near Bangsar, Kuala Lumpur, at our Sri Hartamas clinic. View treatment options and book a consultation.",
   results: "View real before and after results for cosmetic surgery and aesthetic treatments in Kuala Lumpur. Explore patient outcomes and book a private consultation.",
   reviews: "Read real patient reviews of our aesthetic and cosmetic surgery clinic in Kuala Lumpur near Mont Kiara. Discover their experiences and book a consultation.",
