@@ -5,8 +5,6 @@ import { useEffect, useRef, useState } from "react";
 export function CaseCarousel({ faceImages, name }: { faceImages: string[]; name: string }) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [hover, setHover] = useState(false);
-  const [focused, setFocused] = useState(false);
   const [reduced, setReduced] = useState(true);
   const touch = useRef<number | null>(null);
   const slides = [
@@ -21,16 +19,14 @@ export function CaseCarousel({ faceImages, name }: { faceImages: string[]; name:
     return () => media.removeEventListener("change", update);
   }, []);
   useEffect(() => {
-    if (paused || hover || focused || reduced) return;
+    if (paused || reduced) return;
     const timer = setInterval(() => {
       if (!document.hidden) setActive(i => (i + 1) % 3);
-    }, 5000);
+    }, 3000);
     return () => clearInterval(timer);
-  }, [paused, hover, focused, reduced, active]);
+  }, [paused, reduced, active]);
   const move = (step: number) => setActive(i => (i + step + 3) % 3);
-  return <div className="mt-6" aria-label={`${name} patient cases`} aria-roledescription="carousel"
-    onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
-    onFocusCapture={() => setFocused(true)} onBlurCapture={e => { if (!e.currentTarget.contains(e.relatedTarget)) setFocused(false); }}>
+  return <div className="mt-6" aria-label={`${name} patient cases`} aria-roledescription="carousel">
     <div className="overflow-hidden rounded-sm border border-sand bg-cream" style={{ touchAction: "pan-y" }}
       onTouchStart={e => { touch.current = e.touches[0].clientX; }}
       onTouchEnd={e => { if (touch.current !== null) { const delta = e.changedTouches[0].clientX - touch.current; if (Math.abs(delta) > 40) move(delta < 0 ? 1 : -1); } touch.current = null; }}>
