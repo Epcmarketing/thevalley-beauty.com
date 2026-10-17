@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CaseCarousel } from "@/components/CaseCarousel";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import {
@@ -212,7 +213,7 @@ export default async function TreatmentPage({
             {images.length > 0 && (
               <section className="mt-14 border-t border-sand pt-10">
                 <h2 className="font-display text-3xl text-ink">{ui.results}</h2>
-                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                {slug === "cell-light-therapy" ? <CaseCarousel faceImages={images} name={item.name} /> : <div className="mt-6 grid gap-4 sm:grid-cols-2">
                   {images.map((src, i) => (
                     <figure
                       key={src}
@@ -227,28 +228,7 @@ export default async function TreatmentPage({
                       />
                     </figure>
                   ))}
-                </div>
-                {slug === "cell-light-therapy" && (
-                  <div className="mt-4 grid gap-4 sm:grid-cols-2" data-cell-light-gallery>
-                    {[
-                      { file: "cell-light-therapy-legs-case-kuala-lumpur.jpeg", width: 1280, height: 1088, area: "Legs" },
-                      { file: "cell-light-therapy-arms-case-kuala-lumpur.jpeg", width: 1162, height: 1280, area: "Arms" },
-                    ].map((photo) => (
-                      <figure key={photo.file} className="overflow-hidden rounded-sm border border-sand bg-cream">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={`/images/non-surgical/${photo.file}`}
-                          alt={`${item.name} — ${photo.area.toLowerCase()} patient case at ${dict.brand.name}, Kuala Lumpur`}
-                          width={photo.width}
-                          height={photo.height}
-                          loading="lazy"
-                          className="aspect-square w-full object-contain"
-                        />
-                        <figcaption className="border-t border-sand p-4 text-xs text-taupe">{item.name} · {photo.area} · Kuala Lumpur</figcaption>
-                      </figure>
-                    ))}
-                  </div>
-                )}
+                </div>}
                 <p className="mt-4 text-xs text-taupe">{dict.results.note}</p>
               </section>
             )}
