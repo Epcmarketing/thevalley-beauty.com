@@ -14,6 +14,7 @@ import { Footer } from "@/components/Footer";
 import { StructuredData } from "@/components/StructuredData";
 import { RevealObserver } from "@/components/RevealObserver";
 import { FloatingCallButton } from "@/components/FloatingCallButton";
+import { Analytics } from "@/components/Analytics";
 import { ENGLISH_SEO_TITLES, englishTitle } from "@/lib/seoTitles";
 import { ENGLISH_SEO_DESCRIPTIONS, englishDescription } from "@/lib/seoDescriptions";
 
@@ -107,6 +108,7 @@ export async function SiteShell({
         <Header dict={dict} locale={locale} />
         <main>{children}</main>
         <Footer dict={dict} locale={locale} />
+        <Analytics />
         <FloatingCallButton ariaLabel={dict.nav.book} />
       </body>
     </html>
