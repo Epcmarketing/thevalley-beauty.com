@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import { safeCampaign } from "../lib/analyticsAttribution";
 
 const ID = "G-T2XESL5EYC";
 const KEY = "valley-analytics-consent-v1";
@@ -12,7 +13,7 @@ declare global {
   }
 }
 
-function start() {
+function start(campaign: Record<string, string>) {
   if (window.gtag) return;
   window.dataLayer = window.dataLayer || [];
   window.gtag = function () { window.dataLayer.push(arguments); };
@@ -26,6 +27,7 @@ function start() {
     allow_ad_personalization_signals: false,
     page_location: location.origin + location.pathname,
     page_referrer: "", page_title: location.pathname,
+    ...campaign,
   });
   const script = document.createElement("script");
   script.async = true;
@@ -37,7 +39,11 @@ export function Analytics() {
   const path = usePathname();
   const [consent, setConsent] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
+  const landingCampaign = useRef<Record<string, string>>({});
   useEffect(() => {
+    // Keep only validated landing attribution in memory until consent.
+    // GA manages session attribution; no separate long-lived attribution cookie.
+    landingCampaign.current = safeCampaign(location.search);
     let saved: string | null = null;
     try { saved = localStorage.getItem(KEY); } catch { /* Storage may be blocked. */ }
     setConsent(saved);
@@ -46,7 +52,7 @@ export function Analytics() {
 
   useEffect(() => {
     if (consent !== "yes") return;
-    start();
+    start(landingCampaign.current);
     // Only public pathnames: never query strings, form contents or WhatsApp URLs.
     window.gtag?.("set", { page_location: location.origin + path, page_title: path, page_referrer: "" });
     window.gtag?.("event", "page_view", { send_to: ID });
@@ -88,7 +94,7 @@ export function Analytics() {
       <button className="underline" onClick={() => setOpen(true)}>Analytics preferences</button>
     </div>
     {open && <section aria-label="Analytics preferences" className="fixed bottom-24 left-4 right-4 z-[100] max-w-lg rounded-lg border border-sand bg-ivory p-5 text-ink shadow-lg">
-      <p>Allow Google Analytics cookies to measure page visits, engagement and WhatsApp button clicks? This sends usage data to Google, not form contents or chat messages. Optional; you can change this choice below. This preference controls Google Analytics only.</p>
+      <p>Allow Google Analytics cookies to measure page visits, engagement, WhatsApp button clicks and advertising sources? This sends usage data and permitted campaign/ad IDs to Google, not form contents or chat messages. Optional; you can change this choice below. This preference controls Google Analytics only.</p>
       <div className="mt-4 flex gap-4">
         <button className="rounded border border-gold px-4 py-2" onClick={() => choose("no")}>Decline analytics</button>
         <button className="rounded border border-gold px-4 py-2" onClick={() => choose("yes")}>Allow analytics</button>
