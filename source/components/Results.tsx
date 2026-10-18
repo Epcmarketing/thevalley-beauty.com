@@ -1,6 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import NavigationLink from "./NavigationLink";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import {
   surgicalGallery,
@@ -15,6 +17,9 @@ type Tab = "surgical" | "nonSurgical";
 type TreatmentKey = keyof Dictionary["treatmentsMenu"]["items"];
 
 export function Results({ dict }: { dict: Dictionary }) {
+  const pathname = usePathname();
+  const language = pathname.split("/")[1];
+  const resultsHref = withBasePath(`${["zh", "ms", "ja", "ko"].includes(language) ? `/${language}` : ""}/results/`);
   const [tab, setTab] = useState<Tab>("surgical");
   const [index, setIndex] = useState(0);
   const touchX = useRef<number | null>(null);
@@ -169,6 +174,12 @@ export function Results({ dict }: { dict: Dictionary }) {
                 {safeIndex + 1} / {count}
               </span>
             </div>
+          </div>
+
+          <div className="mt-6 text-center">
+            <NavigationLink href={resultsHref} className="inline-flex min-h-11 items-center gap-2 border-b border-gold text-xs tracking-[0.12em] uppercase text-gold-deep transition-colors hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold">
+              View more results <span aria-hidden="true">→</span>
+            </NavigationLink>
           </div>
 
           {/* Control bar — prev / dots / next, all under the image so nothing
