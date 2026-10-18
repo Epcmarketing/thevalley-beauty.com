@@ -101,7 +101,7 @@ export default async function TreatmentsIndex({
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={thumb}
-                          alt=""
+                          alt={`${item.name} — ${dict.brand.nameFull}, Kuala Lumpur`}
                           width={128}
                           height={128}
                           loading="lazy"
