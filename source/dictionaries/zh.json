@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "悦谷美容医学中心 | 吉隆坡 Mont Kiara·Sri Hartamas 美容与整形外科",
-    "description": "吉隆坡 Mont Kiara（孟沙北）与 Sri Hartamas 一带的美容整形与医学美容——抽脂、隆鼻、面部提升、HIFU、激光等。经验丰富的医师、多语言服务与真实的术前术后案例。"
+    "description": "吉隆坡 Mont Kiara（满家乐）与 Sri Hartamas 一带的美容整形与医学美容——抽脂、隆鼻、面部提升、HIFU、激光等。经验丰富的医师、多语言服务与真实的术前术后案例。"
   },
   "brand": {
     "name": "悦谷",
@@ -90,6 +90,7 @@
     "areaTag": "蒙特基亚拉 · 斯里哈达玛斯，吉隆坡"
   },
   "hero": {
+    "h1": "吉隆坡美容整形诊所",
     "eyebrow": "高端美容与整形外科",
     "title": "精致之美，\n源自专业匠心",
     "subtitle": "位于吉隆坡核心的私密医学殿堂，以逾十年的外科技艺，融合细致入微的个性化关怀。",
@@ -125,7 +126,7 @@
   "about": {
     "eyebrow": "为何选择悦谷",
     "title": "十年值得信赖的外科匠心",
-    "body": "我们的团队在美容整形与医学美容领域拥有十年以上的临床经验。诊所位于吉隆坡 Mont Kiara（孟沙北）与 Sri Hartamas 一带，将精准的医疗与如同 Spa 般沉稳的空间结合，让每一个环节都安心、私密且温和。",
+    "body": "我们的团队在美容整形与医学美容领域拥有十年以上的临床经验。诊所位于吉隆坡 Mont Kiara（满家乐）与 Sri Hartamas 一带，将精准的医疗与如同 Spa 般沉稳的空间结合，让每一个环节都安心、私密且温和。",
     "points": [
       "经验丰富的认证外科医师",
       "个性化、自然的效果",
@@ -1854,7 +1855,7 @@
             "body": [
               "疤痕护理是一段长期关系，而不是一张出院说明，所以请在面诊时弄清楚复诊安排究竟是怎样的：哪些复查包含在内、每一次见的是谁、整个周期延伸到多久。一家会安排第六个月和第十二个月复查的诊所，其实已经透露了它如何看待「结果」这件事。",
               "请分清哪些顾虑可以等，哪些不能。第十周时一条发粉、偏硬、略微隆起的线，属于意料之中。而逐渐加重的疼痛、扩散的红肿或发热、渗液、创缘裂开，或者疤痕开始明显越过原有边界生长，都不是等下一次预约的事，而是应当立刻联系为你手术的诊所。",
-              "实际上，距离也是方案的一部分。能不能顺路花五分钟让医生看一眼疤痕，会改变小问题被发现的早晚——这也是许多人在预约前，会把[蒙特奇亚拉（Mont Kiara）](mont-kiara-aesthetic-clinic)一带的诊所和通勤时间放在一起权衡的原因。如果你还在考虑，带上你的疤痕史和你的日历来[面诊](contact)，问问这两样会如何改变方案。这场对话放在术前，远比放在术后有用。"
+              "实际上，距离也是方案的一部分。能不能顺路花五分钟让医生看一眼疤痕，会改变小问题被发现的早晚——这也是许多人在预约前，会把[满家乐（Mont Kiara）](mont-kiara-aesthetic-clinic)一带的诊所和通勤时间放在一起权衡的原因。如果你还在考虑，带上你的疤痕史和你的日历来[面诊](contact)，问问这两样会如何改变方案。这场对话放在术前，远比放在术后有用。"
             ]
           }
         ]
@@ -2154,15 +2155,15 @@
         ]
       },
       "montKiaraFacelift": {
-        "title": "从 1MK 步行可达的蒙特奇亚拉最佳拉皮诊所 —— 真实到店体验",
+        "title": "从 1MK 步行可达的满家乐最佳拉皮诊所 —— 真实到店体验",
         "excerpt": "花一个下午，走进 1 Mont Kiara（1MK）周边的医美诊所：好的拉皮咨询是什么样子、要警惕的危险信号，以及预约前该知道的真心话。",
         "date": "2026-07-05",
         "readMinutes": 5,
         "sections": [
           {
-            "heading": "为什么从蒙特奇亚拉开始很合理",
+            "heading": "为什么从满家乐开始很合理",
             "body": [
-              "蒙特奇亚拉范围紧凑、适合步行。从 1 Mont Kiara（1MK）步行约十到十五分钟，就能到达好几家医美诊所，因此可以在同一天趁印象还新鲜时，一家接一家地比较咨询。1MK、Solaris 与 Sri Hartamas 一带的诊所普遍经验丰富、设备完善，整体水准较高。",
+              "满家乐范围紧凑、适合步行。从 1 Mont Kiara（1MK）步行约十到十五分钟，就能到达好几家医美诊所，因此可以在同一天趁印象还新鲜时，一家接一家地比较咨询。1MK、Solaris 与 Sri Hartamas 一带的诊所普遍经验丰富、设备完善，整体水准较高。",
               "一个实用建议：选平日上午晚些时候前往。人比较少，前台也更有时间，通常不必久等就能做一次简短的到店咨询。"
             ]
           },
@@ -2185,13 +2186,13 @@
             "body": [
               "“拉皮”一词用得很宽泛，因此区分两类会有帮助。手术拉皮会重新固定更深层的组织并去除多余皮肤，带来最持久的改变，但需要合格的外科医生、真实的恢复期与细致的术后护理。非手术提升——如 HIFU 及其他能量式皮肤紧致——几乎没有停工期地逐步紧致、提拉，但效果更细微且是暂时的。",
               "我最信任的诊所，都会坦诚告诉我实际属于哪一类，而不是径直把我引向最贵的方案。",
-              "如果手术提拉确实适合你，欢迎在我们的[蒙特奇亚拉拉皮手术](treatments/facelift)页面了解手术过程、恢复与术后护理的详情。"
+              "如果手术提拉确实适合你，欢迎在我们的[满家乐拉皮手术](treatments/facelift)页面了解手术过程、恢复与术后护理的详情。"
             ]
           },
           {
             "heading": "The Valley Beauty 的定位",
             "body": [
-              "坦白说，这是本诊所的博客，所以请把它当作一份邀请，而非硬性推销。The Valley Beauty Medical Spa 位于蒙特奇亚拉与 Desa Sri Hartamas 一带，从 1MK 前来十分方便。我们正是围绕上述要点来打造到店体验：先做认真的评估，坦诚地讨论手术与非手术选择，并清楚说明术后护理——绝不会在前台向你施压报价。",
+              "坦白说，这是本诊所的博客，所以请把它当作一份邀请，而非硬性推销。The Valley Beauty Medical Spa 位于满家乐与 Desa Sri Hartamas 一带，从 1MK 前来十分方便。我们正是围绕上述要点来打造到店体验：先做认真的评估，坦诚地讨论手术与非手术选择，并清楚说明术后护理——绝不会在前台向你施压报价。",
               "如果你想实地看看环境或当面咨询，欢迎在营业时间（周一至周六 10:00–19:00）到店，或提前拨打 +60 10-911 8518，我们会为你留出时间。本文分享的是一般性体验，不能替代个别咨询。"
             ]
           }
@@ -2228,7 +2229,7 @@
             "heading": "咨询之后",
             "body": [
               "若感觉被催促，别当场预约——好的诊所会希望你再想想，甚至比较两三家。第二天印象沉淀后，再读一遍你的笔记。",
-              "如果一家诊所回答坦诚、把目标对到现实的效果、且从不施压，那就是可以往前走的信号。准备好后，可[预约咨询](contact)，或在营业时间亲自到访[我们的蒙特奇亚拉诊所](mont-kiara-aesthetic-clinic)。"
+              "如果一家诊所回答坦诚、把目标对到现实的效果、且从不施压，那就是可以往前走的信号。准备好后，可[预约咨询](contact)，或在营业时间亲自到访[我们的满家乐诊所](mont-kiara-aesthetic-clinic)。"
             ]
           }
         ]
@@ -3390,10 +3391,10 @@
   },
   "localAreas": {
     "montKiara": {
-      "areaName": "Mont Kiara 孟沙北",
+      "areaName": "Mont Kiara 满家乐",
       "eyebrow": "Mont Kiara 诊所",
       "title": "Mont Kiara 美容与整形外科诊所",
-      "lead": "位于吉隆坡 Mont Kiara（孟沙北）中心地带的高端美容医学与整形外科诊所，距离 Solaris Mont Kiara、1 Mont Kiara、Plaza Mont Kiara 仅几分钟车程。提供英语、马来语与中文咨询。",
+      "lead": "位于吉隆坡 Mont Kiara（满家乐）中心地带的高端美容医学与整形外科诊所，距离 Solaris Mont Kiara、1 Mont Kiara、Plaza Mont Kiara 仅几分钟车程。提供英语、马来语与中文咨询。",
       "metaTitle": "Mont Kiara 美容诊所 | The Valley Beauty Medical Spa, KL",
       "metaDescription": "吉隆坡 Mont Kiara 的美容整形与医学美容——抽脂、隆鼻、面部提升、HIFU、激光。靠近 Solaris Mont Kiara 与 Plaza Damas，多语言服务。",
       "sections": [
@@ -3411,7 +3412,7 @@
         },
         {
           "heading": "从 Mont Kiara 抵达诊所",
-          "body": "从 Mont Kiara 至 Desa Sri Hartamas 的诊所约 5–10 分钟车程（视交通情况）。沿 Jalan Kiara 行驶，经过 Plaza Mont Kiara，进入 Jalan Sri Hartamas 1，再转入 Jalan 30/70A——我们位于 Lot 22-1, Wisma Rapid，正对 Hartamas 商业带。Grab 与车叫服务都能很快抵达，Wisma Rapid 楼内提供免费停车。"
+          "body": "从 Mont Kiara 至 Desa Sri Hartamas 的诊所约 5–10 分钟车程（视交通情况）。沿 Jalan Kiara 行驶，经过 Plaza Mont Kiara，进入 Jalan Sri Hartamas 1，再转入 Jalan 30/70A——我们位于 Lot 22-1, Wisma Rapid，正对 Hartamas 商业带。Grab 与叫车服务都能很快抵达，Wisma Rapid 楼内提供免费停车。"
         }
       ],
       "faq": [
@@ -3451,7 +3452,7 @@
         },
         {
           "heading": "在 Desa Sri Hartamas 找到我们",
-          "body": "地址：Lot 22-1, Wisma Rapid, Jalan 30/70A, 50480 Kuala Lumpur。距 Plaza Damas 步行 3 分钟、距 Hartamas Shopping Centre 约 5 分钟。Grab 与所有车叫服务皆熟悉 Wisma Rapid 位置；楼内提供免费停车。国际患者也可由前台协助安排交通。"
+          "body": "地址：Lot 22-1, Wisma Rapid, Jalan 30/70A, 50480 Kuala Lumpur。距 Plaza Damas 步行 3 分钟、距 Hartamas Shopping Centre 约 5 分钟。Grab 与所有叫车服务皆熟悉 Wisma Rapid 位置；楼内提供免费停车。首次到访如需指路，前台也乐意协助。"
         }
       ],
       "faq": [
