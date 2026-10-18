@@ -81,6 +81,9 @@ export default async function TreatmentPage({
   const images = imagesForTreatment(treatment);
   const isEnglishHifu = locale === "en" && slug === "hifu-lifting";
   const faq = isEnglishHifu ? [...proc.faq,
+    { q: "How many HIFU sessions will I need?", a: "Most areas are treated in a single session. Because the lift builds as your own collagen renews over two to three months, results are usually maintained with periodic sessions, timed to your skin rather than a fixed package." },
+    { q: "Is there any downtime after HIFU?", a: "No. You can return to work the same day. Mild redness or a slight pink flush is common for a few hours, and any tenderness usually settles within 24–48 hours." },
+    { q: "HIFU or a facelift — which is right for me?", a: "HIFU suits mild to moderate laxity and a gradual, natural-looking lift, most often for patients in their thirties and forties. Advanced sagging is usually better served by a surgical facelift, and we will tell you honestly at your consultation which option fits." },
     { q: "Where can I book HIFU treatment in Kuala Lumpur?", a: "The Valley Beauty Medical Spa is located at Lot 22-1, Wisma Rapid, Jalan 30/70A, Desa Sri Hartamas, Kuala Lumpur 50480. Contact our team to arrange a consultation. Visitors from Mont Kiara and Bangsar are welcome at our Sri Hartamas location." },
     { q: "How much does HIFU treatment cost?", a: "Pricing depends on the treatment area and the plan recommended after assessment. Ask our team for an itemised quotation and what it includes before deciding to proceed." },
     { q: "Can I see HIFU results and patient feedback before booking?", a: "You can view the treatment photos on this page and browse our Results and Reviews pages. Photos and feedback describe individual experiences; your suitability and expected outcome need a personal assessment." },
