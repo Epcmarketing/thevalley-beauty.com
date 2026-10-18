@@ -12,6 +12,7 @@ import {
 } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { posts, getPostBySlug } from "@/lib/magazine";
+import { fitTitle, fitDescription } from "@/lib/seoFit";
 import { SITE_URL, clinic, medicalReviewer, contentLastReviewed } from "@/lib/clinic";
 
 const BCP47: Record<string, string> = {
@@ -39,15 +40,16 @@ export async function generateMetadata({
   const dict = await getDictionary(locale);
   const p = dict.magazine.posts[post.key as PostKey];
 
+  const description = fitDescription(p.excerpt);
   return {
     metadataBase: new URL(SITE_URL),
-    title: `${p.title} | ${dict.brand.nameFull}`,
-    description: p.excerpt,
+    title: fitTitle(`${p.title} | ${dict.brand.nameFull}`, locale),
+    description,
     alternates: buildAlternates(locale, `magazine/${slug}`),
     openGraph: {
       type: "article",
       title: p.title,
-      description: p.excerpt,
+      description,
       url: contentUrlPath(locale, `magazine/${slug}`),
       publishedTime: p.date,
       images: [{ url: post.cover }],
