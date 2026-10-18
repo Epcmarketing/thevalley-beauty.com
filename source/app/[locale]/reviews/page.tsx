@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   if (!isLocale(locale)) return {};
   const dict = await getDictionary(locale);
   const title = englishTitle(locale, ENGLISH_SEO_TITLES.reviews, `${dict.nav.reviews} | ${dict.brand.nameFull}`);
-  const description = englishDescription(locale, ENGLISH_SEO_DESCRIPTIONS.reviews, dict.testimonials.subtitle);
+  const description = englishDescription(locale, ENGLISH_SEO_DESCRIPTIONS.reviews, dict.testimonials.subtitle, "reviews");
   return {
     metadataBase: new URL(SITE_URL),
     title,
