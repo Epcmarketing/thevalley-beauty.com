@@ -51,9 +51,11 @@ export const localeNames: Record<Locale, string> = {
 
 export const localeHtmlLang: Record<Locale, string> = {
   en: "en-MY",
-  zh: "zh-Hans",
-  ko: "ko",
-  ja: "ja",
+  // Region-tagged to Malaysia: the translated pages serve Chinese, Korean and
+  // Japanese speakers who live in Malaysia, not visitors searching from abroad.
+  zh: "zh-MY",
+  ko: "ko-MY",
+  ja: "ja-MY",
   ms: "ms-MY",
 };
 
