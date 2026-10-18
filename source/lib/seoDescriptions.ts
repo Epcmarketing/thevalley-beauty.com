@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/i18n/config";
+import { fitDescription } from "@/lib/seoFit";
 
 export const ENGLISH_SEO_DESCRIPTIONS = {
   home: "Discover cosmetic surgery and aesthetic treatments in Kuala Lumpur near Mont Kiara and Sri Hartamas. View real results and book a private consultation.",
@@ -12,23 +13,44 @@ export const ENGLISH_SEO_DESCRIPTIONS = {
   results: "View real before and after results for cosmetic surgery and aesthetic treatments in Kuala Lumpur. Explore patient outcomes and book a private consultation.",
   reviews: "Read real patient reviews of our aesthetic and cosmetic surgery clinic in Kuala Lumpur near Mont Kiara. Discover their experiences and book a consultation.",
   treatmentsByKey: {
-    liposuction: "Explore liposuction in Desa Sri Hartamas, Kuala Lumpur, Malaysia. View treatment information and patient feedback. Book a private consultation.",
-    rhinoplasty: "Explore rhinoplasty in Desa Sri Hartamas, Kuala Lumpur, Malaysia. View treatment information and patient feedback. Book a private consultation.",
-    eye: "Explore eye treatment in Desa Sri Hartamas, Kuala Lumpur, Malaysia. View treatment information and patient feedback. Book a private consultation.",
-    facelift: "Explore facelift in Desa Sri Hartamas, Kuala Lumpur, Malaysia. View treatment information and patient feedback. Book a private consultation.",
-    breast: "Explore breast implant in Desa Sri Hartamas, Kuala Lumpur, Malaysia. View treatment information and patient feedback. Book a private consultation.",
-    chin: "Explore chin implant in Desa Sri Hartamas, Kuala Lumpur, Malaysia. View treatment information and patient feedback. Book a private consultation.",
-    bodySculpt: "Explore body sculpting in Desa Sri Hartamas, Kuala Lumpur, Malaysia. View treatment information and patient feedback. Book a private consultation.",
-    hifu: "Explore hifu treatment in Desa Sri Hartamas, Kuala Lumpur, Malaysia. View treatment information and patient feedback. Book a private consultation.",
-    picoLaser: "Explore pico laser in Desa Sri Hartamas, Kuala Lumpur, Malaysia. View treatment information and patient feedback. Book a private consultation.",
-    hairRemoval: "Explore laser hair removal in Desa Sri Hartamas, Kuala Lumpur, Malaysia. View treatment information and patient feedback. Book a private consultation.",
-    cellLight: "Explore led light therapy in Desa Sri Hartamas, Kuala Lumpur, Malaysia. View treatment information and patient feedback. Book a private consultation.",
-    whiteningDrip: "Explore whitening drip in Desa Sri Hartamas, Kuala Lumpur, Malaysia. View treatment information and patient feedback. Book a private consultation.",
-    onda: "Explore sculpt pro coolwaves in Desa Sri Hartamas, Kuala Lumpur, Malaysia. View treatment information and patient feedback. Book a private consultation.",
-    titanium: "Explore titanium ultrasound lifting in Desa Sri Hartamas, Kuala Lumpur, Malaysia. View treatment information and patient feedback. Book a private consultation.",
+    liposuction: "Liposuction in Kuala Lumpur to remove stubborn fat from the abdomen, flanks, thighs, arms or chin. Sri Hartamas clinic near Mont Kiara. Book a consultation.",
+    rhinoplasty: "Rhinoplasty in Kuala Lumpur to refine the bridge, tip or proportions of your nose for natural facial balance. Sri Hartamas, near Mont Kiara. Book a consultation.",
+    eye: "Eyelid and eye treatments in Kuala Lumpur for excess skin, puffiness and tired-looking eyes. Sri Hartamas clinic near Mont Kiara. Book a private consultation.",
+    facelift: "Facelift in Kuala Lumpur to lift sagging cheeks, jawline and neck while keeping your natural expression. Sri Hartamas, near Mont Kiara. Book a consultation.",
+    breast: "Breast implants in Kuala Lumpur, with implant type, shape, size and placement planned around your frame. Sri Hartamas, near Mont Kiara. Book a consultation.",
+    chin: "Chin implant in Kuala Lumpur to add projection and balance your profile, jawline and neck. Sri Hartamas clinic near Mont Kiara. Book a private consultation.",
+    bodySculpt: "Non-surgical body sculpting in Kuala Lumpur for stubborn fat and contour refinement, with no downtime. Sri Hartamas, near Mont Kiara. Book a consultation.",
+    hifu: "HIFU face and neck lifting in Kuala Lumpur: non-surgical, no downtime, with the lift building over 2–3 months. Sri Hartamas, near Mont Kiara. Book a consultation.",
+    picoLaser: "Pico laser in Kuala Lumpur for dark spots, pigmentation, uneven tone and dull skin. Sri Hartamas clinic near Mont Kiara. Book a private consultation.",
+    hairRemoval: "Laser hair removal in Kuala Lumpur — a planned course of sessions for smoother, lower-maintenance skin. Sri Hartamas, near Mont Kiara. Book a consultation.",
+    cellLight: "LED cell light therapy in Kuala Lumpur to calm, rejuvenate and support skin recovery, with no downtime. Sri Hartamas, near Mont Kiara. Book a consultation.",
+    whiteningDrip: "Whitening IV drip in Kuala Lumpur, given by trained medical staff after a health check, to support skin radiance. Sri Hartamas, near Mont Kiara. Book now.",
+    onda: "Sculpt Pro Coolwaves™ in Kuala Lumpur: microwave energy for skin laxity and stubborn fat pockets. Sri Hartamas clinic near Mont Kiara. Book a consultation.",
+    titanium: "Titanium Ultrasound Lifting in Kuala Lumpur: next-generation focused ultrasound to lift and firm the face. Sri Hartamas, near Mont Kiara. Book a consultation.",
   },
 } as const;
 
-export function englishDescription(locale: Locale, optimized: string, fallback: string): string {
-  return locale === "en" ? optimized : fallback;
+// Hand-written descriptions for non-English pages whose on-page copy is too
+// short to work as a search snippet.
+const LOCALIZED_SEO_DESCRIPTIONS: Partial<Record<Locale, Record<string, string>>> = {
+  zh: {
+    reviews: "阅读客户通过 WhatsApp 分享的真实评价，了解他们在悦谷美容医学中心的体验。诊所位于吉隆坡 Desa Sri Hartamas，邻近满家乐，欢迎预约私人咨询。",
+    results: "浏览吉隆坡悦谷美容医学中心的真实术前术后案例，涵盖整形外科与医学美容疗程。诊所位于 Desa Sri Hartamas，邻近满家乐，欢迎预约咨询。",
+  },
+  ja: {
+    reviews: "WhatsAppで寄せられたお客様の実際のメッセージをご紹介します。クアラルンプールのDesa Sri Hartamas、Mont Kiara近くのクリニックです。カウンセリングのご予約はこちら。",
+    results: "クアラルンプールの美容・形成外科クリニックによる実際のビフォーアフター症例。Desa Sri Hartamas、Mont Kiara近く。カウンセリングのご予約はこちら。",
+  },
+  ko: {
+    reviews: "고객들이 WhatsApp으로 직접 보내 주신 실제 후기를 확인하세요. 쿠알라룸푸르 Desa Sri Hartamas, Mont Kiara 인근 클리닉에서 상담을 예약하실 수 있습니다.",
+    results: "쿠알라룸푸르 미용·성형외과 클리닉의 실제 전후 사례를 확인하세요. Desa Sri Hartamas, Mont Kiara 인근에 위치하며 상담 예약이 가능합니다.",
+  },
+  ms: {
+    reviews: "Baca mesej sebenar yang dikongsi pelanggan kami melalui WhatsApp tentang pengalaman mereka di klinik estetik kami di Desa Sri Hartamas, berhampiran Mont Kiara.",
+    results: "Lihat hasil sebelum dan selepas sebenar untuk pembedahan kosmetik dan rawatan estetik di klinik kami di Desa Sri Hartamas, Kuala Lumpur, berhampiran Mont Kiara.",
+  },
+};
+
+export function englishDescription(locale: Locale, optimized: string, fallback: string, key?: string): string {
+  return locale === "en" ? optimized : fitDescription(LOCALIZED_SEO_DESCRIPTIONS[locale]?.[key ?? ""] ?? fallback);
 }
