@@ -4,6 +4,8 @@ import { usePathname } from "next/navigation";
 import { locales, localeNames, localeBase, type Locale } from "@/lib/i18n/config";
 import { withBasePath } from "@/lib/basePath";
 
+const ENGLISH_ONLY_PATHS = ["/bangsar-aesthetic-clinic/"];
+
 // Built as a native <details> + <a> links so it works even if client-side JS
 // fails to hydrate on the static export. Hrefs are resolved from the current
 // path (path-preserving), so changing language keeps your page. The default
@@ -26,8 +28,15 @@ export function LanguageSwitcher({
     rest = rest.slice(currentBase.length);
   }
 
+  // Pages that only exist in English (no translated version). Switching to
+  // another language from these sends visitors to that language's home page
+  // instead of a URL that would 404.
+  const normalizedRest = `/${rest.replace(/^\/+|\/+$/g, "")}/`;
+  const englishOnly = ENGLISH_ONLY_PATHS.includes(normalizedRest);
+
   function hrefFor(next: Locale) {
-    let target = `${localeBase(next)}${rest}`;
+    let target =
+      englishOnly && next !== "en" ? `${localeBase(next)}/` : `${localeBase(next)}${rest}`;
     if (!target.startsWith("/")) target = `/${target}`;
     if (!target.endsWith("/")) target += "/";
     return withBasePath(target);
