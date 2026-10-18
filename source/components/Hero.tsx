@@ -104,22 +104,30 @@ export function Hero({ dict, locale }: { dict: Dictionary; locale: Locale }) {
                       slide.align === "right" ? "ml-auto text-right" : ""
                     } ${active ? "animate-fade-up" : ""}`}
                   >
-                    <p
-                      className={`flex items-center gap-3 text-[11px] tracking-[0.28em] uppercase text-gold-deep ${
-                        slide.align === "right" ? "justify-end" : ""
-                      }`}
-                    >
-                      {slide.align === "left" && <span className="h-px w-10 bg-gold/70" />}
-                      {slide.eyebrow}
-                      {slide.align === "right" && <span className="h-px w-10 bg-gold/70" />}
-                    </p>
-                    <h1 className="mt-5 font-display text-[1.9rem] font-medium leading-[1.12] text-ink text-balance break-keep sm:mt-6 sm:text-5xl sm:leading-[1.04] lg:text-[4.4rem]">
+                    {/* Exactly one <h1> on the page: the first slide's eyebrow
+                        carries the keyword heading; every other eyebrow is a <p>
+                        and the large slide headlines are <h2>s. */}
+                    {(() => {
+                      const Eyebrow = i === 0 ? "h1" : "p";
+                      return (
+                        <Eyebrow
+                          className={`flex items-center gap-3 text-[11px] font-normal tracking-[0.28em] uppercase text-gold-deep ${
+                            slide.align === "right" ? "justify-end" : ""
+                          }`}
+                        >
+                          {slide.align === "left" && <span className="h-px w-10 bg-gold/70" />}
+                          {i === 0 ? dict.hero.h1 : slide.eyebrow}
+                          {slide.align === "right" && <span className="h-px w-10 bg-gold/70" />}
+                        </Eyebrow>
+                      );
+                    })()}
+                    <h2 className="mt-5 font-display text-[1.9rem] font-medium leading-[1.12] text-ink text-balance break-keep sm:mt-6 sm:text-5xl sm:leading-[1.04] lg:text-[4.4rem]">
                       {slide.title.map((line, k) => (
                         <span key={k} className="block">
                           {line}
                         </span>
                       ))}
-                    </h1>
+                    </h2>
                     <p
                       className={`mt-6 max-w-md text-base leading-relaxed text-ink-soft sm:text-lg ${
                         slide.align === "right" ? "ml-auto" : ""
