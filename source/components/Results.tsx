@@ -134,7 +134,7 @@ export function Results({ dict }: { dict: Dictionary }) {
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={withBasePath(`/images/${folder}/${current.overlay}`)}
-                        alt=""
+                        alt={`${info.name} — ${dict.brand.nameFull}`}
                         className="max-w-[60%] drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)]"
                       />
                     </div>
