@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/i18n/config";
+import { fitTitle } from "@/lib/seoFit";
 
 export const ENGLISH_SEO_TITLES = {
   home: "Aesthetic Clinic Kuala Lumpur | The Valley Beauty",
@@ -18,7 +19,7 @@ export const ENGLISH_SEO_TITLES = {
     breast: "Breast Implant Kuala Lumpur | The Valley Beauty",
     chin: "Chin Implant Kuala Lumpur | The Valley Beauty",
     bodySculpt: "Body Sculpting Kuala Lumpur | The Valley Beauty",
-    hifu: "HIFU Treatment Kuala Lumpur | The Valley Beauty",
+    hifu: "HIFU Treatment Kuala Lumpur | Mont Kiara & Sri Hartamas",
     picoLaser: "Pico Laser Kuala Lumpur | The Valley Beauty",
     hairRemoval: "Laser Hair Removal Kuala Lumpur | The Valley Beauty",
     cellLight: "LED Light Therapy Kuala Lumpur | The Valley Beauty",
@@ -29,5 +30,5 @@ export const ENGLISH_SEO_TITLES = {
 } as const;
 
 export function englishTitle(locale: Locale, optimized: string, fallback: string): string {
-  return locale === "en" ? optimized : fallback;
+  return locale === "en" ? optimized : fitTitle(fallback, locale);
 }
