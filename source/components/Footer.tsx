@@ -80,9 +80,10 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: Locale }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1877F2] text-white shadow-[0_8px_20px_-8px_rgba(24,119,242,0.8)] transition-transform duration-300 hover:-translate-y-0.5"
+                className="inline-flex min-h-10 items-center gap-2 rounded-full border border-ivory/25 px-3 py-2 text-xs text-ivory transition-colors hover:border-gold hover:text-gold"
               >
                 <FacebookIcon />
+                <span>Facebook</span>
               </a>
               {[clinic.instagram, clinic.instagramSurgical].map((href, index) => (
               <a
