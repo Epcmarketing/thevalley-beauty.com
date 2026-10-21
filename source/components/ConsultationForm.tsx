@@ -5,7 +5,7 @@ import type { Dictionary } from "@/lib/i18n/dictionaries";
 import { treatments } from "@/lib/treatments";
 import { WHATSAPP_NUMBER } from "@/lib/clinic";
 
-export function ConsultationForm({ dict }: { dict: Dictionary }) {
+export function ConsultationForm({ dict }: { dict: Pick<Dictionary, "contactPage" | "treatmentsMenu"> }) {
   const f = dict.contactPage.form;
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");

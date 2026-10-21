@@ -40,7 +40,14 @@ export async function generateMetadata({
   const item = dict.treatmentsMenu.items[treatment.key as keyof typeof dict.treatmentsMenu.items];
   const proc = dict.procedures[treatment.key as ProcKey];
 
-  const fallbackTitle = `${item.name} in Kuala Lumpur | ${dict.brand.nameFull}`;
+  const localTitle = {
+    en: `${item.name} in Kuala Lumpur`,
+    zh: `吉隆坡${item.name}`,
+    ja: `クアラルンプールの${item.name}`,
+    ko: `쿠알라룸푸르 ${item.name}`,
+    ms: `${item.name.replace(/\s*\([^)]*\)/g, "")} di Kuala Lumpur`,
+  }[locale];
+  const fallbackTitle = `${localTitle} | ${dict.brand.nameFull}`;
   const optimizedTitle = ENGLISH_SEO_TITLES.treatmentsByKey[
     treatment.key as keyof typeof ENGLISH_SEO_TITLES.treatmentsByKey
   ];

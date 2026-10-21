@@ -31,5 +31,5 @@ export default async function ResultsPage({ params }: { params: Promise<{ locale
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const dict = await getDictionary(locale);
-  return <ArchiveShowcase dict={dict} base={localeBase(locale)} mode="results" />;
+  return <ArchiveShowcase dict={{ results: dict.results, treatmentsMenu: dict.treatmentsMenu }} base={localeBase(locale)} mode="results" />;
 }

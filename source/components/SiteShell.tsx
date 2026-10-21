@@ -105,7 +105,7 @@ export async function SiteShell({
         <noscript><img height="1" width="1" style={{ display: "none" }} src="https://www.facebook.com/tr?id=2442960263170612&ev=PageView&noscript=1" alt="" /></noscript>
         <StructuredData dict={dict} locale={locale} />
         <RevealObserver />
-        <Header dict={dict} locale={locale} />
+        <Header dict={{ nav: dict.nav, topbar: dict.topbar, brand: dict.brand, treatmentsMenu: dict.treatmentsMenu }} locale={locale} />
         <main>{children}</main>
         <Footer dict={dict} locale={locale} />
         <Analytics />

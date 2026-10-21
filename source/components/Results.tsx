@@ -16,7 +16,7 @@ type Tab = "surgical" | "nonSurgical";
 
 type TreatmentKey = keyof Dictionary["treatmentsMenu"]["items"];
 
-export function Results({ dict }: { dict: Dictionary }) {
+export function Results({ dict }: { dict: Pick<Dictionary, "results" | "brand" | "treatmentsMenu"> }) {
   const pathname = usePathname();
   const language = pathname.split("/")[1];
   const resultsHref = withBasePath(`${["zh", "ms", "ja", "ko"].includes(language) ? `/${language}` : ""}/results/`);

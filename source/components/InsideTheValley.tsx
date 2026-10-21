@@ -14,7 +14,7 @@ export function InsideTheValley({
   dict,
   locale,
 }: {
-  dict: Dictionary;
+  dict: Pick<Dictionary, "inside">;
   locale: Locale;
 }) {
   const [playing, setPlaying] = useState(false);

@@ -34,10 +34,12 @@ export const ENGLISH_SEO_DESCRIPTIONS = {
 // short to work as a search snippet.
 const LOCALIZED_SEO_DESCRIPTIONS: Partial<Record<Locale, Record<string, string>>> = {
   zh: {
+    about: "了解位于吉隆坡 Desa Sri Hartamas、邻近满家乐的悦谷美容医学中心，查看服务理念、疗程选择与联络资料，预约咨询并讨论个人需求。",
     reviews: "阅读客户通过 WhatsApp 分享的真实评价，了解他们在悦谷美容医学中心的体验。诊所位于吉隆坡 Desa Sri Hartamas，邻近满家乐，欢迎预约私人咨询。",
     results: "浏览吉隆坡悦谷美容医学中心的真实术前术后案例，涵盖整形外科与医学美容疗程。诊所位于 Desa Sri Hartamas，邻近满家乐，欢迎预约咨询。",
   },
   ja: {
+    contact: "クアラルンプールのDesa Sri Hartamas、Mont Kiara近くにあるThe Valley Beautyへのお問い合わせ。所在地と連絡先を確認し、WhatsAppでカウンセリングをご予約いただけます。",
     reviews: "WhatsAppで寄せられたお客様の実際のメッセージをご紹介します。クアラルンプールのDesa Sri Hartamas、Mont Kiara近くのクリニックです。カウンセリングのご予約はこちら。",
     results: "クアラルンプールの美容・形成外科クリニックによる実際のビフォーアフター症例。Desa Sri Hartamas、Mont Kiara近く。カウンセリングのご予約はこちら。",
   },

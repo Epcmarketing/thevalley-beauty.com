@@ -33,9 +33,9 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: Locale }) {
         />
         <div className="pointer-events-none absolute left-1/2 top-6 z-10 flex w-full max-w-7xl -translate-x-1/2 items-start justify-between px-6 lg:px-10">
           <div className="pointer-events-auto rounded-sm bg-ink/85 px-5 py-4 shadow-[0_18px_50px_-20px_rgba(0,0,0,0.7)] backdrop-blur-sm">
-            <h4 className="text-[10px] tracking-[0.22em] uppercase text-gold">
+            <h2 className="text-[10px] tracking-[0.22em] uppercase text-gold">
               {dict.footer.findUsTitle}
-            </h4>
+            </h2>
             <p className="mt-2 max-w-xs text-sm leading-relaxed text-ivory/80">
               {dict.topbar.location}
             </p>
@@ -91,9 +91,9 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: Locale }) {
 
           {/* Explore */}
           <div className="lg:col-span-2">
-            <h4 className="text-[10px] tracking-[0.22em] uppercase text-gold">
+            <h2 className="text-[10px] tracking-[0.22em] uppercase text-gold">
               {dict.footer.exploreTitle}
-            </h4>
+            </h2>
             <ul className="mt-5 space-y-3 text-sm">
               {[
                 { href: home, label: dict.nav.home },
@@ -122,9 +122,9 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: Locale }) {
 
           {/* Treatments */}
           <div className="lg:col-span-3">
-            <h4 className="text-[10px] tracking-[0.22em] uppercase text-gold">
+            <h2 className="text-[10px] tracking-[0.22em] uppercase text-gold">
               {dict.footer.treatmentsTitle}
-            </h4>
+            </h2>
             <ul className="mt-5 grid grid-cols-1 gap-3 text-sm sm:grid-cols-2">
               {footerTreatments.map((t) => (
                 <li key={t.slug}>
@@ -141,9 +141,9 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: Locale }) {
 
           {/* Contact + hours */}
           <div className="lg:col-span-3">
-            <h4 className="text-[10px] tracking-[0.22em] uppercase text-gold">
+            <h2 className="text-[10px] tracking-[0.22em] uppercase text-gold">
               {dict.footer.contactTitle}
-            </h4>
+            </h2>
             <p className="mt-5 text-sm leading-relaxed text-ivory/70">
               {dict.topbar.location}
             </p>
@@ -156,9 +156,9 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: Locale }) {
                 {phone}
               </a>
             ))}
-            <h4 className="mt-6 text-[10px] tracking-[0.22em] uppercase text-gold">
+            <h2 className="mt-6 text-[10px] tracking-[0.22em] uppercase text-gold">
               {dict.footer.hoursTitle}
-            </h4>
+            </h2>
             <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-ivory/70">
               {dict.footer.hours}
             </p>

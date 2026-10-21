@@ -29,7 +29,7 @@ export async function generateMetadata({
   return {
     metadataBase: new URL(SITE_URL),
     title: englishTitle(locale, ENGLISH_SEO_TITLES.contact, `${dict.contactPage.title} | ${dict.brand.nameFull}`),
-    description: englishDescription(locale, ENGLISH_SEO_DESCRIPTIONS.contact, dict.contactPage.lead),
+    description: englishDescription(locale, ENGLISH_SEO_DESCRIPTIONS.contact, dict.contactPage.lead, "contact"),
     alternates: buildAlternates(locale, "contact"),
   };
 }
@@ -70,7 +70,7 @@ export default async function ContactPage({
       <div className="mx-auto grid max-w-7xl gap-14 px-6 py-20 lg:grid-cols-2 lg:px-10 lg:py-28">
         {/* Form */}
         <div className="rounded-sm border border-sand bg-cream p-7 lg:p-10">
-          <ConsultationForm dict={dict} />
+          <ConsultationForm dict={{ contactPage: dict.contactPage, treatmentsMenu: dict.treatmentsMenu }} />
         </div>
 
         {/* Direct contact + visit */}

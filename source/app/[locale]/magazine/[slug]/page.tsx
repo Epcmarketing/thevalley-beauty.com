@@ -13,7 +13,7 @@ import {
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { posts, getPostBySlug } from "@/lib/magazine";
 import { fitTitle, fitDescription } from "@/lib/seoFit";
-import { SITE_URL, clinic, medicalReviewer, contentLastReviewed } from "@/lib/clinic";
+import { SITE_URL, clinic } from "@/lib/clinic";
 
 const BCP47: Record<string, string> = {
   en: "en-GB",
@@ -40,7 +40,9 @@ export async function generateMetadata({
   const dict = await getDictionary(locale);
   const p = dict.magazine.posts[post.key as PostKey];
 
-  const description = fitDescription(p.excerpt);
+  const description = locale === "en" && slug === "sculpt-pro-treatment-what-it-actually-does-kuala-lumpur"
+    ? "Explore Sculpt Pro Coolwaves in Kuala Lumpur: how the treatment works, suitability and consultation questions at The Valley Beauty in Sri Hartamas."
+    : fitDescription(p.excerpt);
   return {
     metadataBase: new URL(SITE_URL),
     title: fitTitle(`${p.title} | ${dict.brand.nameFull}`, locale),
@@ -87,9 +89,7 @@ export default async function PostPage({
         description: p.excerpt,
         image: `${SITE_URL}${post.cover}`,
         datePublished: p.date,
-        dateModified: contentLastReviewed,
         inLanguage: locale,
-        author: { "@type": "Person", name: medicalReviewer.name, jobTitle: medicalReviewer.role },
         publisher: { "@type": "MedicalClinic", name: clinic.legalName, "@id": `${SITE_URL}/#clinic` },
         mainEntityOfPage: pageUrl,
       },

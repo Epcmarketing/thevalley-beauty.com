@@ -8,7 +8,7 @@ import {
   buildAlternates,
 } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
-import { SITE_URL, clinic, contentLastReviewed } from "@/lib/clinic";
+import { SITE_URL, clinic } from "@/lib/clinic";
 import { ENGLISH_SEO_TITLES, englishTitle } from "@/lib/seoTitles";
 import { ENGLISH_SEO_DESCRIPTIONS, englishDescription } from "@/lib/seoDescriptions";
 
@@ -28,7 +28,7 @@ export async function generateMetadata({
   return {
     metadataBase: new URL(SITE_URL),
     title: englishTitle(locale, ENGLISH_SEO_TITLES.about, `${dict.aboutPage.title} | ${dict.brand.nameFull}`),
-    description: englishDescription(locale, ENGLISH_SEO_DESCRIPTIONS.about, dict.aboutPage.lead),
+    description: englishDescription(locale, ENGLISH_SEO_DESCRIPTIONS.about, dict.aboutPage.lead, "about"),
     alternates: buildAlternates(locale, "about"),
   };
 }
@@ -87,9 +87,6 @@ export default async function AboutPage({
           <section className="mt-14 border-t border-sand pt-10">
             <h2 className="text-[11px] tracking-[0.28em] uppercase text-gold">{a.policyTitle}</h2>
             <p className="mt-5 text-base leading-relaxed text-ink-soft">{a.policy}</p>
-            <p className="mt-6 rounded-sm border border-sand bg-cream px-5 py-4 text-[11px] tracking-[0.04em] text-taupe/80">
-              {dict.reviewer.updatedLabel}: {dict.reviewer.updatedDate} ({contentLastReviewed})
-            </p>
           </section>
         </div>
 

@@ -25,7 +25,7 @@ const SLIDE_META = [
   },
 ];
 
-export function Hero({ dict, locale }: { dict: Dictionary; locale: Locale }) {
+export function Hero({ dict, locale }: { dict: Pick<Dictionary, "hero" | "heroSlides" | "brand">; locale: Locale }) {
   const [index, setIndex] = useState(0);
   const base = localeBase(locale);
   const count = SLIDE_META.length;

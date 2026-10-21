@@ -32,7 +32,7 @@ const TREATMENT_KEYS = [
 const SURGICAL = ["liposuction", "rhinoplasty", "eye", "facelift", "breast", "chin"] as const;
 const NON_SURGICAL = ["bodySculpt", "hifu", "picoLaser", "hairRemoval", "cellLight", "whiteningDrip", "onda", "titanium"] as const;
 
-export function Header({ dict, locale }: { dict: Dictionary; locale: Locale }) {
+export function Header({ dict, locale }: { dict: Pick<Dictionary, "nav" | "topbar" | "brand" | "treatmentsMenu">; locale: Locale }) {
   const [treatOpen, setTreatOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const base = localeBase(locale);

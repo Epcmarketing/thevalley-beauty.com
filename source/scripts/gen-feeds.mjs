@@ -59,7 +59,7 @@ function xmlEscape(s) {
 }
 
 // ───────────────── sitemap1.xml ─────────────────
-const lastmod = new Date().toISOString();
+// Omit lastmod until verified per-page modification dates are available.
 const urlSet = [];
 for (const p of contentPaths) {
   const langLinks = [
@@ -74,7 +74,6 @@ for (const p of contentPaths) {
     const freq = p === "" ? "weekly" : "monthly";
     urlSet.push(`  <url>
     <loc>${urlFor(locale, p)}</loc>
-    <lastmod>${lastmod}</lastmod>
     <changefreq>${freq}</changefreq>
     <priority>${priority}</priority>
       ${langLinks}
@@ -84,7 +83,6 @@ for (const p of contentPaths) {
 for (const p of englishOnlyPaths) {
   urlSet.push(`  <url>
     <loc>${urlFor(DEFAULT_LOCALE, p)}</loc>
-    <lastmod>${lastmod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>`);

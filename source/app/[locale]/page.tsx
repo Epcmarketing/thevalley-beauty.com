@@ -10,7 +10,7 @@ import { Safety } from "@/components/Safety";
 import { Faq } from "@/components/Faq";
 import { Hero } from "@/components/Hero";
 import { SectionHeading } from "@/components/SectionHeading";
-import { SITE_URL, clinic, medicalReviewer, contentLastReviewed } from "@/lib/clinic";
+import { SITE_URL, clinic } from "@/lib/clinic";
 import { treatments, thumbnailForTreatment } from "@/lib/treatments";
 import { posts } from "@/lib/magazine";
 import { withBasePath } from "@/lib/basePath";
@@ -49,8 +49,6 @@ export default async function HomePage({
         inLanguage: locale,
         isPartOf: { "@id": `${SITE_URL}/#clinic` },
         primaryImageOfPage: `${SITE_URL}/images/og-cover.png`,
-        lastReviewed: contentLastReviewed,
-        reviewedBy: { "@type": "Person", name: medicalReviewer.name },
         about: { "@id": `${SITE_URL}/#clinic` },
       },
       {
@@ -98,7 +96,7 @@ export default async function HomePage({
       />
 
       {/* ───────────────── Hero ───────────────── */}
-      <Hero dict={dict} locale={locale as Locale} />
+      <Hero dict={{ hero: dict.hero, heroSlides: dict.heroSlides, brand: dict.brand }} locale={locale as Locale} />
 
       {/* ───────────────── Trust strip ───────────────── */}
       <section className="reveal border-b border-sand bg-cream">
@@ -259,7 +257,7 @@ export default async function HomePage({
           Hidden at the client's request — keep the import and section in
           place so it can be re-enabled later by uncommenting this block.
       <div className="reveal">
-        <InsideTheValley dict={dict} locale={locale as Locale} />
+        <InsideTheValley dict={{ inside: dict.inside }} locale={locale as Locale} />
       </div>
       */}
 
@@ -270,7 +268,7 @@ export default async function HomePage({
 
       {/* ───────────────── Before & After results ───────────────── */}
       <div className="reveal">
-        <Results dict={dict} />
+        <Results dict={{ results: dict.results, brand: dict.brand, treatmentsMenu: dict.treatmentsMenu }} />
       </div>
 
       {/* ───────────────── Safety & standards ───────────────── */}
@@ -280,12 +278,12 @@ export default async function HomePage({
 
       {/* ───────────────── WhatsApp testimonials ───────────────── */}
       <div className="reveal">
-        <Testimonials dict={dict} />
+        <Testimonials dict={{ testimonials: dict.testimonials, brand: dict.brand }} />
       </div>
 
       {/* ───────────────── FAQ ───────────────── */}
       <div className="reveal">
-        <Faq dict={dict} />
+        <Faq dict={{ faq: dict.faq }} />
       </div>
 
       {/* ───────────────── From the magazine ───────────────── */}

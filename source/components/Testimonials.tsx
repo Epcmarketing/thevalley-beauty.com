@@ -8,7 +8,7 @@ import { withBasePath } from "@/lib/basePath";
 
 const INITIAL_COUNT = 8;
 
-export function Testimonials({ dict, initialExpanded = false }: { dict: Dictionary; initialExpanded?: boolean }) {
+export function Testimonials({ dict, initialExpanded = false }: { dict: Pick<Dictionary, "testimonials" | "brand">; initialExpanded?: boolean }) {
   const [lightbox, setLightbox] = useState<string | null>(null);
   const [expanded, setExpanded] = useState(initialExpanded);
 

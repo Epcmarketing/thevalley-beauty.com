@@ -4,7 +4,7 @@ import { useState } from "react";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import { SectionHeading } from "./SectionHeading";
 
-export function Faq({ dict }: { dict: Dictionary }) {
+export function Faq({ dict }: { dict: Pick<Dictionary, "faq"> }) {
   const [open, setOpen] = useState<number | null>(0);
 
   return (

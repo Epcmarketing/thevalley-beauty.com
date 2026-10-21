@@ -17,7 +17,7 @@ const messageExcerpts = [
   { text: "时时刻刻都一直来问候我和妈咪", file: "review-04.jpg", topic: "Follow-up care", lang: "zh" },
 ];
 
-export function ArchiveShowcase({ dict, base, mode }: { dict: Dictionary; base: string; mode: "results" | "reviews" }) {
+export function ArchiveShowcase({ dict, base, mode }: { dict: Pick<Dictionary, "results" | "treatmentsMenu">; base: string; mode: "results" | "reviews" }) {
   const [filter, setFilter] = useState("all");
   const reviews = mode === "reviews";
   const items = [...surgicalGallery.map(item => ({ ...item, category: "surgical" })), ...nonSurgicalGallery.map(item => ({ ...item, category: "non-surgical" }))];

@@ -1,6 +1,6 @@
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import { localeRoot, type Locale } from "@/lib/i18n/config";
-import { SITE_URL, clinic, medicalReviewer } from "@/lib/clinic";
+import { SITE_URL, clinic } from "@/lib/clinic";
 
 const TREATMENT_KEYS = [
   "liposuction",
@@ -119,18 +119,9 @@ export function StructuredData({
     ...(clinic.sameAs.length ? { sameAs: clinic.sameAs } : {}),
   };
 
-  const physicianNode = {
-    "@type": "Physician",
-    name: medicalReviewer.name,
-    jobTitle: medicalReviewer.role,
-    description: medicalReviewer.credentials,
-    worksFor: { "@id": clinicId },
-    medicalSpecialty: "PlasticSurgery",
-  };
-
   const graph = {
     "@context": "https://schema.org",
-    "@graph": [clinicNode, physicianNode, primaryImage],
+    "@graph": [clinicNode, primaryImage],
   };
 
   return (

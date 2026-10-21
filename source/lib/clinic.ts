@@ -2,9 +2,8 @@
 // other factual signals used across metadata and JSON-LD structured data.
 //
 // NAP, phone and rating below are from the live Google Business Profile.
-// ⚠️ YMYL NOTE: the medical reviewer (name / credentials) is still a
-// placeholder and must be replaced with the real licensed practitioner before
-// publishing — accurate authorship is required for medical (YMYL) E-E-A-T.
+// Publish medical authorship only after the practitioner's identity and actual
+// involvement have been verified. No placeholder reviewer is emitted.
 
 export const SITE_URL = "https://thevalley-beauty.com";
 
@@ -43,13 +42,3 @@ export const clinic = {
   },
 } as const;
 
-// Editorial / authorship signals (E-E-A-T). TODO: replace with the real
-// licensed practitioner who reviews the clinical content.
-export const medicalReviewer = {
-  name: "Dr. [Full Name]",
-  credentials: "[Qualifications, e.g. MBBS, MMC Reg. No.]",
-  role: "Aesthetic & Cosmetic Surgeon",
-} as const;
-
-// ISO date the homepage content was last reviewed.
-export const contentLastReviewed = "2026-05-24";
