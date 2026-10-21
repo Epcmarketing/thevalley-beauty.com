@@ -26,11 +26,11 @@ export const clinic = {
   telephone2: "+60 10-912 8518",
   priceRange: "$$$",
   googleProfile: "https://share.google/EeVrX3evtp85hVgeZ",
-  facebook: "https://www.facebook.com/HuaLiBeautyCentreSriHartamas",
+  facebook: "https://www.facebook.com/thevalleybeautymedicalspa",
   instagram: "https://www.instagram.com/hualibeautycentre/",
   sameAs: [
     "https://share.google/EeVrX3evtp85hVgeZ",
-    "https://www.facebook.com/HuaLiBeautyCentreSriHartamas",
+    "https://www.facebook.com/thevalleybeautymedicalspa",
     "https://www.instagram.com/hualibeautycentre/",
   ],
   rating: { value: 4.7, count: 45 },
