@@ -60,7 +60,8 @@ function walk(rel) {
   for (const entry of fs.readdirSync(abs, { withFileTypes: true })) {
     if (!entry.isDirectory() || (rel === "" && skip.has(entry.name))) continue;
     const child = rel ? `${rel}/${entry.name}` : entry.name;
-    if (fs.existsSync(path.join(OUT, child, "index.html"))) write(`en/${child}`, child);
+    // Resolve renamed English routes directly; do not chain through the old slug.
+    if (fs.existsSync(path.join(OUT, child, "index.html"))) write(`en/${child}`, RENAMED[child] ?? child);
     walk(child);
   }
 }
