@@ -129,6 +129,7 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: Locale }) {
                   </Link>
                 </li>
               ))}
+              {(locale === "en" || locale === "zh") && <li><Link href={`${base}/bangsar-aesthetic-clinic/`} className="text-ivory/70 transition-colors hover:text-gold">{locale === "zh" ? "Bangsar 周边医美咨询" : "Aesthetic care near Bangsar"}</Link></li>}
             </ul>
           </div>
 

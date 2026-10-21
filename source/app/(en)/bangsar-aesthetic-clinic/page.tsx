@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "Aesthetic Clinic Near Bangsar | The Valley Beauty",
   description: ENGLISH_SEO_DESCRIPTIONS.bangsar,
-  alternates: { canonical: `/${slug}/` },
+  alternates: { canonical: `/${slug}/`, languages: { "en-MY": `/${slug}/`, "zh-MY": `/zh/${slug}/`, "x-default": `/${slug}/` } },
   openGraph: {
     type: "website",
     title: "Aesthetic Clinic Near Bangsar | The Valley Beauty",

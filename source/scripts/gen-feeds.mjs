@@ -81,11 +81,16 @@ for (const p of contentPaths) {
   }
 }
 for (const p of englishOnlyPaths) {
+  for (const locale of ["en", "zh"]) {
   urlSet.push(`  <url>
-    <loc>${urlFor(DEFAULT_LOCALE, p)}</loc>
+    <loc>${urlFor(locale, p)}</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="${urlFor("en", p)}"/>
+    <xhtml:link rel="alternate" hreflang="zh-MY" href="${urlFor("zh", p)}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${urlFor("en", p)}"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>`);
+  }
 }
 
 const sitemap1 = `<?xml version="1.0" encoding="UTF-8"?>

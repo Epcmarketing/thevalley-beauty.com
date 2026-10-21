@@ -39,6 +39,14 @@ export function ArchiveShowcase({ dict, base, mode }: { dict: Pick<Dictionary, "
       <span className="archive-side archive-side-right">{reviews ? <>CONFIDENCE<br/>LOOKS GOOD<br/>ON YOU</> : <>SAME YOU<br/>A MORE RADIANT<br/>TOMORROW</>}</span>
     </header>
     <div className="archive-content">
+      <section className="archive-review-intro">
+        <h2>{base === "/zh" ? (reviews ? "如何阅读顾客评价" : "如何参考术前术后案例") : (reviews ? "Understanding patient feedback" : "Understanding before and after examples")}</h2>
+        <p>{base === "/zh"
+          ? (reviews ? "评价反映的是个人在咨询、治疗、恢复或跟进过程中的体验，并不能保证每位顾客有相同感受或效果。你可以查看原始留言，留意谈及的具体环节，再把自己关心的沟通、护理和复诊问题带到咨询中。" : "可按手术及美容皮肤疗程分类浏览，再进入对应疗程页了解详情。照片的光线、角度、拍摄时间和个人情况都会影响观感；单张对比图不能说明完整恢复过程，也不能预测你的效果。")
+          : (reviews ? "Feedback reflects an individual experience of consultation, treatment, recovery or follow-up. It does not guarantee the same experience or outcome for everyone. Read the original messages for context, and bring your own questions about communication, aftercare and follow-up to your consultation." : "Browse surgical or aesthetic and skin examples, then open the relevant treatment page for context. Lighting, angle, timing and individual circumstances can affect how photographs look. A comparison image does not show the entire recovery process or predict your own result.")}</p>
+        <p>{base === "/zh" ? "如希望了解某个案例，请向团队询问具体疗程、照片拍摄阶段，以及是否适合你的情况。" : "If an example interests you, ask the team which treatment was performed, when the photographs were taken and how the circumstances relate to your own goals."}</p>
+        <Link href={`${base}/contact/`}>{base === "/zh" ? "向团队咨询 →" : "Discuss your questions with our team →"}</Link>
+      </section>
       {reviews ? <>
         <a className="archive-google" href={clinic.googleProfile} target="_blank" rel="noopener noreferrer">Read our Google reviews <span aria-hidden="true">↗</span></a>
         <section className="archive-review-intro"><h2>The Valley Beauty Reviews in Kuala Lumpur</h2><p>Read patient feedback about treatment, recovery and follow-up care at The Valley Beauty Medical Spa in Desa Sri Hartamas, Kuala Lumpur, near Mont Kiara. These excerpts link to the original WhatsApp messages below.</p></section>

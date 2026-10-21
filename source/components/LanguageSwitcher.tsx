@@ -36,7 +36,7 @@ export function LanguageSwitcher({
 
   function hrefFor(next: Locale) {
     let target =
-      englishOnly && next !== "en" ? `${localeBase(next)}/` : `${localeBase(next)}${rest}`;
+      englishOnly && next !== "en" && next !== "zh" ? `${localeBase(next)}/` : `${localeBase(next)}${rest}`;
     if (!target.startsWith("/")) target = `/${target}`;
     if (!target.endsWith("/")) target += "/";
     return withBasePath(target);
