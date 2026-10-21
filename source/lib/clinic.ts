@@ -27,10 +27,12 @@ export const clinic = {
   priceRange: "$$$",
   googleProfile: "https://share.google/EeVrX3evtp85hVgeZ",
   facebook: "https://www.facebook.com/thevalleybeautymedicalspa",
-  instagram: "https://www.instagram.com/hualibeautycentre/",
+  instagram: "https://www.instagram.com/thevalleybeautymedispa/",
+  instagramSurgical: "https://www.instagram.com/hualibeautycentre/",
   sameAs: [
     "https://share.google/EeVrX3evtp85hVgeZ",
     "https://www.facebook.com/thevalleybeautymedicalspa",
+    "https://www.instagram.com/thevalleybeautymedispa/",
     "https://www.instagram.com/hualibeautycentre/",
   ],
   rating: { value: 4.7, count: 45 },

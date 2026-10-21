@@ -16,6 +16,13 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   const base = localeBase(locale);
   const home = base || "/";
   const year = new Date().getFullYear();
+  const instagramLabels = {
+    en: ["Beauty Instagram", "Surgery Instagram"],
+    zh: ["美容 Instagram", "手术 Instagram"],
+    ja: ["美容 Instagram", "美容外科 Instagram"],
+    ko: ["뷰티 Instagram", "성형외과 Instagram"],
+    ms: ["Instagram Kecantikan", "Instagram Pembedahan"],
+  }[locale];
 
   return (
     <footer id="contact" className="bg-ink text-ivory/80">
@@ -67,7 +74,7 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: Locale }) {
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-ivory/65">
               {dict.footer.tagline}
             </p>
-            <div className="mt-7 flex items-center gap-3">
+            <div className="mt-7 flex flex-wrap items-center gap-3">
               <a
                 href={clinic.facebook}
                 target="_blank"
@@ -77,15 +84,19 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: Locale }) {
               >
                 <FacebookIcon />
               </a>
+              {[clinic.instagram, clinic.instagramSurgical].map((href, index) => (
               <a
-                href={clinic.instagram}
+                key={href}
+                href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-[radial-gradient(circle_at_30%_107%,#fdf497_0%,#fdf497_5%,#fd5949_45%,#d6249f_60%,#285AEB_90%)] text-white shadow-[0_8px_20px_-8px_rgba(214,36,159,0.8)] transition-transform duration-300 hover:-translate-y-0.5"
+                aria-label={instagramLabels[index]}
+                className="inline-flex min-h-10 items-center gap-2 rounded-full border border-ivory/25 px-3 py-2 text-xs text-ivory transition-colors hover:border-gold hover:text-gold"
               >
                 <InstagramIcon />
+                <span>{instagramLabels[index]}</span>
               </a>
+              ))}
             </div>
           </div>
 
