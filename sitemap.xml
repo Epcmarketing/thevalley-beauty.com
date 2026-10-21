@@ -4128,6 +4128,17 @@
   </url>
   <url>
     <loc>https://thevalley-beauty.com/bangsar-aesthetic-clinic/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://thevalley-beauty.com/bangsar-aesthetic-clinic/"/>
+    <xhtml:link rel="alternate" hreflang="zh-MY" href="https://thevalley-beauty.com/zh/bangsar-aesthetic-clinic/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thevalley-beauty.com/bangsar-aesthetic-clinic/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thevalley-beauty.com/zh/bangsar-aesthetic-clinic/</loc>
+    <xhtml:link rel="alternate" hreflang="en-MY" href="https://thevalley-beauty.com/bangsar-aesthetic-clinic/"/>
+    <xhtml:link rel="alternate" hreflang="zh-MY" href="https://thevalley-beauty.com/zh/bangsar-aesthetic-clinic/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thevalley-beauty.com/bangsar-aesthetic-clinic/"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

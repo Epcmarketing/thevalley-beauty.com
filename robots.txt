@@ -28,8 +28,4 @@ Allow: /
 User-Agent: Baiduspider
 Allow: /
 
-Host: https://thevalley-beauty.com
 Sitemap: https://thevalley-beauty.com/sitemap.xml
-Sitemap: https://thevalley-beauty.com/sitemap1.xml
-Sitemap: https://thevalley-beauty.com/rss.xml
-Sitemap: https://thevalley-beauty.com/rss1.xml
