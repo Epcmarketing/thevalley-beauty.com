@@ -99,9 +99,9 @@ export default async function TreatmentPage({
   const home = base || "/";
   const categoryLabel = treatment.category === "surgical" ? ui.surgical : ui.nonSurgical;
 
-  const related = treatments
-    .filter((t) => t.category === treatment.category && t.slug !== treatment.slug)
-    .slice(0, 3);
+  const peers = treatments.filter((t) => t.category === treatment.category);
+  const currentIndex = peers.findIndex((t) => t.slug === treatment.slug);
+  const related = [...peers.slice(currentIndex + 1), ...peers.slice(0, currentIndex)].slice(0, 3);
 
   const pageUrl = `${SITE_URL}${contentUrlPath(locale, `treatments/${slug}`)}`;
   const graph = {
@@ -165,7 +165,7 @@ export default async function TreatmentPage({
 
           <p className="mt-8 text-[11px] tracking-[0.28em] uppercase text-gold">{categoryLabel}</p>
           <h1 className="mt-4 max-w-3xl font-display text-5xl leading-[1.05] text-ivory text-balance lg:text-6xl">
-            {isEnglishHifu ? "HIFU Treatment in Kuala Lumpur" : item.name}
+            {locale === "en" ? (isEnglishHifu ? "HIFU Treatment in Kuala Lumpur" : item.name + " in Kuala Lumpur") : item.name}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ivory/75">{proc.overview}</p>
           {locale === "en" && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ivory/75">Visit The Valley Beauty Medical Spa in Desa Sri Hartamas, Kuala Lumpur, Malaysia. We welcome visitors from Mont Kiara and Bangsar at our Sri Hartamas location. Discuss your goals and a personalised treatment plan during your consultation.</p>}
@@ -242,6 +242,16 @@ export default async function TreatmentPage({
                 <p className="mt-4 text-xs text-taupe">{dict.results.note}</p>
               </section>
             )}
+
+            <section className="mt-14 border-t border-sand pt-10">
+              <h2 className="font-display text-3xl text-ink">{ui.results}</h2>
+              <p className="mt-4 text-sm leading-relaxed text-taupe">{dict.results.note}</p>
+              <div className="mt-6 flex flex-wrap gap-6 text-base text-gold-deep">
+                <Link href={base + "/results/"} className="underline">{dict.results.title} →</Link>
+                <Link href={base + "/reviews/"} className="underline">{dict.nav.reviews} →</Link>
+                <Link href={base + "/contact/"} className="underline">{ui.book} →</Link>
+              </div>
+            </section>
 
             {/* FAQ */}
             <section className="mt-14 border-t border-sand pt-10">
