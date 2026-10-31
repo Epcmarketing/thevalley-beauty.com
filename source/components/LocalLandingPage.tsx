@@ -31,7 +31,7 @@ export function LocalLandingPage({
       {
         "@type": "MedicalClinic",
         "@id": `${pageUrl}#clinic`,
-        name: `${clinic.legalName} — ${content.areaName}`,
+        name: clinic.legalName,
         url: pageUrl,
         image: `${SITE_URL}/images/og-cover.png`,
         telephone: clinic.telephone,
@@ -44,7 +44,7 @@ export function LocalLandingPage({
           postalCode: clinic.address.postalCode,
           addressCountry: clinic.address.country,
         },
-        geo: { "@type": "GeoCoordinates", latitude: area.geo.lat, longitude: area.geo.lng },
+        geo: { "@type": "GeoCoordinates", latitude: clinic.geo.lat, longitude: clinic.geo.lng },
         areaServed: { "@type": "Place", name: content.areaName },
         aggregateRating: {
           "@type": "AggregateRating",

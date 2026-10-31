@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { safeCampaign } from "../lib/analyticsAttribution";
+import { safeCampaign, safeSearchReferrer } from "../lib/analyticsAttribution";
 
 const ID = "G-T2XESL5EYC";
 const KEY = "valley-analytics-consent-v1";
@@ -13,7 +13,7 @@ declare global {
   }
 }
 
-function start(campaign: Record<string, string>) {
+function start(campaign: Record<string, string>, referrer: string) {
   if (window.gtag) return;
   window.dataLayer = window.dataLayer || [];
   window.gtag = function () { window.dataLayer.push(arguments); };
@@ -26,7 +26,7 @@ function start(campaign: Record<string, string>) {
     send_page_view: false, allow_google_signals: false,
     allow_ad_personalization_signals: false,
     page_location: location.origin + location.pathname,
-    page_referrer: "", page_title: location.pathname,
+    page_referrer: referrer, page_title: location.pathname,
     ...campaign,
   });
   const script = document.createElement("script");
@@ -40,10 +40,13 @@ export function Analytics() {
   const [consent, setConsent] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
   const landingCampaign = useRef<Record<string, string>>({});
+  const landingReferrer = useRef("");
+  const firstPage = useRef(true);
   useEffect(() => {
     // Keep only validated landing attribution in memory until consent.
     // GA manages session attribution; no separate long-lived attribution cookie.
     landingCampaign.current = safeCampaign(location.search);
+    landingReferrer.current = safeSearchReferrer(document.referrer);
     let saved: string | null = null;
     try { saved = localStorage.getItem(KEY); } catch { /* Storage may be blocked. */ }
     setConsent(saved);
@@ -52,10 +55,11 @@ export function Analytics() {
 
   useEffect(() => {
     if (consent !== "yes") return;
-    start(landingCampaign.current);
+    start(landingCampaign.current, landingReferrer.current);
     // Only public pathnames: never query strings, form contents or WhatsApp URLs.
-    window.gtag?.("set", { page_location: location.origin + path, page_title: path, page_referrer: "" });
+    window.gtag?.("set", { page_location: location.origin + path, page_title: path, page_referrer: firstPage.current ? landingReferrer.current : "" });
     window.gtag?.("event", "page_view", { send_to: ID });
+    firstPage.current = false;
     let lastClick = 0;
     const onClick = (event: MouseEvent) => {
       const link = event.target instanceof Element ? event.target.closest("a[href]") : null;

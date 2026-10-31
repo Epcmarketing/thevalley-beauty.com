@@ -1,5 +1,9 @@
 import assert from 'node:assert/strict';
-import { safeCampaign } from './analyticsAttribution.ts';
+import { safeCampaign, safeSearchReferrer } from './analyticsAttribution.ts';
+
+assert.equal(safeSearchReferrer('https://www.google.com/search?q=private&email=person@example.com'), 'https://www.google.com/');
+assert.equal(safeSearchReferrer('https://www.google.com.my/search?q=private'), 'https://www.google.com.my/');
+for (const value of ['', 'invalid', 'https://google.com.evil.example/search', 'https://private.example/customer', 'http://www.google.com/search']) assert.equal(safeSearchReferrer(value), '');
 
 assert.deepEqual(safeCampaign('?utm_source=fb&utm_medium=paid_social&utm_id=123&utm_campaign=123&utm_content=456&utm_term=789&phone=60123456789&email=private@example.com'), {
   campaign_source: 'fb', campaign_medium: 'paid_social', campaign_id: '123',

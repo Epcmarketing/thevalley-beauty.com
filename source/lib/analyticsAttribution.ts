@@ -1,5 +1,13 @@
 // Only platform labels and numeric advertising IDs belong in these fields.
 // Never use customer phone numbers, names, messages or treatment names as IDs.
+export function safeSearchReferrer(referrer: string): string {
+  try {
+    const url = new URL(referrer);
+    const hosts = new Set(["google.com", "www.google.com", "google.com.my", "www.google.com.my", "bing.com", "www.bing.com", "duckduckgo.com", "www.duckduckgo.com", "search.yahoo.com"]);
+    return url.protocol === "https:" && hosts.has(url.hostname) ? url.origin + "/" : "";
+  } catch { return ""; }
+}
+
 export function safeCampaign(search: string): Record<string, string> {
   const params = new URLSearchParams(search);
   const result: Record<string, string> = {};

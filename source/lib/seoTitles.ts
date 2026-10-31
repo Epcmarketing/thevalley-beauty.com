@@ -9,7 +9,7 @@ export const ENGLISH_SEO_TITLES = {
   magazine: "Aesthetic & Cosmetic Surgery Guide | Kuala Lumpur",
   results: "Before & After Results Kuala Lumpur | The Valley Beauty",
   reviews: "Aesthetic Clinic Reviews Kuala Lumpur | The Valley Beauty",
-  montKiara: "Mont Kiara Aesthetic Clinic | The Valley Beauty",
+  montKiara: "Aesthetic Clinic Near Mont Kiara | The Valley Beauty",
   sriHartamas: "Aesthetic Clinic Sri Hartamas | The Valley Beauty",
   treatmentsByKey: {
     liposuction: "Liposuction Kuala Lumpur | The Valley Beauty",
