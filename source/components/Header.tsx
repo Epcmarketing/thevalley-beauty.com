@@ -130,7 +130,7 @@ export function Header({ dict, locale }: { dict: Pick<Dictionary, "nav" | "topba
 
             {treatOpen && (
               <div className="absolute left-1/2 top-full z-50 w-[660px] -translate-x-1/2 pt-5">
-                <div className="rounded-sm border border-sand bg-ivory p-7 text-ink shadow-[0_30px_70px_-30px_rgba(42,36,32,0.45)]">
+                <div className="max-h-[calc(100dvh-10rem)] overflow-y-auto overscroll-contain rounded-sm border border-sand bg-ivory p-7 text-ink shadow-[0_30px_70px_-30px_rgba(42,36,32,0.45)]">
                   <div className="grid grid-cols-2 gap-x-8">
                     {[
                       { title: dict.treatmentsMenu.surgicalTitle, keys: SURGICAL },
