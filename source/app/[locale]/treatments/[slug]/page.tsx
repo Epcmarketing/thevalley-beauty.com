@@ -51,11 +51,11 @@ export async function generateMetadata({
   const optimizedTitle = ENGLISH_SEO_TITLES.treatmentsByKey[
     treatment.key as keyof typeof ENGLISH_SEO_TITLES.treatmentsByKey
   ];
-  const title = englishTitle(locale, optimizedTitle, fallbackTitle);
+  const title = locale === "zh" && slug === "body-sculpting" ? "吉隆坡非手术身体塑形 | 悦谷美容医学中心" : englishTitle(locale, optimizedTitle, fallbackTitle);
   const optimizedDescription = ENGLISH_SEO_DESCRIPTIONS.treatmentsByKey[
     treatment.key as keyof typeof ENGLISH_SEO_DESCRIPTIONS.treatmentsByKey
   ];
-  const description = englishDescription(locale, optimizedDescription, proc.overview);
+  const description = locale === "zh" && slug === "body-sculpting" ? "在吉隆坡 Sri Hartamas 悦谷美容医学中心了解非手术身体塑形。诊所邻近满家乐，咨询局部轮廓改善、疗程适合程度、效果限制与恢复安排。" : englishDescription(locale, optimizedDescription, proc.overview);
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -165,7 +165,7 @@ export default async function TreatmentPage({
 
           <p className="mt-8 text-[11px] tracking-[0.28em] uppercase text-gold">{categoryLabel}</p>
           <h1 className="mt-4 max-w-3xl font-display text-5xl leading-[1.05] text-ivory text-balance lg:text-6xl">
-            {locale === "en" ? (isEnglishHifu ? "HIFU Treatment in Kuala Lumpur" : item.name + " in Kuala Lumpur") : item.name}
+            {locale === "en" ? (isEnglishHifu ? "HIFU Treatment in Kuala Lumpur" : item.name + " in Kuala Lumpur") : (locale === "zh" && slug === "body-sculpting" ? "吉隆坡非手术身体塑形" : item.name)}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ivory/75">{proc.overview}</p>
           {locale === "en" && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ivory/75">Visit The Valley Beauty Medical Spa in Desa Sri Hartamas, Kuala Lumpur, Malaysia. We welcome visitors from Mont Kiara and Bangsar at our Sri Hartamas location. Discuss your goals and a personalised treatment plan during your consultation.</p>}
@@ -197,7 +197,7 @@ export default async function TreatmentPage({
 
             {/* Who it's for */}
             <section className="mt-14 border-t border-sand pt-10">
-              <h2 className="text-[11px] tracking-[0.28em] uppercase text-gold">{ui.whoFor}</h2>
+              <h2 className="text-[11px] tracking-[0.28em] uppercase text-gold">{slug === "body-sculpting" && locale === "en" ? "Is non-invasive body sculpting right for your goals?" : slug === "body-sculpting" && locale === "zh" ? "非手术身体塑形适合您的需求吗？" : ui.whoFor}</h2>
               <p className="mt-5 text-lg leading-relaxed text-ink-soft">{renderWithLinks(proc.whoFor, base)}</p>
             </section>
 

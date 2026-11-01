@@ -19,7 +19,7 @@ export const ENGLISH_SEO_DESCRIPTIONS = {
     facelift: "Facelift in Kuala Lumpur to lift sagging cheeks, jawline and neck while keeping your natural expression. Sri Hartamas, near Mont Kiara. Book a consultation.",
     breast: "Breast implants in Kuala Lumpur, with implant type, shape, size and placement planned around your frame. Sri Hartamas, near Mont Kiara. Book a consultation.",
     chin: "Chin implant in Kuala Lumpur to add projection and balance your profile, jawline and neck. Sri Hartamas clinic near Mont Kiara. Book a private consultation.",
-    bodySculpt: "Non-surgical body sculpting in Kuala Lumpur for stubborn fat and contour refinement, with no downtime. Sri Hartamas, near Mont Kiara. Book a consultation.",
+    bodySculpt: "Explore body sculpting and body contouring options in Sri Hartamas, Kuala Lumpur. Discuss your goals and suitability at The Valley Beauty.",
     hifu: "HIFU face and neck lifting in Kuala Lumpur: non-surgical, no downtime, with the lift building over 2–3 months. Sri Hartamas, near Mont Kiara. Book a consultation.",
     picoLaser: "Pico laser in Kuala Lumpur for dark spots, pigmentation, uneven tone and dull skin. Sri Hartamas clinic near Mont Kiara. Book a private consultation.",
     hairRemoval: "Laser hair removal in Kuala Lumpur — a planned course of sessions for smoother, lower-maintenance skin. Sri Hartamas, near Mont Kiara. Book a consultation.",
