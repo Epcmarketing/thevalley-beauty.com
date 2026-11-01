@@ -7,6 +7,14 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       { userAgent: "*", allow: "/" },
+      // Explicit permission for AI search and model-training crawlers.
+      // These permissions do not guarantee indexing, citation or training use.
+      { userAgent: "OAI-SearchBot", allow: "/" },
+      { userAgent: "GPTBot", allow: "/" },
+      { userAgent: "Google-Extended", allow: "/" },
+      { userAgent: "Claude-SearchBot", allow: "/" },
+      { userAgent: "ClaudeBot", allow: "/" },
+      { userAgent: "PerplexityBot", allow: "/" },
       // Explicit allows for the major search engines.
       { userAgent: "Googlebot", allow: "/" },
       { userAgent: "Googlebot-Image", allow: "/" },
