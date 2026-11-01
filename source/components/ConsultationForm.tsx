@@ -14,6 +14,12 @@ export function ConsultationForm({ dict }: { dict: Pick<Dictionary, "contactPage
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    const data = new FormData(e.currentTarget as HTMLFormElement);
+    const name = String(data.get("name") || "").trim();
+    const contact = String(data.get("contact") || "").trim();
+    const treatment = String(data.get("treatment") || "").trim();
+    const message = String(data.get("message") || "").trim();
+    if (!name || !contact || !treatment) return;
     const lines = [
       dict.contactPage.waPrefill,
       "",
@@ -32,11 +38,17 @@ export function ConsultationForm({ dict }: { dict: Pick<Dictionary, "contactPage
   const label = "text-xs tracking-[0.1em] uppercase text-taupe";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} onKeyDown={(event) => {
+      // Enter confirms input; only the submit button submits. Textarea keeps newlines.
+      if (event.key === "Enter" && event.target instanceof HTMLInputElement) {
+        event.preventDefault();
+      }
+    }} className="space-y-5">
       <div>
         <label htmlFor="cf-name" className={label}>{f.name}</label>
         <input
           id="cf-name"
+          name="name"
           type="text"
           required
           value={name}
@@ -48,6 +60,7 @@ export function ConsultationForm({ dict }: { dict: Pick<Dictionary, "contactPage
         <label htmlFor="cf-contact" className={label}>{f.contact}</label>
         <input
           id="cf-contact"
+          name="contact"
           type="text"
           required
           value={contact}
@@ -59,6 +72,8 @@ export function ConsultationForm({ dict }: { dict: Pick<Dictionary, "contactPage
         <label htmlFor="cf-treatment" className={label}>{f.treatment}</label>
         <select
           id="cf-treatment"
+          required
+          name="treatment"
           value={treatment}
           onChange={(e) => setTreatment(e.target.value)}
           className={field}
@@ -78,6 +93,7 @@ export function ConsultationForm({ dict }: { dict: Pick<Dictionary, "contactPage
         <label htmlFor="cf-message" className={label}>{f.message}</label>
         <textarea
           id="cf-message"
+          name="message"
           rows={4}
           value={message}
           onChange={(e) => setMessage(e.target.value)}

@@ -755,11 +755,11 @@
       "name": "您的姓名",
       "contact": "电话或邮箱",
       "treatment": "感兴趣的项目",
-      "treatmentDefault": "选择项目（可选）",
-      "message": "留言",
+      "treatmentDefault": "请选择项目（必选）",
+      "message": "留言（可选）",
       "messagePlaceholder": "告诉我们您的诉求或疑问……",
       "submit": "通过 WhatsApp 发送",
-      "note": "发送后将打开 WhatsApp 并自动填入您的信息。本网站不会存储任何资料。"
+      "note": "点击后将打开 WhatsApp，并预填您的表单信息。请在 WhatsApp 中检查内容，再按发送。本网站不会存储您的表单资料。"
     },
     "orTitle": "想直接联系我们？",
     "whatsapp": "WhatsApp 咨询",

@@ -755,11 +755,11 @@
       "name": "Nama anda",
       "contact": "Telefon atau e-mel",
       "treatment": "Rawatan yang diminati",
-      "treatmentDefault": "Pilih rawatan (pilihan)",
-      "message": "Mesej anda",
+      "treatmentDefault": "Pilih rawatan (wajib)",
+      "message": "Mesej (pilihan)",
       "messagePlaceholder": "Beritahu kami matlamat atau soalan anda…",
       "submit": "Hantar melalui WhatsApp",
-      "note": "Menghantar akan membuka WhatsApp dengan butiran anda telah diisi. Tiada maklumat disimpan di laman web ini."
+      "note": "WhatsApp akan dibuka dengan butiran borang anda diisi. Semak butiran dan tekan Hantar dalam WhatsApp. Laman web ini tidak menyimpan butiran borang anda."
     },
     "orTitle": "Lebih suka menghubungi kami secara langsung?",
     "whatsapp": "Sembang di WhatsApp",

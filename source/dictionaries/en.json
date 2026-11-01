@@ -755,11 +755,11 @@
       "name": "Your name",
       "contact": "Phone or email",
       "treatment": "Treatment of interest",
-      "treatmentDefault": "Select a treatment (optional)",
-      "message": "Your message",
+      "treatmentDefault": "Select a treatment (required)",
+      "message": "Message (optional)",
       "messagePlaceholder": "Tell us about your goals or questions…",
       "submit": "Send via WhatsApp",
-      "note": "Sending opens WhatsApp with your details pre-filled. No information is stored on this website."
+      "note": "This opens WhatsApp with your form details filled in. Please review and tap Send in WhatsApp. This website does not store your form details."
     },
     "orTitle": "Prefer to reach us directly?",
     "whatsapp": "Chat on WhatsApp",

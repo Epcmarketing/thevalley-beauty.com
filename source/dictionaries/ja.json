@@ -755,11 +755,11 @@
       "name": "お名前",
       "contact": "電話またはメール",
       "treatment": "ご興味のある施術",
-      "treatmentDefault": "施術を選択（任意）",
-      "message": "メッセージ",
+      "treatmentDefault": "施術を選択（必須）",
+      "message": "メッセージ（任意）",
       "messagePlaceholder": "ご希望やご質問をお書きください…",
       "submit": "WhatsAppで送信",
-      "note": "送信すると、入力内容が反映された状態でWhatsAppが開きます。本サイトに情報は保存されません。"
+      "note": "WhatsApp に入力内容が表示されます。内容を確認し、WhatsApp で送信を押してください。このウェブサイトはフォームの内容を保存しません。"
     },
     "orTitle": "直接ご連絡をご希望ですか？",
     "whatsapp": "WhatsAppで相談",
