@@ -1,4 +1,5 @@
 import Link from "next/link";
+import treatmentSeo from "@/lib/treatmentSeo.json";
 import { CaseCarousel } from "@/components/CaseCarousel";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -16,7 +17,7 @@ import {
   getTreatmentBySlug,
   imagesForTreatment,
 } from "@/lib/treatments";
-import { SITE_URL, clinic } from "@/lib/clinic";
+import { SITE_URL, clinic, WHATSAPP_NUMBER } from "@/lib/clinic";
 import { ENGLISH_SEO_TITLES, englishTitle } from "@/lib/seoTitles";
 import { ENGLISH_SEO_DESCRIPTIONS, englishDescription } from "@/lib/seoDescriptions";
 
@@ -51,11 +52,12 @@ export async function generateMetadata({
   const optimizedTitle = ENGLISH_SEO_TITLES.treatmentsByKey[
     treatment.key as keyof typeof ENGLISH_SEO_TITLES.treatmentsByKey
   ];
-  const title = locale === "zh" && slug === "body-sculpting" ? "吉隆坡非手术身体塑形 | 悦谷美容医学中心" : englishTitle(locale, optimizedTitle, fallbackTitle);
+  const localizedSeo = treatmentSeo[treatment.key as keyof typeof treatmentSeo][locale];
+  const title = localizedSeo?.title ?? (locale === "zh" && slug === "body-sculpting" ? "吉隆坡非手术身体塑形 | 悦谷美容医学中心" : englishTitle(locale, optimizedTitle, fallbackTitle));
   const optimizedDescription = ENGLISH_SEO_DESCRIPTIONS.treatmentsByKey[
     treatment.key as keyof typeof ENGLISH_SEO_DESCRIPTIONS.treatmentsByKey
   ];
-  const description = locale === "zh" && slug === "body-sculpting" ? "在吉隆坡 Sri Hartamas 悦谷美容医学中心了解非手术身体塑形。诊所邻近满家乐，咨询局部轮廓改善、疗程适合程度、效果限制与恢复安排。" : englishDescription(locale, optimizedDescription, proc.overview);
+  const description = localizedSeo?.description ?? (locale === "zh" && slug === "body-sculpting" ? "在吉隆坡 Sri Hartamas 悦谷美容医学中心了解非手术身体塑形。诊所邻近满家乐，咨询局部轮廓改善、疗程适合程度、效果限制与恢复安排。" : englishDescription(locale, optimizedDescription, proc.overview));
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -87,39 +89,9 @@ export default async function TreatmentPage({
   const proc = dict.procedures[treatment.key as ProcKey];
   const images = imagesForTreatment(treatment);
   const isEnglishHifu = locale === "en" && slug === "hifu-lifting";
-  const bodyHeadings = slug === "body-sculpting" ? ({
-    en: {
-      benefits: "Why consider non-surgical body contouring?",
-      whoFor: "Is body sculpting right for your goals?",
-      how: "What to expect at your body sculpting consultation",
-      recovery: "Recovery and downtime after body sculpting",
-      considerations: "Body sculpting risks and limitations",
-      results: "Body sculpting before and after photos",
-      nextSteps: "Patient reviews and booking a consultation",
-      faq: "Body sculpting: frequently asked questions",
-      related: "Explore other aesthetic treatments",
-    },
-    zh: {
-      benefits: "为什么考虑非手术身体塑形？",
-      whoFor: "身体塑形适合您的需求吗？",
-      how: "身体塑形咨询与疗程安排",
-      recovery: "身体塑形后的恢复与护理",
-      considerations: "身体塑形的风险与效果限制",
-      results: "身体塑形前后对比照片",
-      nextSteps: "查看顾客评价与预约咨询",
-      faq: "非手术身体塑形常见问题",
-      related: "了解其他美容疗程",
-    },
-  } as const)[locale as "en" | "zh"] : undefined;
-
-  const faq = isEnglishHifu ? [...proc.faq,
-    { q: "How many HIFU sessions will I need?", a: "Most areas are treated in a single session. Because the lift builds as your own collagen renews over two to three months, results are usually maintained with periodic sessions, timed to your skin rather than a fixed package." },
-    { q: "Is there any downtime after HIFU?", a: "No. You can return to work the same day. Mild redness or a slight pink flush is common for a few hours, and any tenderness usually settles within 24–48 hours." },
-    { q: "HIFU or a facelift — which is right for me?", a: "HIFU suits mild to moderate laxity and a gradual, natural-looking lift, most often for patients in their thirties and forties. Advanced sagging is usually better served by a surgical facelift, and we will tell you honestly at your consultation which option fits." },
-    { q: "Where can I book HIFU treatment in Kuala Lumpur?", a: "The Valley Beauty Medical Spa is located at Lot 22-1, Wisma Rapid, Jalan 30/70A, Desa Sri Hartamas, Kuala Lumpur 50480. Contact our team to arrange a consultation. Visitors from Mont Kiara and Bangsar are welcome at our Sri Hartamas location." },
-    { q: "How much does HIFU treatment cost?", a: "Pricing depends on the treatment area and the plan recommended after assessment. Ask our team for an itemised quotation and what it includes before deciding to proceed." },
-    { q: "Can I see HIFU results and patient feedback before booking?", a: "You can view the treatment photos on this page and browse our Results and Reviews pages. Photos and feedback describe individual experiences; your suitability and expected outcome need a personal assessment." },
-  ] : proc.faq;
+  const localizedSeo = treatmentSeo[treatment.key as keyof typeof treatmentSeo][locale];
+  const bodyHeadings = localizedSeo?.headings;
+  const faq = proc.faq;
   const base = localeBase(locale);
   const home = base || "/";
   const categoryLabel = treatment.category === "surgical" ? ui.surgical : ui.nonSurgical;
@@ -190,7 +162,7 @@ export default async function TreatmentPage({
 
           <p className="mt-8 text-[11px] tracking-[0.28em] uppercase text-gold">{categoryLabel}</p>
           <h1 className="mt-4 max-w-3xl font-display text-5xl leading-[1.05] text-ivory text-balance lg:text-6xl">
-            {locale === "en" ? (isEnglishHifu ? "HIFU Treatment in Kuala Lumpur" : item.name + " in Kuala Lumpur") : (locale === "zh" && slug === "body-sculpting" ? "吉隆坡非手术身体塑形" : item.name)}
+            {localizedSeo?.h1 ?? (locale === "en" ? (isEnglishHifu ? "HIFU Treatment in Kuala Lumpur" : item.name + " in Kuala Lumpur") : (locale === "zh" && slug === "body-sculpting" ? "吉隆坡非手术身体塑形" : item.name))}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ivory/75">{proc.overview}</p>
           {locale === "en" && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ivory/75">Visit The Valley Beauty Medical Spa in Desa Sri Hartamas, Kuala Lumpur, Malaysia. We welcome visitors from Mont Kiara and Bangsar at our Sri Hartamas location. Discuss your goals and a personalised treatment plan during your consultation.</p>}
@@ -207,6 +179,18 @@ export default async function TreatmentPage({
       <div className="bg-ivory py-20 lg:py-28">
         <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-3 lg:px-10">
           <div className="lg:col-span-2 lg:pr-10">
+            {locale === "en" && slug === "eye-treatment" && (
+              <section className="mb-14 rounded-sm border border-sand bg-cream p-6 sm:p-8">
+                <p className="text-xs uppercase tracking-[0.18em] text-gold-deep">Start with your concern</p>
+                <h2 className="mt-3 font-display text-3xl text-ink">What would you like to discuss about your eyelids?</h2>
+                <div className="mt-6 grid gap-6 sm:grid-cols-2">
+                  <div><h3 className="font-display text-xl text-ink">Heavy or hooded upper lids</h3><p className="mt-2 leading-relaxed text-ink-soft">Explain whether your concern is excess skin, eyelid shape or a tired-looking appearance. Bring questions about upper-eyelid surgery and the changes you hope to achieve.</p></div>
+                  <div><h3 className="font-display text-xl text-ink">Under-eye bags</h3><p className="mt-2 leading-relaxed text-ink-soft">If you are researching eye bag removal in KL, discuss the specific changes beneath your eyes. Ask whether lower-eyelid surgery is appropriate for your concern and what its limitations are.</p></div>
+                </div>
+                <p className="mt-6 text-sm leading-relaxed text-taupe">A search term or photograph cannot determine suitability. Your consultation should cover your goals, eye health, previous procedures, alternatives and recovery arrangements.</p>
+                <a href={"https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent("Hello, I would like to arrange an eyelid surgery consultation at The Valley Beauty in Sri Hartamas.")} target="_blank" rel="noopener noreferrer" className="mt-6 inline-block rounded-full bg-gold px-6 py-3 text-sm text-white hover:bg-gold-deep">Ask about eyelid surgery on WhatsApp →</a>
+              </section>
+            )}
             {/* Benefits */}
             <section>
               <h2 className="text-[11px] tracking-[0.28em] uppercase text-gold">{bodyHeadings?.benefits ?? ui.benefits}</h2>
@@ -278,6 +262,16 @@ export default async function TreatmentPage({
               </div>
             </section>
 
+            {locale === "en" && slug === "eye-treatment" && (
+              <section className="mt-14 border-t border-sand pt-10">
+                <h2 className="font-display text-3xl text-ink">Read more before your consultation</h2>
+                <p className="mt-4 leading-relaxed text-ink-soft">Use these guides to prepare your questions, then discuss your own situation during a consultation.</p>
+                <div className="mt-5 space-y-4">
+                  <Link className="block text-gold-deep underline underline-offset-4" href="/magazine/under-eye-bag-removal-lower-eyelid-surgery-kuala-lumpur/">Under-eye bags and lower-eyelid surgery →</Link>
+                  <Link className="block text-gold-deep underline underline-offset-4" href="/magazine/double-eyelid-surgery-vs-eyelid-lift-ptosis/">Double-eyelid surgery, eyelid lift and ptosis: understanding the differences →</Link>
+                </div>
+              </section>
+            )}
             {/* FAQ */}
             <section className="mt-14 border-t border-sand pt-10">
               <h2 className="font-display text-3xl text-ink">{bodyHeadings?.faq ?? ui.faq}</h2>
