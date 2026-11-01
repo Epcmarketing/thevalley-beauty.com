@@ -23,6 +23,7 @@ export function ConsultationForm({ dict }: { dict: Pick<Dictionary, "contactPage
       message && `• ${f.message}: ${message}`,
     ].filter(Boolean);
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
+    document.dispatchEvent(new Event("valley:whatsapp-form"));
     window.open(url, "_blank", "noopener,noreferrer");
   }
 

@@ -72,8 +72,18 @@ export function Analytics() {
         send_to: ID, button_location: link.closest("header") ? "header" : link.closest("footer") ? "footer" : link.closest("main") ? "content" : "floating",
       });
     };
+    // Programmatic form navigation has no anchor click. No form data is sent.
+    const onConsultation = () => {
+      window.gtag?.("event", "whatsapp_click", {
+        send_to: ID, button_location: "consultation_form",
+      });
+    };
+    document.addEventListener("valley:whatsapp-form", onConsultation);
     document.addEventListener("click", onClick, true);
-    return () => document.removeEventListener("click", onClick, true);
+    return () => {
+      document.removeEventListener("click", onClick, true);
+      document.removeEventListener("valley:whatsapp-form", onConsultation);
+    };
   }, [consent, path]);
 
   function choose(value: string) {
