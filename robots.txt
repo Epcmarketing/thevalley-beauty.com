@@ -1,6 +1,24 @@
 User-Agent: *
 Allow: /
 
+User-Agent: OAI-SearchBot
+Allow: /
+
+User-Agent: GPTBot
+Allow: /
+
+User-Agent: Google-Extended
+Allow: /
+
+User-Agent: Claude-SearchBot
+Allow: /
+
+User-Agent: ClaudeBot
+Allow: /
+
+User-Agent: PerplexityBot
+Allow: /
+
 User-Agent: Googlebot
 Allow: /
 
