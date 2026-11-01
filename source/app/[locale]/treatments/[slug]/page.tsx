@@ -87,6 +87,31 @@ export default async function TreatmentPage({
   const proc = dict.procedures[treatment.key as ProcKey];
   const images = imagesForTreatment(treatment);
   const isEnglishHifu = locale === "en" && slug === "hifu-lifting";
+  const bodyHeadings = slug === "body-sculpting" ? ({
+    en: {
+      benefits: "Why consider non-surgical body contouring?",
+      whoFor: "Is body sculpting right for your goals?",
+      how: "What to expect at your body sculpting consultation",
+      recovery: "Recovery and downtime after body sculpting",
+      considerations: "Body sculpting risks and limitations",
+      results: "Body sculpting before and after photos",
+      nextSteps: "Patient reviews and booking a consultation",
+      faq: "Body sculpting: frequently asked questions",
+      related: "Explore other aesthetic treatments",
+    },
+    zh: {
+      benefits: "为什么考虑非手术身体塑形？",
+      whoFor: "身体塑形适合您的需求吗？",
+      how: "身体塑形咨询与疗程安排",
+      recovery: "身体塑形后的恢复与护理",
+      considerations: "身体塑形的风险与效果限制",
+      results: "身体塑形前后对比照片",
+      nextSteps: "查看顾客评价与预约咨询",
+      faq: "非手术身体塑形常见问题",
+      related: "了解其他美容疗程",
+    },
+  } as const)[locale as "en" | "zh"] : undefined;
+
   const faq = isEnglishHifu ? [...proc.faq,
     { q: "How many HIFU sessions will I need?", a: "Most areas are treated in a single session. Because the lift builds as your own collagen renews over two to three months, results are usually maintained with periodic sessions, timed to your skin rather than a fixed package." },
     { q: "Is there any downtime after HIFU?", a: "No. You can return to work the same day. Mild redness or a slight pink flush is common for a few hours, and any tenderness usually settles within 24–48 hours." },
@@ -184,7 +209,7 @@ export default async function TreatmentPage({
           <div className="lg:col-span-2 lg:pr-10">
             {/* Benefits */}
             <section>
-              <h2 className="text-[11px] tracking-[0.28em] uppercase text-gold">{ui.benefits}</h2>
+              <h2 className="text-[11px] tracking-[0.28em] uppercase text-gold">{bodyHeadings?.benefits ?? ui.benefits}</h2>
               <ul className="mt-6 space-y-4">
                 {proc.benefits.map((b, i) => (
                   <li key={i} className="flex items-start gap-3 text-lg leading-relaxed text-ink-soft">
@@ -197,32 +222,32 @@ export default async function TreatmentPage({
 
             {/* Who it's for */}
             <section className="mt-14 border-t border-sand pt-10">
-              <h2 className="text-[11px] tracking-[0.28em] uppercase text-gold">{slug === "body-sculpting" && locale === "en" ? "Is non-invasive body sculpting right for your goals?" : slug === "body-sculpting" && locale === "zh" ? "非手术身体塑形适合您的需求吗？" : ui.whoFor}</h2>
+              <h2 className="text-[11px] tracking-[0.28em] uppercase text-gold">{bodyHeadings?.whoFor ?? ui.whoFor}</h2>
               <p className="mt-5 text-lg leading-relaxed text-ink-soft">{renderWithLinks(proc.whoFor, base)}</p>
             </section>
 
             {/* What the procedure involves */}
             <section className="mt-14 border-t border-sand pt-10">
-              <h2 className="text-[11px] tracking-[0.28em] uppercase text-gold">{ui.how}</h2>
+              <h2 className="text-[11px] tracking-[0.28em] uppercase text-gold">{bodyHeadings?.how ?? ui.how}</h2>
               <p className="mt-5 text-lg leading-relaxed text-ink-soft">{renderWithLinks(proc.how, base)}</p>
             </section>
 
             {/* Recovery */}
             <section className="mt-14 border-t border-sand pt-10">
-              <h2 className="text-[11px] tracking-[0.28em] uppercase text-gold">{ui.recovery}</h2>
+              <h2 className="text-[11px] tracking-[0.28em] uppercase text-gold">{bodyHeadings?.recovery ?? ui.recovery}</h2>
               <p className="mt-5 text-lg leading-relaxed text-ink-soft">{renderWithLinks(proc.recovery, base)}</p>
             </section>
 
             {/* Risks & considerations */}
             <section className="mt-14 border-t border-sand pt-10">
-              <h2 className="text-[11px] tracking-[0.28em] uppercase text-gold">{ui.considerations}</h2>
+              <h2 className="text-[11px] tracking-[0.28em] uppercase text-gold">{bodyHeadings?.considerations ?? ui.considerations}</h2>
               <p className="mt-5 text-lg leading-relaxed text-ink-soft">{renderWithLinks(proc.considerations, base)}</p>
             </section>
 
             {/* Before & After */}
             {images.length > 0 && (
               <section className="mt-14 border-t border-sand pt-10">
-                <h2 className="font-display text-3xl text-ink">{ui.results}</h2>
+                <h2 className="font-display text-3xl text-ink">{bodyHeadings?.results ?? ui.results}</h2>
                 {slug === "cell-light-therapy" ? <CaseCarousel faceImages={images} name={item.name} /> : <div className="mt-6 grid gap-4 sm:grid-cols-2">
                   {images.map((src, i) => (
                     <figure
@@ -244,7 +269,7 @@ export default async function TreatmentPage({
             )}
 
             <section className="mt-14 border-t border-sand pt-10">
-              <h2 className="font-display text-3xl text-ink">{ui.results}</h2>
+              <h2 className="font-display text-3xl text-ink">{bodyHeadings?.nextSteps ?? ui.results}</h2>
               <p className="mt-4 text-sm leading-relaxed text-taupe">{dict.results.note}</p>
               <div className="mt-6 flex flex-wrap gap-6 text-base text-gold-deep">
                 <Link href={base + "/results/"} className="underline">{dict.results.title} →</Link>
@@ -255,11 +280,11 @@ export default async function TreatmentPage({
 
             {/* FAQ */}
             <section className="mt-14 border-t border-sand pt-10">
-              <h2 className="font-display text-3xl text-ink">{ui.faq}</h2>
+              <h2 className="font-display text-3xl text-ink">{bodyHeadings?.faq ?? ui.faq}</h2>
               <dl className="mt-6 space-y-6">
                 {faq.map((f, i) => (
                   <div key={i}>
-                    <dt className="font-display text-xl text-ink">{f.q}</dt>
+                    <dt className="font-display text-xl text-ink">{bodyHeadings ? <h3>{f.q}</h3> : f.q}</dt>
                     <dd className="mt-2 text-base leading-relaxed text-ink-soft">{f.a}</dd>
                   </div>
                 ))}
@@ -305,7 +330,7 @@ export default async function TreatmentPage({
         {related.length > 0 && (
           <div className="mx-auto mt-20 max-w-7xl px-6 lg:px-10">
             <div className="border-t border-sand pt-12">
-              <h2 className="text-[11px] tracking-[0.28em] uppercase text-gold">{ui.related}</h2>
+              <h2 className="text-[11px] tracking-[0.28em] uppercase text-gold">{bodyHeadings?.related ?? ui.related}</h2>
               <div className="mt-8 grid gap-px overflow-hidden rounded-sm border border-sand bg-sand sm:grid-cols-3">
                 {related.map((t) => {
                   const ri = dict.treatmentsMenu.items[t.key as keyof typeof dict.treatmentsMenu.items];
