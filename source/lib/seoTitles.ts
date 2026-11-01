@@ -14,9 +14,9 @@ export const ENGLISH_SEO_TITLES = {
   treatmentsByKey: {
     liposuction: "Liposuction Kuala Lumpur | The Valley Beauty",
     rhinoplasty: "Rhinoplasty Kuala Lumpur | The Valley Beauty",
-    eye: "Eye Treatment Kuala Lumpur | The Valley Beauty",
+    eye: "Eyelid Surgery Kuala Lumpur | The Valley Beauty",
     facelift: "Facelift Kuala Lumpur | The Valley Beauty",
-    breast: "Breast Implant Kuala Lumpur | The Valley Beauty",
+    breast: "Breast Augmentation Kuala Lumpur | The Valley Beauty",
     chin: "Chin Implant Kuala Lumpur | The Valley Beauty",
     bodySculpt: "Body Sculpting Kuala Lumpur | The Valley Beauty",
     hifu: "HIFU Treatment Kuala Lumpur | Mont Kiara & Sri Hartamas",

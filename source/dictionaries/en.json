@@ -39,15 +39,15 @@
         "desc": "Refined, natural nose reshaping in Sri Hartamas"
       },
       "eye": {
-        "name": "Eye Treatment",
-        "desc": "Brighter, rejuvenated eyes for Kuala Lumpur"
+        "name": "Eyelid Surgery",
+        "desc": "Upper and lower eyelid surgery in Sri Hartamas, Kuala Lumpur"
       },
       "facelift": {
         "name": "Facelift",
         "desc": "Lift and restore youthful contours near Mont Kiara"
       },
       "breast": {
-        "name": "Breast Implant",
+        "name": "Breast Augmentation",
         "desc": "Natural augmentation and balance, Sri Hartamas"
       },
       "chin": {
@@ -67,7 +67,7 @@
         "desc": "Pigmentation, tone and texture renewal in KL"
       },
       "hairRemoval": {
-        "name": "Hair Removal",
+        "name": "Laser Hair Removal",
         "desc": "Smooth, lasting laser hair removal for Mont Kiara clients"
       },
       "cellLight": {
@@ -3529,8 +3529,8 @@
   },
   "treatmentsHubPage": {
     "eyebrow": "Treatments",
-    "title": "Cosmetic surgery & aesthetic treatments in Mont Kiara · Sri Hartamas",
-    "lead": "From precise cosmetic surgery to advanced non-surgical skin therapies, every treatment we offer is led by an experienced specialist and planned around you. This page is a complete guide to the services available at our Mont Kiara · Sri Hartamas clinic in Kuala Lumpur.",
+    "title": "Cosmetic Surgery & Aesthetic Treatments in Kuala Lumpur",
+    "lead": "Explore our surgical, body-contouring and skin-treatment services at The Valley Beauty in Desa Sri Hartamas, Kuala Lumpur. We welcome visitors from nearby Mont Kiara and Bangsar. Open each treatment page to review the procedure, considerations, patient examples and consultation options.",
     "sections": [
       {
         "heading": "How we approach treatment planning",
@@ -3538,7 +3538,7 @@
       },
       {
         "heading": "Surgical & non-surgical, side by side",
-        "body": "Our surgical menu covers liposuction, rhinoplasty, eye treatment, facelift, breast implant and chin implant. Our non-surgical and skin-care menu covers body sculpting, HIFU lifting, pico laser, laser hair removal, cell light therapy and a whitening drip. Each treatment page lists who it suits, how the procedure is performed, expected recovery and a candid view of considerations and risks. We update these pages as our experience and the evidence base evolve."
+        "body": "Our surgical menu covers liposuction, rhinoplasty, upper and lower eyelid surgery, facelift, breast augmentation with implants and chin implants. Our aesthetic and skin menu covers body sculpting, HIFU lifting, pico laser, laser hair removal, Cell Light Therapy, whitening drip, Sculpt Pro Coolwaves and Titanium Ultrasound Lifting. Each service has a dedicated page explaining the procedure, suitability, recovery and considerations to discuss at consultation."
       },
       {
         "heading": "Safety, aftercare and follow-up",
