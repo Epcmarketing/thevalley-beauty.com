@@ -71,7 +71,7 @@
         "desc": "なめらかで持続する医療脱毛（Mont Kiara）"
       },
       "cellLight": {
-        "name": "セルライト セラピー",
+        "name": "LED光療法",
         "desc": "LED光による肌の再生（Sri Hartamas）"
       },
       "whiteningDrip": {
@@ -155,7 +155,7 @@
       "hifu": "HIFU リフト",
       "picoLaser": "ピコレーザー",
       "hairRemoval": "医療脱毛",
-      "cellLight": "セルライト セラピー",
+      "cellLight": "LED光療法",
       "whiteningDrip": "美白点滴",
       "onda": "Sculpt Pro クールウェーブ",
       "titanium": "チタニウム超音波リフト"
@@ -624,7 +624,7 @@
       ]
     },
     "cellLight": {
-      "overview": "セルライト（LED）セラピーは特定の波長の光で肌を落ち着かせ、若返らせ、整えます。ダウンタイムのないやさしくリラックスできる施術で、フェイシャルと組み合わせたり、他の施術後に回復と全体的な肌の質を支えるために使われたりします。",
+      "overview": "LED光療法（Cell Light Therapy）は特定の波長の光で肌を落ち着かせ、若返らせ、整えます。ダウンタイムのないやさしくリラックスできる施術で、フェイシャルと組み合わせたり、他の施術後に回復と全体的な肌の質を支えるために使われたりします。",
       "whoFor": "くすみや毛穴の詰まりの改善、施術後の回復のサポート、あるいはやさしい非侵襲の方法で健康的な肌を保ちたい方に適します。多くの肌質によく合い、他の施術のよい補完になります。",
       "how": "クレンジングの後、選んだ波長の光を快適でリラックスできる形で肌に当てます。波長ごとに対応する悩みが異なり、肌に合わせて選び組み合わせます。フェイシャルと組み合わせたり、短いコースとして予定したりすることが多いです。",
       "benefits": [
@@ -634,7 +634,7 @@
         "フェイシャル・スキンプログラムと相乗効果"
       ],
       "recovery": "ダウンタイムはありません——リラックスできる施術で、すぐに日常へ戻れます。効果は定期的なコースでやさしく積み重なり、肌と目標に合わせた無理のない頻度をご案内します。 ダウンタイムはありません — 多くの患者さまはセッション後すぐにお仕事に戻ったり、メイクをされます。1〜2 時間程度のお肌の温感は正常な反応です。",
-      "considerations": "LEDセラピーはやさしく、その効果は劇的というより補助的でゆるやかであり、全体的なスキンプランの一部として行うと最も効果的です。現実的な期待値を設定し、役立つ場合は他の施術と無理なく組み合わせます。 当院の実際の運用では、セルライト療法は単発よりも継続的なスキンプランの一部として行うと最も効果的です — 通常、週 1 回を 3〜6 週続けた段階で目に見える転換が現れます。施術間の紫外線対策は結果に大きく影響し、強い活性成分（高濃度レチノール、強い酸性成分）は前後 48 時間ずつ休止します。",
+      "considerations": "LEDセラピーはやさしく、その効果は劇的というより補助的でゆるやかであり、全体的なスキンプランの一部として行うと最も効果的です。現実的な期待値を設定し、役立つ場合は他の施術と無理なく組み合わせます。 当院の実際の運用では、LED光療法は単発よりも継続的なスキンプランの一部として行うと最も効果的です — 通常、週 1 回を 3〜6 週続けた段階で目に見える転換が現れます。施術間の紫外線対策は結果に大きく影響し、強い活性成分（高濃度レチノール、強い酸性成分）は前後 48 時間ずつ休止します。",
       "faq": [
         {
           "q": "LED光セラピーは何に役立ちますか？",
@@ -2766,7 +2766,7 @@
             "heading": "色が違えば仕事も違う",
             "body": [
               "光の色が、届く深さと肌への伝言を決めます。赤と近赤外はより深く届くコラーゲン支援・鎮静の波長で — キメ、赤み、肌全体の回復力に使われます。青は表面で働き、ニキビに関与する細菌を狙います。青や青赤の組み合わせがニキビのプロトコルに登場する理由です。",
-              "色と同じくらい量も重要です：クリニックのパネルの強度と、予定どおり通うコースの規律が、院内の[セルライトセラピー](treatments/cell-light-therapy)と自宅の弱いマスク数分とを分ける点です。どちらも魔法ではありませんが — 同じ治療でもありません。"
+              "色と同じくらい量も重要です：クリニックのパネルの強度と、予定どおり通うコースの規律が、院内の[LED光療法](treatments/cell-light-therapy)と自宅の弱いマスク数分とを分ける点です。どちらも魔法ではありませんが — 同じ治療でもありません。"
             ]
           },
           {
@@ -3460,7 +3460,7 @@
         },
         {
           "heading": "Mont Kiara の患者さま向け施術",
-          "body": "繊細な美容外科から先進的なノンサージカル肌ケアまで、包括的なメニューをご用意しています。手術系：[脂肪吸引](treatments/liposuction)、[鼻形成](treatments/rhinoplasty)、[目の施術](treatments/eye-treatment)、[フェイスリフト](treatments/facelift)、[豊胸](treatments/breast-implant)、[顎インプラント](treatments/chin-implant)。ノンサージカル：[ボディスカルプト](treatments/body-sculpting)、[HIFU リフティング](treatments/hifu-lifting)、[ピコレーザー](treatments/pico-laser)、[医療脱毛](treatments/hair-removal)、[セルライト療法](treatments/cell-light-therapy)、[ホワイトニング点滴](treatments/whitening-drip)。すべての施術は [施術一覧ページ](treatments) からご覧いただけます。"
+          "body": "繊細な美容外科から先進的なノンサージカル肌ケアまで、包括的なメニューをご用意しています。手術系：[脂肪吸引](treatments/liposuction)、[鼻形成](treatments/rhinoplasty)、[目の施術](treatments/eye-treatment)、[フェイスリフト](treatments/facelift)、[豊胸](treatments/breast-implant)、[顎インプラント](treatments/chin-implant)。ノンサージカル：[ボディスカルプト](treatments/body-sculpting)、[HIFU リフティング](treatments/hifu-lifting)、[ピコレーザー](treatments/pico-laser)、[医療脱毛](treatments/hair-removal)、[LED光療法](treatments/cell-light-therapy)、[ホワイトニング点滴](treatments/whitening-drip)。すべての施術は [施術一覧ページ](treatments) からご覧いただけます。"
         },
         {
           "heading": "Mont Kiara の患者さまが The Valley を選ぶ理由",
@@ -3500,7 +3500,7 @@
         },
         {
           "heading": "Sri Hartamas で受けられる施術",
-          "body": "Sri Hartamas の患者さま向けに、包括的な美容施術メニューをご用意しています。美容外科：[脂肪吸引](treatments/liposuction)、[鼻形成](treatments/rhinoplasty)、[目の施術](treatments/eye-treatment)、[フェイスリフト](treatments/facelift)、[豊胸](treatments/breast-implant)、[顎インプラント](treatments/chin-implant)。美容医療・スキンケア：[ボディスカルプト](treatments/body-sculpting)、[HIFU リフティング](treatments/hifu-lifting)、[ピコレーザー](treatments/pico-laser)、[医療脱毛](treatments/hair-removal)、[セルライト療法](treatments/cell-light-therapy)、[ホワイトニング点滴](treatments/whitening-drip)。詳細は [施術一覧ページ](treatments) をご覧ください。"
+          "body": "Sri Hartamas の患者さま向けに、包括的な美容施術メニューをご用意しています。美容外科：[脂肪吸引](treatments/liposuction)、[鼻形成](treatments/rhinoplasty)、[目の施術](treatments/eye-treatment)、[フェイスリフト](treatments/facelift)、[豊胸](treatments/breast-implant)、[顎インプラント](treatments/chin-implant)。美容医療・スキンケア：[ボディスカルプト](treatments/body-sculpting)、[HIFU リフティング](treatments/hifu-lifting)、[ピコレーザー](treatments/pico-laser)、[医療脱毛](treatments/hair-removal)、[LED光療法](treatments/cell-light-therapy)、[ホワイトニング点滴](treatments/whitening-drip)。詳細は [施術一覧ページ](treatments) をご覧ください。"
         },
         {
           "heading": "Sri Hartamas でのカウンセリング体験",
@@ -3538,7 +3538,7 @@
       },
       {
         "heading": "手術とノンサージカルを並べて",
-        "body": "外科メニューは、脂肪吸引、鼻形成、目の施術、フェイスリフト、豊胸、顎インプラント。ノンサージカルおよびスキンケアメニューは、ボディスカルプト、HIFU リフティング、ピコレーザー、医療脱毛、セルライト療法、ホワイトニング点滴。各施術ページには、適応となる方、施術の方法、想定される回復、そして留意点とリスクの率直な解説を掲載しています。臨床経験とエビデンスの進化に応じて、これらのページは更新されます。"
+        "body": "外科メニューは、脂肪吸引、鼻形成、目の施術、フェイスリフト、豊胸、顎インプラント。ノンサージカルおよびスキンケアメニューは、ボディスカルプト、HIFU リフティング、ピコレーザー、医療脱毛、LED光療法、ホワイトニング点滴。各施術ページには、適応となる方、施術の方法、想定される回復、そして留意点とリスクの率直な解説を掲載しています。臨床経験とエビデンスの進化に応じて、これらのページは更新されます。"
       },
       {
         "heading": "安全性、アフターケア、フォローアップ",
