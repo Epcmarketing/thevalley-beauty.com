@@ -2,12 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export function CaseCarousel({ faceImages, name }: { faceImages: string[]; name: string }) {
+export function CaseCarousel({ faceImages, name, cases }: { faceImages: string[]; name: string; cases?: { images: string[]; label: string }[] }) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const [reduced, setReduced] = useState(true);
   const touch = useRef<number | null>(null);
-  const slides = [
+  const slides = cases ?? [
     { images: faceImages, label: "Face" },
     { images: ["/images/non-surgical/cell-light-therapy-legs-case-kuala-lumpur.jpeg"], label: "Legs" },
     { images: ["/images/non-surgical/cell-light-therapy-arms-case-kuala-lumpur.jpeg"], label: "Arms" },
@@ -21,11 +21,11 @@ export function CaseCarousel({ faceImages, name }: { faceImages: string[]; name:
   useEffect(() => {
     if (paused || reduced) return;
     const timer = setInterval(() => {
-      if (!document.hidden) setActive(i => (i + 1) % 3);
+      if (!document.hidden) setActive(i => (i + 1) % slides.length);
     }, 3000);
     return () => clearInterval(timer);
-  }, [paused, reduced, active]);
-  const move = (step: number) => setActive(i => (i + step + 3) % 3);
+  }, [paused, reduced, active, slides.length]);
+  const move = (step: number) => setActive(i => (i + step + slides.length) % slides.length);
   return <div className="mt-6" aria-label={`${name} patient cases`} aria-roledescription="carousel">
     <div className="overflow-hidden rounded-sm border border-sand bg-cream" style={{ touchAction: "pan-y" }}
       onTouchStart={e => { touch.current = e.touches[0].clientX; }}
@@ -43,7 +43,7 @@ export function CaseCarousel({ faceImages, name }: { faceImages: string[]; name:
     </div>
     <div className="mt-4 flex items-center justify-center gap-4">
       <button type="button" aria-label="Previous case" className="rounded-full border border-sand px-4 py-2" onClick={() => move(-1)}>←</button>
-      <span className="text-xs text-taupe">{active + 1} / 3</span>
+      <span className="text-xs text-taupe">{active + 1} / {slides.length}</span>
       <button type="button" aria-label="Next case" className="rounded-full border border-sand px-4 py-2" onClick={() => move(1)}>→</button>
       {!reduced && <button type="button" className="text-xs text-taupe underline" onClick={() => setPaused(p => !p)}>{paused ? "Play" : "Pause"}</button>}
     </div>

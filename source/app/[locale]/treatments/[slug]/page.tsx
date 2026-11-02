@@ -232,7 +232,7 @@ export default async function TreatmentPage({
             {images.length > 0 && (
               <section className="mt-14 border-t border-sand pt-10">
                 <h2 className="font-display text-3xl text-ink">{bodyHeadings?.results ?? ui.results}</h2>
-                {slug === "cell-light-therapy" ? <CaseCarousel faceImages={images} name={item.name} /> : <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                {slug === "cell-light-therapy" ? <CaseCarousel faceImages={images} name={item.name} /> : slug === "hifu-lifting" ? <CaseCarousel faceImages={images} name={item.name} cases={[{ images, label: "Before & After 1" }, { images: ["/images/non-surgical/hifu-before-after-kuala-lumpur-case-2.png"], label: "Before & After 2" }]} /> : <div className="mt-6 grid gap-4 sm:grid-cols-2">
                   {images.map((src, i) => (
                     <figure
                       key={src}
