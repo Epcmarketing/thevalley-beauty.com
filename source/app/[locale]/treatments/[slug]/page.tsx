@@ -278,7 +278,7 @@ export default async function TreatmentPage({
               <dl className="mt-6 space-y-6">
                 {faq.map((f, i) => (
                   <div key={i}>
-                    <dt className="font-display text-xl text-ink">{bodyHeadings ? <h3>{f.q}</h3> : f.q}</dt>
+                    <dt className="font-display text-xl text-ink"><h3>{f.q}</h3></dt>
                     <dd className="mt-2 text-base leading-relaxed text-ink-soft">{f.a}</dd>
                   </div>
                 ))}
