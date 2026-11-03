@@ -115,6 +115,11 @@ export default async function MagazineIndex({
                 <p className="mt-5 text-[11px] tracking-[0.14em] uppercase text-taupe">
                   {fmt(p.date)} · {p.readMinutes} {dict.magazine.readTime}
                 </p>
+                {locale === "en" && post.key === "picoLaserAftercare" && "dateModified" in p && p.dateModified && (
+                  <p className="mt-1 text-xs tracking-wide text-taupe">
+                    <time dateTime={p.dateModified}>Updated {fmt(p.dateModified)}</time>
+                  </p>
+                )}
                 <h2 className="mt-2 font-display text-2xl leading-snug text-ink transition-colors group-hover:text-gold-deep">
                   {p.title}
                 </h2>

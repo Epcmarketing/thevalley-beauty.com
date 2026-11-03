@@ -153,6 +153,11 @@ export default async function PostPage({
             <span className="h-3 w-px bg-ivory/30" />
             <span>{p.readMinutes} {dict.magazine.readTime}</span>
           </div>
+          {locale === "en" && post.key === "picoLaserAftercare" && "dateModified" in p && p.dateModified && (
+            <p className="mt-3 text-xs tracking-wide text-ivory/55">
+              <time dateTime={p.dateModified}>Updated {fmt(p.dateModified)}</time>
+            </p>
+          )}
         </div>
       </header>
 
