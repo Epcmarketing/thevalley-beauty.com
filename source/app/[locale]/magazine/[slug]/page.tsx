@@ -43,9 +43,11 @@ export async function generateMetadata({
   const description = locale === "en" && slug === "sculpt-pro-treatment-what-it-actually-does-kuala-lumpur"
     ? "Explore Sculpt Pro Coolwaves in Kuala Lumpur: how the treatment works, suitability and consultation questions at The Valley Beauty in Sri Hartamas."
     : fitDescription(p.excerpt);
+  const modifiedTime = "dateModified" in p ? p.dateModified as string : undefined;
+  const isPicoGuide = locale === "en" && post.key === "picoLaserAftercare";
   return {
     metadataBase: new URL(SITE_URL),
-    title: fitTitle(`${p.title} | ${dict.brand.nameFull}`, locale),
+    title: isPicoGuide ? { absolute: p.title } : fitTitle(`${p.title} | ${dict.brand.nameFull}`, locale),
     description,
     alternates: buildAlternates(locale, `magazine/${slug}`),
     openGraph: {
@@ -54,7 +56,14 @@ export async function generateMetadata({
       description,
       url: contentUrlPath(locale, `magazine/${slug}`),
       publishedTime: p.date,
+      modifiedTime,
       images: [{ url: post.cover }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: p.title,
+      description,
+      images: [post.cover],
     },
   };
 }
@@ -89,6 +98,7 @@ export default async function PostPage({
         description: p.excerpt,
         image: `${SITE_URL}${post.cover}`,
         datePublished: p.date,
+        ...("dateModified" in p ? { dateModified: p.dateModified } : {}),
         inLanguage: locale,
         publisher: { "@type": "MedicalClinic", name: clinic.legalName, "@id": `${SITE_URL}/#clinic` },
         mainEntityOfPage: pageUrl,
@@ -184,6 +194,16 @@ export default async function PostPage({
                 {renderWithLinks(para, base)}
               </p>
             ))}
+            {("subsections" in s ? s.subsections as { heading: string; body: string[] }[] : []).map((sub, j) => (
+              <div key={j} className="mt-8">
+                <h3 className="font-display text-2xl leading-snug text-ink">{sub.heading}</h3>
+                {sub.body.map((para, k) => (
+                  <p key={k} className="mt-5 text-[1.075rem] leading-[1.9] text-ink-soft">
+                    {renderWithLinks(para, base)}
+                  </p>
+                ))}
+              </div>
+            ))}
             {/* tvb-section-image — 섹션에 image 가 있을 때만 렌더 */}
             {"image" in s && (s as { image?: string }).image ? (
               <figure className="mt-8">
@@ -251,6 +271,8 @@ export default async function PostPage({
                       <img
                         src={withBasePath(m.cover)}
                         alt={mp.title}
+                        width={1600}
+                        height={900}
                         loading="lazy"
                         className="aspect-[16/9] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
                       />
@@ -287,7 +309,7 @@ function renderWithLinks(text: string, base: string): React.ReactNode[] {
     parts.push(
       <Link
         key={`l-${key++}`}
-        href={`${base}/${m[2].replace(/^\/+/, "")}`}
+        href={/^https:\/\//.test(m[2]) ? m[2] : `${base}/${m[2].replace(/^\/+/, "")}`}
         className="text-gold-deep underline decoration-gold/40 underline-offset-4 transition-colors hover:text-gold hover:decoration-gold"
       >
         {m[1]}

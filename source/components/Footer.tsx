@@ -69,7 +69,7 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: Locale }) {
               width={280}
               height={188}
               loading="lazy"
-              className="h-20 w-auto"
+              className="aspect-[280/188] h-20 w-auto"
             />
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-ivory/65">
               {dict.footer.tagline}

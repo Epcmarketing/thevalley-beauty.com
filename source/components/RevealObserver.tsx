@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import { usePathname } from "next/navigation";
 
 // Reveals elements carrying the `.reveal` class as they scroll into view.
@@ -8,7 +8,10 @@ import { usePathname } from "next/navigation";
 export function RevealObserver() {
   const pathname = usePathname();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    // Enable reveal styles only after hydration; changing <html> beforehand
+    // makes its class attribute disagree with the server-rendered markup.
+    document.documentElement.classList.add("reveal-on");
     const els = Array.from(document.querySelectorAll<HTMLElement>(".reveal:not(.is-visible)"));
     if (els.length === 0) return;
 

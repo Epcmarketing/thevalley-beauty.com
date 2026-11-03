@@ -106,6 +106,8 @@ export default async function MagazineIndex({
                   <img
                     src={withBasePath(post.cover)}
                     alt={p.title}
+                    width={1600}
+                    height={900}
                     loading="lazy"
                     className="aspect-[16/9] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
                   />

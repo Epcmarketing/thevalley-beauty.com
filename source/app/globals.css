@@ -114,9 +114,9 @@
 }
 
 /* Scroll reveal — sections fade/slide in as they enter the viewport.
-   The `reveal-on` class is added on <html> by an inline script before
-   paint (so there's no flash), which means content stays fully visible
-   if JS is disabled. Reduced-motion users see everything at once. */
+   RevealObserver adds `reveal-on` after hydration, before paint.
+   Content stays visible if JS is disabled; reduced-motion users see
+   everything at once. */
 html.reveal-on .reveal {
   opacity: 0;
   transform: translateY(26px);

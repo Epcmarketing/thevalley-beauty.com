@@ -95,11 +95,6 @@ export async function SiteShell({
     <html lang={localeHtmlLang[locale]} className={`${cormorant.variable} ${jost.variable}`}>
       <head>
         <script src="/meta-pixel.js?v=1" defer />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: "document.documentElement.classList.add('reveal-on')",
-          }}
-        />
       </head>
       <body className="min-h-screen antialiased">
         <noscript><img height="1" width="1" style={{ display: "none" }} src="https://www.facebook.com/tr?id=2442960263170612&ev=PageView&noscript=1" alt="" /></noscript>
