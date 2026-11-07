@@ -1,5 +1,5 @@
-:HL["/_next/static/chunks/04u~plki4sorz.css","style"]
+:HL["/_next/static/chunks/1796ztlltn.e8.css","style"]
 :HL["/_next/static/media/cormorant-s.p.063t5..yqlr8e.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/jost-s.p.0yilzy8g.4zbn.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/images/magazine/breast-implant-removal-explant-consultation-kuala-lumpur-cover.webp","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":0,"slots":{"children":{"name":"locale","param":{"type":"d","key":"ms","siblings":null},"prefetchHints":16,"slots":{"children":{"name":"magazine","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"breast-implant-removal-explant-consultation-kuala-lumpur","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}}}},"staleTime":300,"buildId":"N9K2Me3WgHsU2W0YnlDJr"}
+0:{"tree":{"name":"","param":null,"prefetchHints":0,"slots":{"children":{"name":"locale","param":{"type":"d","key":"ms","siblings":null},"prefetchHints":16,"slots":{"children":{"name":"magazine","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"breast-implant-removal-explant-consultation-kuala-lumpur","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}}}},"staleTime":300,"buildId":"VuNkd8BaH9pZjBBIxTUQM"}
