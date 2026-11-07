@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HifuBody, hifuFaq, hifuOverview, HIFU_UPDATED } from "@/components/HifuContent";
 import treatmentSeo from "@/lib/treatmentSeo.json";
 import { CaseCarousel } from "@/components/CaseCarousel";
 import { notFound } from "next/navigation";
@@ -64,8 +65,10 @@ export async function generateMetadata({
     title,
     description,
     alternates: buildAlternates(locale, `treatments/${slug}`),
+    ...(locale === "en" && slug === "hifu-lifting" ? { twitter: { card: "summary_large_image" as const, title, description, images: ["/images/og-cover.png"] } } : {}),
     openGraph: {
       type: "article",
+      ...(locale === "en" && slug === "hifu-lifting" ? { modifiedTime: HIFU_UPDATED } : {}),
       title,
       description,
       url: contentUrlPath(locale, `treatments/${slug}`),
@@ -91,7 +94,7 @@ export default async function TreatmentPage({
   const isEnglishHifu = locale === "en" && slug === "hifu-lifting";
   const localizedSeo = treatmentSeo[treatment.key as keyof typeof treatmentSeo][locale];
   const bodyHeadings = localizedSeo?.headings;
-  const faq = proc.faq;
+  const faq = isEnglishHifu ? hifuFaq : proc.faq;
   const base = localeBase(locale);
   const home = base || "/";
   const categoryLabel = treatment.category === "surgical" ? ui.surgical : ui.nonSurgical;
@@ -108,7 +111,8 @@ export default async function TreatmentPage({
         "@type": "MedicalProcedure",
         "@id": `${pageUrl}#procedure`,
         name: item.name,
-        description: proc.overview,
+        description: isEnglishHifu ? hifuOverview : proc.overview,
+        ...(isEnglishHifu ? { dateModified: HIFU_UPDATED } : {}),
         url: pageUrl,
         procedureType:
           treatment.category === "surgical"
@@ -164,8 +168,8 @@ export default async function TreatmentPage({
           <h1 className="mt-4 max-w-3xl font-display text-5xl leading-[1.05] text-ivory text-balance lg:text-6xl">
             {localizedSeo?.h1 ?? (locale === "en" ? (isEnglishHifu ? "HIFU Treatment in Kuala Lumpur" : item.name + " in Kuala Lumpur") : (locale === "zh" && slug === "body-sculpting" ? "吉隆坡非手术身体塑形" : item.name))}
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ivory/75">{proc.overview}</p>
-          {locale === "en" && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ivory/75">Visit The Valley Beauty Medical Spa in Desa Sri Hartamas, Kuala Lumpur, Malaysia. We welcome visitors from Mont Kiara and Bangsar at our Sri Hartamas location. Discuss your goals and a personalised treatment plan during your consultation.</p>}
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ivory/75">{isEnglishHifu ? hifuOverview : proc.overview}</p>
+          {locale === "en" && !isEnglishHifu && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ivory/75">Visit The Valley Beauty Medical Spa in Desa Sri Hartamas, Kuala Lumpur, Malaysia. We welcome visitors from Mont Kiara and Bangsar at our Sri Hartamas location. Discuss your goals and a personalised treatment plan during your consultation.</p>}
           <Link
             href={`${base}/contact`}
             className="mt-9 inline-block rounded-full bg-gold px-8 py-4 text-xs tracking-[0.14em] uppercase text-white transition-colors hover:bg-gold-deep"
@@ -191,6 +195,7 @@ export default async function TreatmentPage({
                 <a href={"https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent("Hello, I would like to arrange an eyelid surgery consultation at The Valley Beauty in Sri Hartamas.")} target="_blank" rel="noopener noreferrer" className="mt-6 inline-block rounded-full bg-gold px-6 py-3 text-sm text-white hover:bg-gold-deep">Ask about eyelid surgery on WhatsApp →</a>
               </section>
             )}
+            {isEnglishHifu ? <HifuBody /> : <>
             {/* Benefits */}
             <section>
               <h2 className="text-[11px] tracking-[0.28em] uppercase text-gold">{bodyHeadings?.benefits ?? ui.benefits}</h2>
@@ -228,6 +233,7 @@ export default async function TreatmentPage({
               <p className="mt-5 text-lg leading-relaxed text-ink-soft">{renderWithLinks(proc.considerations, base)}</p>
             </section>
 
+            </>}
             {/* Before & After */}
             {images.length > 0 && (
               <section className="mt-14 border-t border-sand pt-10">
@@ -252,7 +258,7 @@ export default async function TreatmentPage({
               </section>
             )}
 
-            <section className="mt-14 border-t border-sand pt-10">
+            {!isEnglishHifu && <section className="mt-14 border-t border-sand pt-10">
               <h2 className="font-display text-3xl text-ink">{bodyHeadings?.nextSteps ?? ui.results}</h2>
               <p className="mt-4 text-sm leading-relaxed text-taupe">{dict.results.note}</p>
               <div className="mt-6 flex flex-wrap gap-6 text-base text-gold-deep">
@@ -262,6 +268,7 @@ export default async function TreatmentPage({
               </div>
             </section>
 
+            }
             {locale === "en" && slug === "eye-treatment" && (
               <section className="mt-14 border-t border-sand pt-10">
                 <h2 className="font-display text-3xl text-ink">Read more before your consultation</h2>
@@ -279,14 +286,14 @@ export default async function TreatmentPage({
                 {faq.map((f, i) => (
                   <div key={i}>
                     <dt className="font-display text-xl text-ink"><h3>{f.q}</h3></dt>
-                    <dd className="mt-2 text-base leading-relaxed text-ink-soft">{f.a}</dd>
+                    <dd className="mt-2 text-base leading-relaxed text-ink-soft">{f.a}{isEnglishHifu && <p className="mt-2 text-sm"><a className="text-gold-deep underline" href={hifuFaq[i].source}>Read the supporting {hifuFaq[i].sourceLabel} guidance</a></p>}</dd>
                   </div>
                 ))}
               </dl>
             </section>
             {isEnglishHifu && <section className="mt-14 border-t border-sand pt-10">
-              <h2 className="font-display text-3xl text-ink">Explore results and patient reviews</h2>
-              <p className="mt-5 text-lg leading-relaxed text-ink-soft">Browse treatment photos and original patient feedback before arranging your consultation. Individual results vary.</p>
+              <h2 className="font-display text-3xl text-ink">Book a HIFU Consultation in Sri Hartamas</h2>
+              <p className="mt-5 text-lg leading-relaxed text-ink-soft">Arrange a consultation at The Valley Beauty in Desa Sri Hartamas to discuss your concerns, suitability and alternatives. Ask which device is proposed, who will perform treatment, the full cost and how follow-up will be arranged before deciding whether to book.</p>
               <div className="mt-6 flex flex-wrap gap-6 text-base text-gold-deep">
                 <Link href="/results/" className="underline">View before &amp; after results →</Link>
                 <Link href="/reviews/" className="underline">Read patient reviews →</Link>
