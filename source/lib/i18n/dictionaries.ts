@@ -7,11 +7,21 @@ type MagazineSection = {
   body: string[];
   image?: string;
   imageAlt?: string;
+  comparison?: { caption: string; headers: string[]; rows: string[][] };
+  questions?: string[];
   subsections?: { heading: string; body: string[] }[];
 };
 export type Dictionary = Omit<EnglishDictionary, "magazine"> & {
   magazine: Omit<EnglishDictionary["magazine"], "posts"> & {
-    posts: Omit<EnglishDictionary["magazine"]["posts"], "picoLaserAftercare"> & {
+    posts: Omit<EnglishDictionary["magazine"]["posts"], "picoLaserAftercare" | "hifuCandidacyGuide"> & {
+      hifuCandidacyGuide: Omit<EnglishDictionary["magazine"]["posts"]["hifuCandidacyGuide"], "sections" | "dateModified" | "coverAlt" | "lead" | "seoTitle" | "metaDescription"> & {
+        sections: MagazineSection[];
+        dateModified?: string;
+        coverAlt?: string;
+        lead?: string;
+        seoTitle?: string;
+        metaDescription?: string;
+      };
       picoLaserAftercare: Omit<EnglishDictionary["magazine"]["posts"]["picoLaserAftercare"], "sections" | "dateModified"> & {
         sections: MagazineSection[];
         dateModified?: string;

@@ -40,14 +40,16 @@ export async function generateMetadata({
   const dict = await getDictionary(locale);
   const p = dict.magazine.posts[post.key as PostKey];
 
-  const description = locale === "en" && slug === "sculpt-pro-treatment-what-it-actually-does-kuala-lumpur"
+  const description = locale === "en" && post.key === "hifuCandidacyGuide" && "metaDescription" in p
+    ? p.metaDescription
+    : locale === "en" && slug === "sculpt-pro-treatment-what-it-actually-does-kuala-lumpur"
     ? "Explore Sculpt Pro Coolwaves in Kuala Lumpur: how the treatment works, suitability and consultation questions at The Valley Beauty in Sri Hartamas."
     : fitDescription(p.excerpt);
   const modifiedTime = "dateModified" in p ? p.dateModified as string : undefined;
   const isPicoGuide = locale === "en" && post.key === "picoLaserAftercare";
   return {
     metadataBase: new URL(SITE_URL),
-    title: isPicoGuide ? { absolute: p.title } : fitTitle(`${p.title} | ${dict.brand.nameFull}`, locale),
+    title: (isPicoGuide || (locale === "en" && post.key === "hifuCandidacyGuide")) ? { absolute: locale === "en" && post.key === "hifuCandidacyGuide" && "seoTitle" in p ? (p.seoTitle ?? p.title) : p.title } : fitTitle(`${p.title} | ${dict.brand.nameFull}`, locale),
     description,
     alternates: buildAlternates(locale, `magazine/${slug}`),
     openGraph: {
@@ -149,7 +151,7 @@ export default async function PostPage({
             {p.title}
           </h1>
           <div className="mt-7 flex items-center justify-center gap-3 text-[11px] tracking-[0.16em] uppercase text-ivory/55">
-            <span>{fmt(p.date)}</span>
+            <span>{locale === "en" && post.key === "hifuCandidacyGuide" && "dateModified" in p ? <time dateTime={p.dateModified}>Updated {fmt(p.dateModified as string)}</time> : fmt(p.date)}</span>
             <span className="h-3 w-px bg-ivory/30" />
             <span>{p.readMinutes} {dict.magazine.readTime}</span>
           </div>
@@ -165,7 +167,7 @@ export default async function PostPage({
       <div className="mx-auto mt-10 max-w-3xl px-6 lg:mt-14 lg:px-10">
         <div className="overflow-hidden rounded-sm border border-sand/80 shadow-[0_40px_90px_-50px_rgba(42,36,32,0.65)]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={withBasePath(post.cover)} alt={p.title} className="block h-auto w-full" />
+          <img src={withBasePath(post.cover)} alt={"coverAlt" in p ? p.coverAlt : p.title} className="block h-auto w-full" />
         </div>
       </div>
 
@@ -173,7 +175,7 @@ export default async function PostPage({
       <div className="mx-auto max-w-[44rem] px-6 py-14 lg:px-8 lg:py-20">
         {/* Lead */}
         <p className="font-display text-2xl leading-[1.5] text-ink text-balance lg:text-[1.7rem]">
-          {p.excerpt}
+          {"lead" in p ? p.lead : p.excerpt}
         </p>
         <div className="mt-10 hairline" />
 
@@ -199,6 +201,18 @@ export default async function PostPage({
                 {renderWithLinks(para, base)}
               </p>
             ))}
+            {locale === "en" && post.key === "hifuCandidacyGuide" && "comparison" in s && s.comparison && (
+              <div className="mt-8 overflow-x-auto rounded-sm border border-sand" role="region" aria-label="HIFU and facelift comparison" tabIndex={0}>
+                <table className="w-full table-fixed border-collapse text-left text-sm leading-relaxed text-ink-soft">
+                  <caption className="p-4 text-left font-medium text-ink">{s.comparison.caption}</caption>
+                  <thead className="bg-cream text-ink"><tr>{s.comparison.headers.map((cell, j) => <th key={j} scope="col" className="w-1/3 break-words border-t border-sand p-2 align-top sm:p-4">{cell}</th>)}</tr></thead>
+                  <tbody>{s.comparison.rows.map((row, j) => <tr key={j}>{row.map((cell, k) => k === 0 ? <th key={k} scope="row" className="break-words border-t border-sand p-2 align-top font-medium text-ink sm:p-4">{cell}</th> : <td key={k} className="break-words border-t border-sand p-2 align-top sm:p-4">{cell}</td>)}</tr>)}</tbody>
+                </table>
+              </div>
+            )}
+            {locale === "en" && post.key === "hifuCandidacyGuide" && "questions" in s && s.questions && (
+              <ul className="mt-5 list-disc space-y-4 pl-5 text-[1.075rem] leading-[1.9] text-ink-soft">{s.questions.map((question, j) => <li key={j}>{question}</li>)}</ul>
+            )}
             {("subsections" in s ? s.subsections as { heading: string; body: string[] }[] : []).map((sub, j) => (
               <div key={j} className="mt-8">
                 <h3 className="font-display text-2xl leading-snug text-ink">{sub.heading}</h3>
@@ -231,7 +245,7 @@ export default async function PostPage({
           </section>
         ))}
 
-        {locale === "en" && ["hifu-candidacy-guide-kuala-lumpur", "hifu-vs-onda-vs-titanium-ultrasound-which-lift"].includes(slug) && (
+        {locale === "en" && ["hifu-vs-onda-vs-titanium-ultrasound-which-lift"].includes(slug) && (
           <section className="mt-14 border-t border-sand pt-10">
             <h2 className="font-display text-3xl text-ink">Explore HIFU treatment in Kuala Lumpur</h2>
             <p className="mt-5 text-lg leading-relaxed text-ink-soft">Read about HIFU at our Desa Sri Hartamas location, review treatment photos and patient feedback, or arrange a consultation to discuss your suitability.</p>
@@ -241,6 +255,11 @@ export default async function PostPage({
               <Link href="/reviews/" className="underline">Patient reviews →</Link>
             </div>
           </section>
+        )}
+        {locale === "en" && post.key === "hifuCandidacyGuide" && (
+          <p className="mt-12 text-lg leading-relaxed text-ink-soft">
+            For details of the service in Sri Hartamas, explore our <Link href="/treatments/hifu-lifting/" className="text-gold-deep underline">HIFU treatment guide</Link>.
+          </p>
         )}
         {/* ── CTA ── */}
         <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">

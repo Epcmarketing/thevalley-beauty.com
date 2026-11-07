@@ -105,7 +105,7 @@ export default async function MagazineIndex({
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={withBasePath(post.cover)}
-                    alt={p.title}
+                    alt={"coverAlt" in p ? p.coverAlt : p.title}
                     width={1600}
                     height={900}
                     loading="lazy"
@@ -113,7 +113,7 @@ export default async function MagazineIndex({
                   />
                 </div>
                 <p className="mt-5 text-[11px] tracking-[0.14em] uppercase text-taupe">
-                  {fmt(p.date)} · {p.readMinutes} {dict.magazine.readTime}
+                  {locale === "en" && post.key === "hifuCandidacyGuide" && "dateModified" in p ? <time dateTime={p.dateModified}>Updated {fmt(p.dateModified as string)}</time> : fmt(p.date)} · {p.readMinutes} {dict.magazine.readTime}
                 </p>
                 {locale === "en" && post.key === "picoLaserAftercare" && "dateModified" in p && p.dateModified && (
                   <p className="mt-1 text-xs tracking-wide text-taupe">
