@@ -24,6 +24,14 @@ export default async function HomePage({
   if (!isLocale(locale)) notFound();
   const dict = await getDictionary(locale as Locale);
   const base = localeBase(locale as Locale);
+  const heroCopy = locale === "en" ? {
+    hero: { ...dict.hero, h1: "Aesthetic Clinic in Sri Hartamas, Kuala Lumpur" },
+    heroSlides: dict.heroSlides.map((slide, i) => i === 0 ? {
+      ...slide,
+      subtitle: "Explore aesthetic skin treatments and cosmetic surgery at our Desa Sri Hartamas clinic, near Mont Kiara. Book a private consultation.",
+    } : slide),
+    brand: dict.brand,
+  } : { hero: dict.hero, heroSlides: dict.heroSlides, brand: dict.brand };
 
   // The three newest magazine posts surfaced on the home page — internal
   // links into the journal, with each localized title acting as a long-tail
@@ -82,21 +90,24 @@ export default async function HomePage({
           encountering the <picture> tag. The mobile/desktop variants are
           fetched via the existing <source> elements, but the link hint
           accelerates discovery on slow networks. */}
-      <link
+      {locale === "en" ? <>
+        <link rel="preload" as="image" type="image/avif" media="(max-width: 639px)" href={withBasePath("/images/home/hero-1-mobile.avif")} fetchPriority="high" />
+        <link rel="preload" as="image" type="image/avif" media="(min-width: 640px)" href={withBasePath("/images/home/hero-1-desktop.avif")} fetchPriority="high" />
+      </> : <link
         rel="preload"
         as="image"
         href={withBasePath("/images/hero/hero-1.webp")}
         imageSrcSet={`${withBasePath("/images/hero/hero-1-mobile.webp")} 900w, ${withBasePath("/images/hero/hero-1.webp")} 1800w`}
         imageSizes="(max-width: 639px) 100vw, 100vw"
         fetchPriority="high"
-      />
+      />}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeGraph) }}
       />
 
       {/* ───────────────── Hero ───────────────── */}
-      <Hero dict={{ hero: dict.hero, heroSlides: dict.heroSlides, brand: dict.brand }} locale={locale as Locale} />
+      <Hero dict={heroCopy} locale={locale as Locale} />
 
       {/* ───────────────── Trust strip ───────────────── */}
       <section className="reveal border-b border-sand bg-cream">
@@ -162,7 +173,7 @@ export default async function HomePage({
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src={thumb}
+                        src={locale === "en" ? withBasePath(`/images/home/treatment-${t.slug}-128.webp`) : thumb}
                         alt={`${item.name} — ${dict.brand.nameFull}, Kuala Lumpur`}
                         width={128}
                         height={128}
@@ -232,7 +243,7 @@ export default async function HomePage({
               {dict.about.title}
             </h2>
             <p className="mt-6 text-base leading-relaxed text-ink-soft">
-              {dict.about.body}
+              {locale === "en" ? dict.about.body.replace("From our clinic in Mont Kiara and Sri Hartamas, Kuala Lumpur", "From our clinic in Desa Sri Hartamas, Kuala Lumpur, near Mont Kiara") : dict.about.body}
             </p>
             <ul className="mt-8 grid gap-4 sm:grid-cols-2">
               {dict.about.points.map((p, i) => (
@@ -348,6 +359,7 @@ export default async function HomePage({
           <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-ivory/70">
             {dict.cta.subtitle}
           </p>
+          {locale === "en" && <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-ivory/70">Visit us in Desa Sri Hartamas, Kuala Lumpur, a short journey from nearby Mont Kiara. <a href={clinic.googleProfile} target="_blank" rel="noopener noreferrer" className="text-gold underline underline-offset-4">Get directions to the clinic</a>.</p>}
           <Link
             href={`${base}/contact`}
             className="mt-10 inline-block rounded-full bg-gold px-10 py-4 text-xs tracking-[0.14em] uppercase text-white transition-all duration-300 hover:bg-gold-deep hover:shadow-[0_18px_40px_-16px_rgba(176,141,87,0.8)]"

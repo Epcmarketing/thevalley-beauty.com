@@ -2,7 +2,7 @@ import type { Locale } from "@/lib/i18n/config";
 import { fitTitle } from "@/lib/seoFit";
 
 export const ENGLISH_SEO_TITLES = {
-  home: "Aesthetic Clinic Kuala Lumpur | The Valley Beauty",
+  home: "Aesthetic Clinic in Sri Hartamas, KL | The Valley Beauty",
   treatments: "Aesthetic Treatments Kuala Lumpur | The Valley Beauty",
   about: "About The Valley | Aesthetic Clinic Kuala Lumpur",
   contact: "Book an Aesthetic Consultation | Kuala Lumpur",

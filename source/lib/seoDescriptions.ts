@@ -2,7 +2,7 @@ import type { Locale } from "@/lib/i18n/config";
 import { fitDescription } from "@/lib/seoFit";
 
 export const ENGLISH_SEO_DESCRIPTIONS = {
-  home: "Discover cosmetic surgery and aesthetic treatments in Kuala Lumpur near Mont Kiara and Sri Hartamas. View real results and book a private consultation.",
+  home: "Explore aesthetic treatments and cosmetic surgery in Desa Sri Hartamas, Kuala Lumpur, near Mont Kiara. View real results and book a private consultation.",
   treatments: "Explore cosmetic surgery, body contouring and advanced skin treatments in Kuala Lumpur near Mont Kiara. Compare options and book a private consultation.",
   about: "Meet The Valley Beauty team in Desa Sri Hartamas, Kuala Lumpur. Discover personalised care, multilingual consultations and book a private appointment.",
   contact: "Book a private aesthetic consultation in Desa Sri Hartamas, Kuala Lumpur, near Mont Kiara. Speak with our multilingual team about a personalised plan.",

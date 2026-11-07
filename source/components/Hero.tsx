@@ -27,10 +27,15 @@ const SLIDE_META = [
 
 export function Hero({ dict, locale }: { dict: Pick<Dictionary, "hero" | "heroSlides" | "brand">; locale: Locale }) {
   const [index, setIndex] = useState(0);
+  const [visited, setVisited] = useState<number[]>([0]);
   const base = localeBase(locale);
   const count = SLIDE_META.length;
 
-  const go = (dir: number) => setIndex((i) => (i + dir + count) % count);
+  const select = (next: number) => {
+    setVisited((seen) => seen.includes(next) ? seen : [...seen, next]);
+    setIndex(next);
+  };
+  const go = (dir: number) => select((index + dir + count) % count);
 
   const touchX = useRef<number | null>(null);
   const onTouchStart = (e: React.TouchEvent) => {
@@ -51,7 +56,7 @@ export function Hero({ dict, locale }: { dict: Pick<Dictionary, "hero" | "heroSl
       className="relative w-full overflow-hidden bg-cream"
     >
       <div
-        className="relative h-[78vh] min-h-[500px] w-full sm:h-[88vh] sm:min-h-[560px]"
+        className={`relative h-[78vh] ${locale === "en" ? "min-h-[600px]" : "min-h-[500px]"} w-full sm:h-[88vh] sm:min-h-[560px]`}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
@@ -71,8 +76,10 @@ export function Hero({ dict, locale }: { dict: Pick<Dictionary, "hero" | "heroSl
               }`}
             >
               {/* Art-directed: portrait image on phones, 16:9 on larger screens */}
-              <picture>
-                <source media="(max-width: 639px)" srcSet={slide.imgMobile} />
+              {(locale !== "en" || visited.includes(i)) && <picture>
+                {locale === "en" && <source type="image/avif" media="(max-width: 639px)" srcSet={withBasePath(`/images/home/hero-${i + 1}-mobile.avif`)} />}
+                <source media="(max-width: 639px)" srcSet={locale === "en" ? `${withBasePath(`/images/home/hero-${i + 1}-mobile-600.webp`)} 600w, ${slide.imgMobile} 900w` : slide.imgMobile} sizes={locale === "en" ? "100vw" : undefined} />
+                {locale === "en" && <source type="image/avif" srcSet={withBasePath(`/images/home/hero-${i + 1}-desktop.avif`)} />}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={slide.img}
@@ -86,7 +93,7 @@ export function Hero({ dict, locale }: { dict: Pick<Dictionary, "hero" | "heroSl
                     slide.align === "left" ? "sm:object-right" : "sm:object-left"
                   }`}
                 />
-              </picture>
+              </picture>}
               {/* Legibility scrim on the text side */}
               <div
                 className={`absolute inset-0 ${
@@ -98,7 +105,7 @@ export function Hero({ dict, locale }: { dict: Pick<Dictionary, "hero" | "heroSl
 
               {/* Text */}
               <div className="absolute inset-0">
-                <div className="mx-auto flex h-full max-w-7xl items-center px-6 lg:px-10">
+                <div className={`mx-auto flex h-full max-w-7xl items-center px-6 lg:px-10 ${locale === "en" ? "pt-24 pb-16 sm:py-0" : ""}`}>
                   <div
                     className={`max-w-[88%] sm:max-w-xl ${
                       slide.align === "right" ? "ml-auto text-right" : ""
@@ -195,7 +202,7 @@ export function Hero({ dict, locale }: { dict: Pick<Dictionary, "hero" | "heroSl
               <button
                 key={i}
                 type="button"
-                onClick={() => setIndex(i)}
+                onClick={() => select(i)}
                 aria-label={`Go to slide ${i + 1}`}
                 aria-current={i === index}
                 className="group flex h-11 items-center justify-center px-1"
